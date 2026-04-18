@@ -1,6 +1,6 @@
 # By Blendstrup — Development Progress
 
-> Last updated: 2026-04-18
+> Last updated: 2026-04-18 (code review fixes applied)
 
 ---
 
@@ -38,13 +38,13 @@
 **Pending owner action (non-blocking for development):**
 The Keystatic → GitHub → Vercel deploy loop needs to be manually verified. Steps are in [.planning/phases/01-foundation/01-HUMAN-UAT.md](.planning/phases/01-foundation/01-HUMAN-UAT.md).
 
-**Code review findings (6 total — none blocking):**
-See [.planning/phases/01-foundation/01-REVIEW.md](.planning/phases/01-foundation/01-REVIEW.md)
-- 1 critical: `keystatic.config.ts` — add a runtime guard for missing `GITHUB_REPO_OWNER` / `GITHUB_REPO_NAME`
-- 3 warnings: Tailwind v4 `theme()` usage in a component, hard-coded locale type cast, skip link text not from translation system
-- 2 info: minor quality notes
+**Code review:** 4/4 critical+warning findings fixed ✅ — see [01-REVIEW-FIX.md](.planning/phases/01-foundation/01-REVIEW-FIX.md)
 
-Run `/gsd-code-review-fix 1` to auto-fix these.
+- Runtime guard added for missing GitHub env vars in `keystatic.config.ts`
+- Tailwind v4 CSS variable syntax fixed in `[locale]/page.tsx`
+- Locale type cast uses exported `Locale` type from routing config
+- Skip link text now pulled from translation system via `getTranslations`
+- 2 info findings left as-is (minor, non-blocking)
 
 ---
 
@@ -65,12 +65,7 @@ Run `/gsd-code-review-fix 1` to auto-fix these.
 
 ## Commands — What to Run Next
 
-### Option A: Fix Phase 1 code review issues first (recommended)
-```
-/gsd-code-review-fix 1
-```
-
-### Option B: Jump straight to Phase 2
+Phase 1 code review fixes are done. Ready for Phase 2.
 
 **Step 1 — Discuss Phase 2 approach (optional but recommended):**
 ```
