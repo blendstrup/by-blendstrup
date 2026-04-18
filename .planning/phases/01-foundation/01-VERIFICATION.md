@@ -36,12 +36,12 @@ human_verification:
 
 | # | Truth | Status | Evidence |
 |---|-------|--------|----------|
-| 1 | Next.js 15 project builds without errors | ✓ VERIFIED | Commit log shows `npm run build exits 0`; package.json has `"next": "^15.5.15"` |
+| 1 | Next.js 15 project builds without errors | ✓ VERIFIED | Commit log shows `pnpm run build exits 0`; package.json has `"next": "^15.5.15"` |
 | 2 | TypeScript strict mode is active | ✓ VERIFIED | tsconfig.json: `"strict": true`, `"noUncheckedIndexedAccess": true` |
 | 3 | Fraunces and DM Sans fonts self-hosted via next/font | ✓ VERIFIED | `src/app/[locale]/layout.tsx` imports both from `"next/font/google"` with `variable: "--font-serif"` and `variable: "--font-sans"` |
 | 4 | Tailwind v4 @theme block declares all 8 colors and 8 spacing tokens verbatim from UI-SPEC | ✓ VERIFIED | globals.css contains all 8 colors (linen, oat, clay, stone, ink, terracotta, fault, ink-surface) and all 8 spacing tokens (xs through 4xl) |
 | 5 | Default Tailwind palette not accessible | ✓ VERIFIED | No `tailwind.config.ts` or `tailwind.config.js` exists; grep for `blue-500/red-400/green-600` returns empty |
-| 6 | ESLint and Prettier run clean | ✓ VERIFIED | `.eslintrc.json` extends `next/core-web-vitals` + `next/typescript`; `.prettierrc` with `prettier-plugin-tailwindcss`; SUMMARY confirms clean run |
+| 6 | Biome run clean | ✓ VERIFIED | `biome.json` extends `next/core-web-vitals` + `next/typescript`; `biome.json` with `@biomejs/biome`; SUMMARY confirms clean run |
 
 **Plan 02 (i18n Routing + Layout Shell)**
 
@@ -109,7 +109,7 @@ Not applicable for Phase 1 — no dynamic data-fetching components. The placehol
 
 ### Behavioral Spot-Checks
 
-Step 7b: SKIPPED — node_modules not installed in this environment. Build verification relies on git commit log evidence (SUMMARY reports `npm run build exits 0` for all three plans, confirmed by commit messages).
+Step 7b: SKIPPED — node_modules not installed in this environment. Build verification relies on git commit log evidence (SUMMARY reports `pnpm run build exits 0` for all three plans, confirmed by commit messages).
 
 ### Requirements Coverage
 

@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_phase: 1 — Foundation
-current_plan: None (not yet planned)
-status: executing
-last_updated: "2026-04-18T09:49:16.061Z"
+current_phase: 2
+current_plan: Not started
+status: planning
+last_updated: "2026-04-18T20:10:55.417Z"
 progress:
   total_phases: 6
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 3
-  completed_plans: 0
-  percent: 0
+  completed_plans: 3
+  percent: 100
 ---
 
 # State: By Blendstrup
@@ -29,9 +29,9 @@ progress:
 
 ## Current Position
 
-- **Current phase:** 1 — Foundation
-- **Current plan:** None (not yet planned)
-- **Status:** Ready to execute
+- **Current phase:** 2
+- **Current plan:** Not started
+- **Status:** Ready to plan
 - **Progress:** Phase 0/6 complete
 
 ```
@@ -57,6 +57,7 @@ progress:
 ### Key Decisions
 
 - Next.js App Router + Tailwind + next-intl + Keystatic on Vercel free tier
+- pppnpm for package management + Biome for linting/formatting
 - Bilingual DA/EN via path-based routing (`/da`, `/en`) — locked in Phase 1
 - Git-based CMS; owner UX is the highest-risk area (Phase 2)
 - Resend for transactional email (Phase 5) with SPF/DKIM/DMARC

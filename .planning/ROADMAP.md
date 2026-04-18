@@ -26,9 +26,9 @@
   4. Site renders a minimal Japandi-leaning shell (typography scale, muted palette tokens, spacing tokens) applied via Tailwind
 **Plans**: 3 plans
 Plans:
-- [ ] 01-01-PLAN.md — Next.js 15 scaffold + Tailwind v4 design tokens + next/font
-- [ ] 01-02-PLAN.md — next-intl i18n routing, locale layout shell, language toggle, placeholder pages
-- [ ] 01-03-PLAN.md — Keystatic settings singleton, Admin UI, GitHub storage, deploy loop checkpoint
+- [x] 01-01-PLAN.md — Next.js 15 scaffold + Tailwind v4 design tokens + next/font
+- [x] 01-02-PLAN.md — next-intl i18n routing, locale layout shell, language toggle, placeholder pages
+- [x] 01-03-PLAN.md — Keystatic settings singleton, Admin UI, GitHub storage, deploy loop checkpoint
 **UI hint**: yes
 
 ### Phase 2: Content Model & CMS UX
