@@ -1,0 +1,16 @@
+{
+  "site": {
+    "name": "By Blendstrup"
+  },
+  "navigation": {
+    "skipToContent": "Skip to content"
+  },
+  "languageToggle": {
+    "da": "Dansk",
+    "en": "English"
+  },
+  "placeholder": {
+    "heading": "Coming soon",
+    "body": "The site is being built."
+  }
+}

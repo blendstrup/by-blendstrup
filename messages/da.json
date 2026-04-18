@@ -1,0 +1,16 @@
+{
+  "site": {
+    "name": "By Blendstrup"
+  },
+  "navigation": {
+    "skipToContent": "Spring til indhold"
+  },
+  "languageToggle": {
+    "da": "Dansk",
+    "en": "English"
+  },
+  "placeholder": {
+    "heading": "Kommer snart",
+    "body": "Siden er under opbygning."
+  }
+}
