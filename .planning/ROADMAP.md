@@ -24,7 +24,11 @@
   2. Visitor can toggle language from a header control and the URL path updates to the matching locale
   3. Owner can edit a test content entry in Keystatic, commit to GitHub, and see the change deployed on Vercel within one cycle
   4. Site renders a minimal Japandi-leaning shell (typography scale, muted palette tokens, spacing tokens) applied via Tailwind
-**Plans**: TBD
+**Plans**: 3 plans
+Plans:
+- [ ] 01-01-PLAN.md — Next.js 15 scaffold + Tailwind v4 design tokens + next/font
+- [ ] 01-02-PLAN.md — next-intl i18n routing, locale layout shell, language toggle, placeholder pages
+- [ ] 01-03-PLAN.md — Keystatic settings singleton, Admin UI, GitHub storage, deploy loop checkpoint
 **UI hint**: yes
 
 ### Phase 2: Content Model & CMS UX
@@ -93,7 +97,7 @@
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/0 | Not started | - |
+| 1. Foundation | 0/3 | Not started | - |
 | 2. Content Model & CMS UX | 0/0 | Not started | - |
 | 3. Gallery & Works | 0/0 | Not started | - |
 | 4. Homepage, Shop & Contact | 0/0 | Not started | - |
@@ -119,3 +123,4 @@ All 30 v1 requirements mapped to exactly one phase. No orphans, no duplicates.
 
 ---
 *Roadmap created: 2026-04-18*
+*Updated: 2026-04-18 — Phase 1 plans added (01-01, 01-02, 01-03)*
