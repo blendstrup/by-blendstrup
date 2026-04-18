@@ -4,8 +4,8 @@ import { routing } from "./i18n/routing";
 export default createMiddleware(routing);
 
 export const config = {
-  // Match all pathnames except Next.js internals and static files
+  // Match all pathnames except Next.js internals, static files, and Keystatic admin/API routes
   matcher: [
-    "/((?!_next|_vercel|.*\\..*).*)",
+    "/((?!_next|_vercel|keystatic|api/keystatic|.*\\..*).*)",
   ],
 };
