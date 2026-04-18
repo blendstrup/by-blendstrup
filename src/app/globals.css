@@ -25,3 +25,14 @@
   --spacing-3xl: 64px;
   --spacing-4xl: 96px; /* exception: see UI-SPEC Spacing Scale > Exceptions */
 }
+
+/* Focus ring — 2px solid terracotta, focus-visible only */
+*:focus-visible {
+  outline: 2px solid var(--color-terracotta);
+  outline-offset: 2px;
+}
+
+/* Suppress focus ring for mouse users */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
