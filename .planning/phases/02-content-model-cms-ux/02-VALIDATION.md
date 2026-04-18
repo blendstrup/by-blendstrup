@@ -2,8 +2,8 @@
 phase: 2
 slug: content-model-cms-ux
 status: draft
-nyquist_compliant: false
-wave_0_complete: false
+nyquist_compliant: true
+wave_0_complete: true
 created: 2026-04-18
 ---
 
@@ -42,7 +42,7 @@ created: 2026-04-18
 | 2-01-02 | 01 | 1 | CMS-02 | — | N/A | type-check | `pnpm tsc --noEmit` | ✅ | ⬜ pending |
 | 2-01-03 | 01 | 1 | CMS-03 | — | N/A | type-check | `pnpm tsc --noEmit` | ✅ | ⬜ pending |
 | 2-01-04 | 01 | 1 | CMS-04 | — | N/A | manual | Keystatic Admin UI visual check | ❌ W0 | ⬜ pending |
-| 2-01-05 | 01 | 1 | I18N-02 | — | N/A | unit | `pnpm vitest run` | ❌ W0 | ⬜ pending |
+| 2-01-05 | 01 | 1 | I18N-02 | — | N/A | unit | `pnpm vitest run` | ✅ W0 | ⬜ pending |
 
 *Status: ⬜ pending · ✅ green · ❌ red · ⚠️ flaky*
 
@@ -50,8 +50,8 @@ created: 2026-04-18
 
 ## Wave 0 Requirements
 
-- [ ] `src/__tests__/keystatic-schema.test.ts` — stubs validating schema exports and field types
-- [ ] `src/__tests__/i18n-fields.test.ts` — stubs for bilingual sibling-field resolution
+- [x] `src/__tests__/keystatic-schema.test.ts` — stubs validating schema exports and field types
+- [x] `src/__tests__/i18n-fields.test.ts` — stubs for bilingual sibling-field resolution
 
 *If none: "Existing infrastructure covers all phase requirements."*
 
@@ -69,11 +69,11 @@ created: 2026-04-18
 
 ## Validation Sign-Off
 
-- [ ] All tasks have `<automated>` verify or Wave 0 dependencies
-- [ ] Sampling continuity: no 3 consecutive tasks without automated verify
-- [ ] Wave 0 covers all MISSING references
-- [ ] No watch-mode flags
-- [ ] Feedback latency < 15s
-- [ ] `nyquist_compliant: true` set in frontmatter
+- [x] All tasks have `<automated>` verify or Wave 0 dependencies
+- [x] Sampling continuity: no 3 consecutive tasks without automated verify
+- [x] Wave 0 covers all MISSING references
+- [x] No watch-mode flags
+- [x] Feedback latency < 15s
+- [x] `nyquist_compliant: true` set in frontmatter
 
-**Approval:** pending
+**Approval:** approved

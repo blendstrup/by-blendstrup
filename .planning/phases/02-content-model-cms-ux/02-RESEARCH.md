@@ -492,14 +492,14 @@ const heroSlugs: string[] = homepageData?.heroWorks ?? [];
 
 ---
 
-## Open Questions
+## Open Questions (RESOLVED)
 
-1. **About singleton scope**
+1. **About singleton scope** — RESOLVED: Defer to Phase 4. The `about` content is rendered on the homepage (HOME-04) and no other page in v1. Phase 2 schema ships without an `about` singleton; Phase 4 will add it.
    - What we know: CLAUDE.md lists an `about` singleton; 02-CONTEXT.md says it is Claude's Discretion whether to include it in Phase 2 or Phase 4.
    - What's unclear: Whether any Phase 3/4 page will need to read `about` content before Phase 4 builds those pages.
    - Recommendation: Defer to Phase 4. The `about` content is rendered on the homepage (HOME-04) and no other page in v1. Phase 4 is the natural home.
 
-2. **`fields.multiRelationship` ordering guarantee**
+2. **`fields.multiRelationship` ordering guarantee** — RESOLVED: Use `fields.multiRelationship` as planned. The field stores `string[]` in insertion order. The Admin UI combobox does not expose drag-to-reorder, but ordering is preserved as items are selected. Assumption A4 (ordering preserved) holds for the heroWorks array: the plan does not rely on drag-reorder — it relies on the owner selecting pieces in the desired order. If ordering proves problematic post-launch, a future phase can wrap in `fields.array(fields.relationship(...))` as a non-breaking schema change.
    - What we know: The type declaration shows it stores `string[]` — an ordered array.
    - What's unclear: Whether the Admin UI combobox allows reordering after selection (drag-to-reorder).
    - Recommendation: If ordering matters (hero slot 1 vs slot 2), wrap in `fields.array(fields.relationship(...))` instead — arrays always support drag-to-reorder. The planner should decide based on importance of hero slot ordering.
