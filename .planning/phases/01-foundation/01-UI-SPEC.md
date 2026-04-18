@@ -48,6 +48,7 @@ Declared values (multiples of 4 only). Tailwind v4 `@theme` maps these as CSS cu
 Exceptions:
 - Language toggle touch target: minimum 44px height (accessibility — meets WCAG 2.5.5 AA)
 - Header height: 64px (aligns to 3xl token)
+- **`--spacing-4xl: 96px` — out-of-set exception:** 96px is used exclusively for major vertical section breaks (top/bottom padding of full-width sections, and vertical rhythm between distinct page regions). Japandi requires generous vertical breathing room; 64px (3xl) is insufficient at section boundaries where the eye must perceive a clear pause. 96px is 3xl × 1.5, maintains the 4px grid, and is not used for intra-component spacing. This is the only value that exceeds the standard seven-step set.
 
 ---
 
@@ -161,6 +162,8 @@ Phase 1 delivers the layout shell that all pages inherit.
 | Footer background | ink-surface (`--color-ink-surface`) |
 | Footer text | linen (`--color-linen`) at 80% opacity |
 
+**Placeholder screen focal point:** Primary visual anchor is the display heading ("Coming soon" / "Kommer snart") centered horizontally and vertically in the main content area, rendered in Fraunces 48px at weight 400.
+
 **Responsive breakpoints** (Tailwind v4 defaults, not overridden):
 - Mobile: `<640px`
 - Tablet: `640px–1023px`
@@ -209,7 +212,7 @@ The executor should declare the following in the root CSS file. This is the auth
   --spacing-xl: 32px;
   --spacing-2xl: 48px;
   --spacing-3xl: 64px;
-  --spacing-4xl: 96px;
+  --spacing-4xl: 96px; /* exception: see Spacing Scale > Exceptions */
 }
 ```
 
