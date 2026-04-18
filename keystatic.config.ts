@@ -2,13 +2,24 @@ import { config, singleton, fields } from "@keystatic/core";
 
 // Storage mode: 'local' for dev, 'github' for production
 // Driven by KEYSTATIC_STORAGE_KIND env var (defaults to 'local')
+const githubRepoOwner = process.env.GITHUB_REPO_OWNER;
+const githubRepoName = process.env.GITHUB_REPO_NAME;
+
+if (process.env.KEYSTATIC_STORAGE_KIND === "github") {
+  if (!githubRepoOwner || !githubRepoName) {
+    throw new Error(
+      "GITHUB_REPO_OWNER and GITHUB_REPO_NAME must be set when KEYSTATIC_STORAGE_KIND=github"
+    );
+  }
+}
+
 const storage =
   process.env.KEYSTATIC_STORAGE_KIND === "github"
     ? ({
         kind: "github",
         repo: {
-          owner: process.env.GITHUB_REPO_OWNER!,
-          name: process.env.GITHUB_REPO_NAME!,
+          owner: githubRepoOwner!,
+          name: githubRepoName!,
         },
       } as const)
     : ({ kind: "local" } as const);
