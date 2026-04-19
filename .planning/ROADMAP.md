@@ -56,8 +56,8 @@
 
 **Plans**: 2 plans
 
-- [ ] 02-01-PLAN.md — vitest setup + Keystatic schema (works, categories, homepage) + i18n message keys
-- [ ] 02-02-PLAN.md — Admin UI smoke-test checkpoint (human verify)
+- [x] 02-01-PLAN.md — vitest setup + Keystatic schema (works, categories, homepage) + i18n message keys
+- [x] 02-02-PLAN.md — Admin UI smoke-test checkpoint (human verify)
 
 ### Phase 3: Gallery & Works
 
