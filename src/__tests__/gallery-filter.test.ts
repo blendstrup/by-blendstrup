@@ -20,7 +20,7 @@ describe("Gallery filter logic", () => {
 			]
 			const result = publishedFilter(works)
 			expect(result).toHaveLength(1)
-			expect(result[0].entry.published).toBe(true)
+			expect(result[0]?.entry.published).toBe(true)
 		})
 
 		it("filters out entries where published is false", () => {
@@ -46,7 +46,7 @@ describe("Gallery filter logic", () => {
 			]
 			const result = forSaleFilter(works)
 			expect(result).toHaveLength(1)
-			expect(result[0].entry.saleStatus).toBe("available")
+			expect(result[0]?.entry.saleStatus).toBe("available")
 		})
 
 		it("excludes sold works from the for-sale filter", () => {
