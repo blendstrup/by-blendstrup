@@ -12,5 +12,30 @@
   "placeholder": {
     "heading": "Kommer snart",
     "body": "Siden er under opbygning."
+  },
+  "shop": {
+    "saleStatus": {
+      "available": "Til salg",
+      "sold": "Solgt",
+      "notListed": "Portfolio stykke"
+    },
+    "filterAll": "Alle stykker",
+    "filterAvailable": "Tilgængelig nu",
+    "contactToBuy": "Kontakt for køb"
+  },
+  "gallery": {
+    "title": "Arbejder",
+    "filterAll": "Alle",
+    "filterForSale": "Til salg",
+    "soldLabel": "Solgt",
+    "forSaleLabel": "Til salg",
+    "contactToBuy": "Kontakt for køb",
+    "soldMessage": "Dette stykke er solgt.",
+    "soldCta": "Bestil noget tilsvarende",
+    "emptyAllHeading": "Ingen arbejder endnu.",
+    "emptyAllBody": "Kom tilbage snart — nye stykker tilføjes løbende.",
+    "emptyForSaleHeading": "Intet til salg lige nu.",
+    "emptyForSaleBody": "Alle stykker er solgt eller ikke annonceret. Interesseret i noget skræddersyet?",
+    "emptyForSaleCta": "Bestil et skræddersyet stykke"
   }
 }

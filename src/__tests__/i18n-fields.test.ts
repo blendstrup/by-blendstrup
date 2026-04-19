@@ -37,3 +37,39 @@ describe("i18n message keys — shop namespace", () => {
 		})
 	})
 })
+
+type FlatMessages = Record<string, Record<string, string>>
+
+describe("i18n message keys — gallery namespace", () => {
+	const galleryKeys = [
+		"title",
+		"filterAll",
+		"filterForSale",
+		"soldLabel",
+		"forSaleLabel",
+		"contactToBuy",
+		"soldMessage",
+		"soldCta",
+		"emptyAllHeading",
+		"emptyAllBody",
+		"emptyForSaleHeading",
+		"emptyForSaleBody",
+		"emptyForSaleCta",
+	]
+
+	describe("English messages", () => {
+		for (const key of galleryKeys) {
+			it(`has gallery.${key}`, () => {
+				expect((en as unknown as FlatMessages).gallery?.[key]).toBeDefined()
+			})
+		}
+	})
+
+	describe("Danish messages", () => {
+		for (const key of galleryKeys) {
+			it(`has gallery.${key}`, () => {
+				expect((da as unknown as FlatMessages).gallery?.[key]).toBeDefined()
+			})
+		}
+	})
+})

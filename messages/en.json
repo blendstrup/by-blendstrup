@@ -12,5 +12,30 @@
   "placeholder": {
     "heading": "Coming soon",
     "body": "The site is being built."
+  },
+  "shop": {
+    "saleStatus": {
+      "available": "Available for purchase",
+      "sold": "Sold",
+      "notListed": "Portfolio piece"
+    },
+    "filterAll": "All pieces",
+    "filterAvailable": "Available now",
+    "contactToBuy": "Contact to buy"
+  },
+  "gallery": {
+    "title": "Works",
+    "filterAll": "All",
+    "filterForSale": "For Sale",
+    "soldLabel": "Sold",
+    "forSaleLabel": "For Sale",
+    "contactToBuy": "Contact to buy",
+    "soldMessage": "This piece has been sold.",
+    "soldCta": "Commission something similar",
+    "emptyAllHeading": "No works yet.",
+    "emptyAllBody": "Check back soon — new pieces are added regularly.",
+    "emptyForSaleHeading": "Nothing for sale right now.",
+    "emptyForSaleBody": "All pieces are currently sold or not listed. Interested in something custom?",
+    "emptyForSaleCta": "Commission a custom piece"
   }
 }
