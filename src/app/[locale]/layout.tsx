@@ -1,8 +1,8 @@
 import { Fraunces, DM_Sans } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages, getTranslations } from "next-intl/server";
+import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
-import { routing, type Locale } from "@/i18n/routing";
+import { routing } from "@/i18n/routing";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 
@@ -32,12 +32,11 @@ export default async function LocaleLayout({
   const { locale } = await params;
 
   // Validate that the locale is supported — prevents arbitrary locale injection (T-02-01)
-  if (!routing.locales.includes(locale as Locale)) {
+  if (!routing.locales.includes(locale as "da" | "en")) {
     notFound();
   }
 
   const messages = await getMessages();
-  const t = await getTranslations("navigation");
 
   return (
     <html lang={locale} className={`${fraunces.variable} ${dmSans.variable}`}>
@@ -48,7 +47,7 @@ export default async function LocaleLayout({
             href="#main-content"
             className="sr-only focus-visible:not-sr-only focus-visible:fixed focus-visible:top-2 focus-visible:left-2 focus-visible:z-50 focus-visible:bg-oat focus-visible:text-ink focus-visible:px-4 focus-visible:py-2 focus-visible:text-sm focus-visible:font-medium"
           >
-            {t("skipToContent")}
+            {locale === "da" ? "Spring til indhold" : "Skip to content"}
           </a>
           <SiteHeader />
           <main id="main-content" className="min-h-screen">

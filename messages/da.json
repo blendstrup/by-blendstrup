@@ -12,15 +12,5 @@
   "placeholder": {
     "heading": "Kommer snart",
     "body": "Siden er under opbygning."
-  },
-  "shop": {
-    "saleStatus": {
-      "available": "Til salg",
-      "sold": "Solgt",
-      "notListed": "Portfoliestykke"
-    },
-    "filterAll": "Alle stykker",
-    "filterAvailable": "Tilgængeligt nu",
-    "contactToBuy": "Kontakt for at købe"
   }
 }
