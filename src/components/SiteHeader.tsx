@@ -1,6 +1,6 @@
-import { Link } from "@/i18n/navigation"
 import { useTranslations } from "next-intl"
 import LanguageToggle from "./LanguageToggle"
+import { NavLinks } from "./NavLinks"
 
 export default function SiteHeader() {
 	const t = useTranslations()
@@ -12,14 +12,7 @@ export default function SiteHeader() {
 				<span className="font-normal font-serif text-[28px] text-ink tracking-tight">
 					{t("site.name")}
 				</span>
-				<nav aria-label="Main navigation">
-					<Link
-						href="/gallery"
-						className="font-medium text-sm text-stone transition-colors duration-150 hover:text-ink hover:underline hover:decoration-terracotta"
-					>
-						{t("navigation.gallery")}
-					</Link>
-				</nav>
+				<NavLinks />
 				<LanguageToggle />
 			</div>
 		</header>
