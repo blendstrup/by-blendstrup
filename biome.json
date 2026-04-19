@@ -1,0 +1,56 @@
+{
+	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+	"vcs": {
+		"enabled": false,
+		"clientKind": "git",
+		"useIgnoreFile": true
+	},
+	"files": {
+		"include": ["src/**/*", "!src/paraglide"]
+	},
+	"formatter": {
+		"enabled": true,
+		"indentStyle": "tab"
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true,
+			"suspicious": {
+				"noExplicitAny": "off",
+				"noConsole": {
+					"level": "warn",
+					"options": {
+						"allow": ["assert", "error", "info", "warn"]
+					}
+				}
+			},
+			"correctness": {
+				"noUnusedImports": "error"
+			},
+			"nursery": {
+				"useSortedClasses": {
+					"level": "error",
+					"fix": "safe",
+					"options": {
+						"attributes": ["classList", "className"],
+						"functions": ["clsx", "cva", "tw", "tw.*"]
+					}
+				}
+			}
+		}
+	},
+	"javascript": {
+		"formatter": {
+			"quoteStyle": "double",
+			"trailingCommas": "all",
+			"semicolons": "asNeeded"
+		}
+	},
+	"organizeImports": {
+		"enabled": true
+	},
+	"assists": {
+		"enabled": true
+	}
+}
