@@ -49,23 +49,6 @@ Plans:
 - [x] 02-02-PLAN.md — Admin UI smoke-test checkpoint (human verify)
 
 ### Phase 3: Gallery & Works
-
-**Goal**: Ship the browsable works collection — uniform grid, detail pages, for-sale filter, and graceful handling of sold pieces with a custom-order bridge.
-
-**Depends on**: Phase 2
-
-**Requirements**: GALL-01, GALL-02, GALL-03, GALL-04
-
-**Success Criteria** (what must be TRUE):
-
-1. Visitor can browse every published piece in a uniform grid layout
-2. Visitor can click a piece and land on a detail page with full imagery and description in their chosen language
-3. Visitor can filter the gallery to show only currently for-sale pieces
-4. Sold pieces remain visible in the grid with a clear "Sold" label and a CTA linking to the custom order form
-
-**Plans**: TBD
-
-### Phase 3: Gallery & Works
 **Goal**: Ship the browsable works collection — uniform grid, detail pages, for-sale filter, and graceful handling of sold pieces with a custom-order bridge.
 **Depends on**: Phase 2
 **Requirements**: GALL-01, GALL-02, GALL-03, GALL-04
@@ -74,7 +57,11 @@ Plans:
   2. Visitor can click a piece and land on a detail page with full imagery and description in their chosen language
   3. Visitor can filter the gallery to show only currently for-sale pieces
   4. Sold pieces remain visible in the grid with a clear "Sold" label and a CTA linking to the custom order form
-**Plans**: TBD
+**Plans**: 3 plans
+Plans:
+- [ ] 03-01-PLAN.md — Schema restoration (works + categories + homepage) + gallery i18n keys + Wave 0 tests
+- [ ] 03-02-PLAN.md — Gallery grid RSC + WorkCard + StatusBadge + GalleryFilterToggle + SiteHeader nav link
+- [ ] 03-03-PLAN.md — Detail page RSC (generateStaticParams, notFound guard) + WorkDetail component + human verify
 **UI hint**: yes
 
 ### Phase 4: Homepage, Shop & Contact
@@ -121,7 +108,7 @@ Plans:
 |-------|----------------|--------|-----------|
 | 1. Foundation | 0/3 | Not started | - |
 | 2. Content Model & CMS UX | 0/0 | Not started | - |
-| 3. Gallery & Works | 0/0 | Not started | - |
+| 3. Gallery & Works | 0/3 | Planning complete | - |
 | 4. Homepage, Shop & Contact | 0/0 | Not started | - |
 | 5. Inquiries & Email Delivery | 0/0 | Not started | - |
 | 6. Polish & Launch | 0/0 | Not started | - |
@@ -146,3 +133,4 @@ All 30 v1 requirements mapped to exactly one phase. No orphans, no duplicates.
 ---
 *Roadmap created: 2026-04-18*
 *Updated: 2026-04-18 — Phase 1 plans added (01-01, 01-02, 01-03)*
+*Updated: 2026-04-19 — Phase 3 plans added (03-01, 03-02, 03-03)*
