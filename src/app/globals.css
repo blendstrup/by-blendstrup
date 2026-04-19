@@ -1,38 +1,38 @@
 @import "tailwindcss";
 
 @theme {
-  /* Typefaces */
-  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Fraunces", ui-serif, Georgia, serif;
+	/* Typefaces */
+	--font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+	--font-serif: "Fraunces", ui-serif, Georgia, serif;
 
-  /* Color palette — full override, default palette removed */
-  --color-linen: #F5F0E8;
-  --color-oat: #EDE7D9;
-  --color-clay: #C4A882;
-  --color-stone: #7A6A58;
-  --color-ink: #2C2418;
-  --color-terracotta: #A85C3A;
-  --color-fault: #8B3A2A;
-  --color-ink-surface: #1E1A12;
+	/* Color palette — full override, default palette removed */
+	--color-linen: #f5f0e8;
+	--color-oat: #ede7d9;
+	--color-clay: #c4a882;
+	--color-stone: #7a6a58;
+	--color-ink: #2c2418;
+	--color-terracotta: #a85c3a;
+	--color-fault: #8b3a2a;
+	--color-ink-surface: #1e1a12;
 
-  /* Spacing — augment Tailwind defaults with named tokens */
-  --spacing-xs: 4px;
-  --spacing-sm: 8px;
-  --spacing-md: 16px;
-  --spacing-lg: 24px;
-  --spacing-xl: 32px;
-  --spacing-2xl: 48px;
-  --spacing-3xl: 64px;
-  --spacing-4xl: 96px; /* exception: see UI-SPEC Spacing Scale > Exceptions */
+	/* Spacing — augment Tailwind defaults with named tokens */
+	--spacing-xs: 4px;
+	--spacing-sm: 8px;
+	--spacing-md: 16px;
+	--spacing-lg: 24px;
+	--spacing-xl: 32px;
+	--spacing-2xl: 48px;
+	--spacing-3xl: 64px;
+	--spacing-4xl: 96px; /* exception: see UI-SPEC Spacing Scale > Exceptions */
 }
 
 /* Focus ring — 2px solid terracotta, focus-visible only */
 *:focus-visible {
-  outline: 2px solid var(--color-terracotta);
-  outline-offset: 2px;
+	outline: 2px solid var(--color-terracotta);
+	outline-offset: 2px;
 }
 
 /* Suppress focus ring for mouse users */
 *:focus:not(:focus-visible) {
-  outline: none;
+	outline: none;
 }

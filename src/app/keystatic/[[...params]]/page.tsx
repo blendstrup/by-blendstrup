@@ -1,5 +1,5 @@
-export const runtime = "nodejs";
+export const runtime = "nodejs"
 
-import KeystaticApp from "./keystatic";
+import KeystaticApp from "./keystatic"
 
-export default KeystaticApp;
+export default KeystaticApp
