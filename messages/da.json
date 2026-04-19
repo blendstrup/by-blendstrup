@@ -4,7 +4,9 @@
   },
   "navigation": {
     "skipToContent": "Spring til indhold",
-    "gallery": "Arbejder"
+    "gallery": "Arbejder",
+    "shop": "Butik",
+    "contact": "Kontakt"
   },
   "languageToggle": {
     "da": "Dansk",
@@ -14,6 +16,24 @@
     "heading": "Kommer snart",
     "body": "Siden er under opbygning."
   },
+  "home": {
+    "hero": {
+      "scrollIndicator": "Rul ned"
+    },
+    "shopPreview": {
+      "heading": "Til salg",
+      "viewAll": "Se alle varer",
+      "empty": "Ingen stykker til salg i øjeblikket."
+    },
+    "about": {
+      "heading": "Om Jonas"
+    },
+    "customOrders": {
+      "heading": "Noget særligt i tankerne?",
+      "body": "Jeg laver specialbestillinger — fortæl mig, hvad du forestiller dig.",
+      "cta": "Start en specialbestilling"
+    }
+  },
   "shop": {
     "saleStatus": {
       "available": "Til salg",
@@ -22,7 +42,31 @@
     },
     "filterAll": "Alle stykker",
     "filterAvailable": "Tilgængelig nu",
-    "contactToBuy": "Kontakt for køb"
+    "contactToBuy": "Kontakt for køb",
+    "heading": "Til salg",
+    "empty": {
+      "heading": "Ingen stykker til salg i øjeblikket",
+      "body": "Nye stykker tilføjes løbende. Følg med på Instagram for opdateringer."
+    },
+    "card": {
+      "contactToBuy": "Kontakt for køb"
+    }
+  },
+  "contact": {
+    "heading": "Kontakt",
+    "info": {
+      "heading": "Kontaktoplysninger"
+    },
+    "purchase": {
+      "heading": "Køb et stykke",
+      "body": "Send mig en besked om det stykke, du er interesseret i.",
+      "cta": "Send en forespørgsel"
+    },
+    "customOrders": {
+      "heading": "Specialbestilling",
+      "body": "Har du et stykke i tankerne, der ikke allerede er i butikken?",
+      "cta": "Start en specialbestilling"
+    }
   },
   "gallery": {
     "title": "Arbejder",

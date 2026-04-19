@@ -4,7 +4,9 @@
   },
   "navigation": {
     "skipToContent": "Skip to content",
-    "gallery": "Works"
+    "gallery": "Works",
+    "shop": "Shop",
+    "contact": "Contact"
   },
   "languageToggle": {
     "da": "Dansk",
@@ -14,6 +16,24 @@
     "heading": "Coming soon",
     "body": "The site is being built."
   },
+  "home": {
+    "hero": {
+      "scrollIndicator": "Scroll"
+    },
+    "shopPreview": {
+      "heading": "For Sale",
+      "viewAll": "View all",
+      "empty": "No pieces for sale at the moment."
+    },
+    "about": {
+      "heading": "About"
+    },
+    "customOrders": {
+      "heading": "Something special in mind?",
+      "body": "I take custom orders — tell me what you have in mind.",
+      "cta": "Start a custom order"
+    }
+  },
   "shop": {
     "saleStatus": {
       "available": "Available for purchase",
@@ -22,7 +42,31 @@
     },
     "filterAll": "All pieces",
     "filterAvailable": "Available now",
-    "contactToBuy": "Contact to buy"
+    "contactToBuy": "Contact to buy",
+    "heading": "For Sale",
+    "empty": {
+      "heading": "Nothing for sale right now",
+      "body": "New pieces are added regularly. Follow on Instagram for updates."
+    },
+    "card": {
+      "contactToBuy": "Contact to buy"
+    }
+  },
+  "contact": {
+    "heading": "Contact",
+    "info": {
+      "heading": "Get in touch"
+    },
+    "purchase": {
+      "heading": "Buy a piece",
+      "body": "Send me a message about the piece you are interested in.",
+      "cta": "Send an inquiry"
+    },
+    "customOrders": {
+      "heading": "Custom order",
+      "body": "Have a piece in mind that is not already in the shop?",
+      "cta": "Start a custom order"
+    }
   },
   "gallery": {
     "title": "Works",
