@@ -1,10 +1,10 @@
 slug: bowl-test
-published: false
+published: true
 titleDa: Test skål
 titleEn: Test Bowl
 descriptionDa: Lorem ipsum.
 descriptionEn: Dolor sit amet.
-saleStatus: sold
+saleStatus: available
 price: 1.200 kr.
 leadTime: Ready to ship
 categories:

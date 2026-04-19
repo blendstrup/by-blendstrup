@@ -14,7 +14,7 @@ updated: 2026-04-19T00:00:00Z
 
 ### 1. Gallery grid layout
 expected: 3 columns ≥1024px, 2 columns 640–1023px, 1 column mobile; cards 4:5 aspect ratio, subtle hover scale
-result: [pending]
+result: pass
 
 ### 2. Status badge rendering
 expected: Terracotta "For Sale" badge overlaid on card image for available works
