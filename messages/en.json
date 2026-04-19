@@ -12,5 +12,15 @@
   "placeholder": {
     "heading": "Coming soon",
     "body": "The site is being built."
+  },
+  "shop": {
+    "saleStatus": {
+      "available": "Available for purchase",
+      "sold": "Sold",
+      "notListed": "Portfolio piece"
+    },
+    "filterAll": "All pieces",
+    "filterAvailable": "Available now",
+    "contactToBuy": "Contact to buy"
   }
 }
