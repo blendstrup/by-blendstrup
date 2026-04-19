@@ -49,23 +49,6 @@ Plans:
 - [x] 02-02-PLAN.md — Admin UI smoke-test checkpoint (human verify)
 
 ### Phase 3: Gallery & Works
-
-**Goal**: Ship the browsable works collection — uniform grid, detail pages, for-sale filter, and graceful handling of sold pieces with a custom-order bridge.
-
-**Depends on**: Phase 2
-
-**Requirements**: GALL-01, GALL-02, GALL-03, GALL-04
-
-**Success Criteria** (what must be TRUE):
-
-1. Visitor can browse every published piece in a uniform grid layout
-2. Visitor can click a piece and land on a detail page with full imagery and description in their chosen language
-3. Visitor can filter the gallery to show only currently for-sale pieces
-4. Sold pieces remain visible in the grid with a clear "Sold" label and a CTA linking to the custom order form
-
-**Plans**: TBD
-
-### Phase 3: Gallery & Works
 **Goal**: Ship the browsable works collection — uniform grid, detail pages, for-sale filter, and graceful handling of sold pieces with a custom-order bridge.
 **Depends on**: Phase 2
 **Requirements**: GALL-01, GALL-02, GALL-03, GALL-04
@@ -87,7 +70,14 @@ Plans:
   3. Visitor sees a prominent custom order CTA on the homepage linking to the custom order form
   4. Visitor can open a dedicated shop page listing only for-sale pieces, each showing price, lead time, and a "Contact to buy" CTA
   5. Visitor can find a contact page with general contact information in their chosen language
-**Plans**: TBD
+**Plans**: 6 plans
+Plans:
+- [ ] 04-01-PLAN.md — Keystatic about singleton + settings extensions + lucide-react + Wave 0 tests
+- [ ] 04-02-PLAN.md — Phase 4 i18n keys (en.json + da.json) + NavLinks client component
+- [ ] 04-03-PLAN.md — ShopCard component (overlay scrim, hover CTA, always-visible mobile CTA)
+- [ ] 04-04-PLAN.md — Homepage: hero + shop preview + about section + custom order CTA
+- [ ] 04-05-PLAN.md — Shop page (for-sale grid) + Contact page (email, Instagram, stub CTAs)
+- [ ] 04-06-PLAN.md — SiteHeader NavLinks update + final build+test checkpoint
 **UI hint**: yes
 
 ### Phase 5: Inquiries & Email Delivery
@@ -122,7 +112,7 @@ Plans:
 | 1. Foundation | 0/3 | Not started | - |
 | 2. Content Model & CMS UX | 0/0 | Not started | - |
 | 3. Gallery & Works | 0/0 | Not started | - |
-| 4. Homepage, Shop & Contact | 0/0 | Not started | - |
+| 4. Homepage, Shop & Contact | 0/6 | Planned | - |
 | 5. Inquiries & Email Delivery | 0/0 | Not started | - |
 | 6. Polish & Launch | 0/0 | Not started | - |
 
@@ -146,3 +136,4 @@ All 30 v1 requirements mapped to exactly one phase. No orphans, no duplicates.
 ---
 *Roadmap created: 2026-04-18*
 *Updated: 2026-04-18 — Phase 1 plans added (01-01, 01-02, 01-03)*
+*Updated: 2026-04-19 — Phase 4 plans added (04-01 through 04-06)*
