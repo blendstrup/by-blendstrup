@@ -38,5 +38,30 @@ describe("Keystatic schema", () => {
 			expect(cfg.ui).toBeDefined()
 			expect(cfg.ui?.navigation).toBeDefined()
 		})
+
+		it("includes 'about' in Pages navigation (Phase 4)", () => {
+			const nav = cfg.ui?.navigation as Record<string, string[]> | undefined
+			expect(nav?.Pages).toContain("about")
+		})
+	})
+
+	describe("Phase 4 additions", () => {
+		it("exports the about singleton (Phase 4)", () => {
+			expect(cfg.singletons).toHaveProperty("about")
+		})
+
+		it("settings singleton has contactEmail field (Phase 4)", () => {
+			const settings = cfg.singletons?.settings as
+				| { schema?: Record<string, unknown> }
+				| undefined
+			expect(settings?.schema).toHaveProperty("contactEmail")
+		})
+
+		it("settings singleton has instagramHandle field (Phase 4)", () => {
+			const settings = cfg.singletons?.settings as
+				| { schema?: Record<string, unknown> }
+				| undefined
+			expect(settings?.schema).toHaveProperty("instagramHandle")
+		})
 	})
 })
