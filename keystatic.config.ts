@@ -124,6 +124,43 @@ const works = collection({
   },
 });
 
+const about = singleton({
+  label: "About",
+  path: "content/about",
+  format: { data: "yaml" },
+  schema: {
+    aboutTextDa: fields.text({
+      label: "About text (Danish)",
+      description: "Short bio or studio description shown to Danish visitors.",
+      multiline: true,
+      validation: { length: { max: 1000 } },
+    }),
+    aboutTextEn: fields.text({
+      label: "About text (English)",
+      description: "Short bio or studio description shown to English visitors.",
+      multiline: true,
+      validation: { length: { max: 1000 } },
+    }),
+    photo: fields.image({
+      label: "Photo",
+      description:
+        "A photo of the maker or studio. Portrait or square orientation recommended.",
+      directory: "public/images/about",
+      publicPath: "/images/about/",
+    }),
+    photoAltDa: fields.text({
+      label: "Photo alt text (Danish)",
+      description: "Describe the photo for screen readers (Danish).",
+      validation: { length: { min: 1, max: 120 } },
+    }),
+    photoAltEn: fields.text({
+      label: "Photo alt text (English)",
+      description: "Describe the photo for screen readers (English).",
+      validation: { length: { min: 1, max: 120 } },
+    }),
+  },
+});
+
 const homepage = singleton({
   label: "Homepage",
   path: "content/homepage",
@@ -164,16 +201,29 @@ export default config({
           defaultValue: "By Blendstrup",
           validation: { length: { min: 1, max: 60 } },
         }),
+        contactEmail: fields.text({
+          label: "Contact email address",
+          description:
+            "Email address shown on the contact page. Visitors click to email you directly.",
+          validation: { length: { min: 1, max: 120 } },
+        }),
+        instagramHandle: fields.text({
+          label: "Instagram handle",
+          description:
+            "Your Instagram username without the @ sign (e.g. byblendstrup).",
+          validation: { length: { max: 60 } },
+        }),
       },
     }),
     homepage,
+    about,
   },
   ui: {
     brand: { name: "By Blendstrup" },
     navigation: {
       Pieces: ["works"],
       Taxonomy: ["categories"],
-      Pages: ["homepage", "settings"],
+      Pages: ["homepage", "settings", "about"],
     },
   },
 });
