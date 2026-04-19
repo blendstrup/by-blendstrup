@@ -11,7 +11,11 @@ interface WorkDetailPageProps {
 export async function generateStaticParams() {
 	const reader = createReader(process.cwd(), keystaticConfig)
 	const works = await reader.collections.works.all()
-	return works.filter((w) => w.entry.published).map((w) => ({ slug: w.slug }))
+	const locales = ["da", "en"]
+
+	return works
+		.filter((w) => w.entry.published)
+		.flatMap((w) => locales.map((locale) => ({ locale, slug: w.slug })))
 }
 
 export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
