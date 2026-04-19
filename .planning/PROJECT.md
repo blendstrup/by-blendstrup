@@ -12,7 +12,8 @@ A visitor should immediately feel the quality and uniqueness of By Blendstrup's 
 
 ### Validated
 
-(None yet — ship to validate)
+- [x] Owner can manage all content via Keystatic CMS (no code required): add/edit products, upload images, highlight homepage features — *Validated in Phase 02: content-model-cms-ux (works collection, categories, homepage singleton, Admin UI smoke test)*
+- [x] Bilingual support — Danish and English with a language toggle — *Partially validated in Phase 02: bilingual field structure (DA/EN sibling fields, i18n message keys); toggle validated in Phase 01*
 
 ### Active
 
@@ -80,4 +81,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-04-18 after initialization*
+*Last updated: 2026-04-19 after Phase 02 complete — Keystatic content model delivered*
