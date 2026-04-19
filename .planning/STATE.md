@@ -57,7 +57,6 @@ progress:
 ### Key Decisions
 
 - Next.js App Router + Tailwind + next-intl + Keystatic on Vercel free tier
-- pppnpm for package management + Biome for linting/formatting
 - Bilingual DA/EN via path-based routing (`/da`, `/en`) — locked in Phase 1
 - Git-based CMS; owner UX is the highest-risk area (Phase 2)
 - Resend for transactional email (Phase 5) with SPF/DKIM/DMARC
