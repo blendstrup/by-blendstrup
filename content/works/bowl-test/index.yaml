@@ -1,0 +1,14 @@
+slug: bowl-test
+published: false
+titleDa: Test skål
+titleEn: Test Bowl
+descriptionDa: Lorem ipsum.
+descriptionEn: Dolor sit amet.
+saleStatus: sold
+price: 1.200 kr.
+leadTime: Ready to ship
+categories:
+  - bowls
+images:
+  - image: /images/works/bowl-test/images/0/image.png
+    alt: Handmade clay bowl
