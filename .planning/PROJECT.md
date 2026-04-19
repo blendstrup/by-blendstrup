@@ -18,8 +18,8 @@ A visitor should immediately feel the quality and uniqueness of By Blendstrup's 
 ### Active
 
 - [ ] Homepage that showcases featured/highlighted ceramics with large imagery
-- [ ] Works gallery — browsable collection of current and past pieces
-- [ ] For-sale listings — items available to purchase with "contact to buy" flow
+- [x] Works gallery — browsable collection of current and past pieces — *Validated in Phase 03: gallery grid, detail page, URL-based for-sale filter, locale-aware content*
+- [x] For-sale listings — items available to purchase with "contact to buy" flow — *Validated in Phase 03: saleStatus filter, terracotta CTA, sold/portfolio-only treatments*
 - [ ] Custom order inquiry form (what they want, quantity, contact info) — owner responds by email
 - [ ] Bilingual support — Danish and English with a language toggle
 - [ ] Owner can manage all content via Keystatic CMS (no code required): add/edit products, upload images, highlight homepage features
@@ -81,4 +81,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-04-19 after Phase 02 complete — Keystatic content model delivered*
+*Last updated: 2026-04-19 after Phase 03 complete — Gallery & Works delivered (grid, detail page, for-sale filter)*
