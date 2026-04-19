@@ -89,9 +89,9 @@ export function WorkDetail({
 			{/* Additional images (index 1+) — full-width below side-by-side */}
 			{images.length > 1 && (
 				<div className="mt-12 grid grid-cols-2 gap-4">
-					{images.slice(1).map((img) => (
+					{images.slice(1).map((img, i) => (
 						<div
-							key={img.image}
+							key={img.image || i}
 							className="relative aspect-[4/5] overflow-hidden bg-oat"
 						>
 							<Image
