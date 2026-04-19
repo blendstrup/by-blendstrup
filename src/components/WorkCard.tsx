@@ -16,7 +16,9 @@ interface WorkCardProps {
 	labels: { sold: string; forSale: string }
 }
 
-export function WorkCard({ slug, entry, labels }: WorkCardProps) {
+export function WorkCard({ slug, entry, locale, labels }: WorkCardProps) {
+	const title = locale === "da" ? entry.titleDa : entry.titleEn
+
 	return (
 		<Link
 			href={`/gallery/${slug}`}
@@ -36,6 +38,7 @@ export function WorkCard({ slug, entry, labels }: WorkCardProps) {
 					<StatusBadge status={entry.saleStatus} labels={labels} />
 				</div>
 			)}
+			<p className="px-3 py-2 font-sans text-ink text-sm">{title}</p>
 		</Link>
 	)
 }
