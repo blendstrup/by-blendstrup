@@ -30,7 +30,7 @@ export function GalleryFilterToggle() {
 
 	return (
 		<fieldset className="m-0 flex gap-0 border-0 p-0">
-			<legend className="sr-only">{t("filterAll")}</legend>
+			<legend className="sr-only">{t("filterLabel")}</legend>
 			<button
 				type="button"
 				onClick={() => setFilter(false)}
