@@ -1,10 +1,11 @@
 ---
 phase: 3
 slug: gallery-works
-status: draft
+status: approved
 shadcn_initialized: false
 preset: none
 created: 2026-04-19
+reviewed_at: 2026-04-19
 ---
 
 # Phase 3 — UI Design Contract
