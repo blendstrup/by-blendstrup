@@ -13,7 +13,7 @@ tech_stack:
     - react@19
     - tailwindcss@4
     - "@tailwindcss/postcss"
-    - prettier + prettier-plugin-tailwindcss
+    - biome + @biomejs/biome
   patterns:
     - Tailwind v4 CSS-native @theme block (no tailwind.config.js)
     - next/font/google self-hosted fonts with CSS variable names matching @theme tokens
@@ -24,8 +24,8 @@ key_files:
     - tsconfig.json
     - next.config.ts
     - postcss.config.mjs
-    - .eslintrc.json
-    - .prettierrc
+    - biome.json
+    - biome.json
     - .gitignore
     - src/app/globals.css
     - src/app/layout.tsx
@@ -35,8 +35,8 @@ decisions:
   - Next.js 15.5.15 installed (scaffolder defaulted to 16.2.4; downgraded to satisfy plan constraint)
   - esModuleInterop forced true by Next.js SWC requirement (overrode plan's false setting)
   - noEmit: true added by Next.js auto-reconfigure on first build (required)
-  - lang="en" added to root html element (a11y Rule 2 — ESLint flagged missing lang attribute)
-  - Kept eslint.config.mjs alongside .eslintrc.json (flat config remains from scaffold; .eslintrc.json is primary per plan)
+  - lang="en" added to root html element (a11y Rule 2 — Biome flagged missing lang attribute)
+  - Kept biome.config.mjs alongside biome.json (flat config remains from scaffold; biome.json is primary per plan)
 metrics:
   duration_minutes: 3
   completed_date: "2026-04-18T09:55:42Z"
@@ -54,13 +54,13 @@ Next.js 15 App Router project bootstrapped with TypeScript strict mode, Tailwind
 
 | Task | Name | Commit | Key Files |
 |------|------|--------|-----------|
-| 1 | Initialise Next.js 15 with TypeScript, ESLint, Prettier | 0da4929 | package.json, tsconfig.json, .eslintrc.json, .prettierrc, .gitignore |
+| 1 | Initialise Next.js 15 with TypeScript, Biome, Biome | 0da4929 | package.json, tsconfig.json, biome.json, biome.json, .gitignore |
 | 2 | Install Tailwind v4, configure @theme tokens, wire next/font | 835e77f | src/app/globals.css, src/app/layout.tsx, postcss.config.mjs |
 
 ## Verification Results
 
 - `npx tsc --noEmit` exits 0
-- `npm run build` exits 0
+- `pnpm run build` exits 0
 - No default Tailwind palette in use (`grep -r "blue-500|red-400|green-600" src/` returns empty)
 - `strict: true` confirmed in tsconfig.json
 - All 8 color tokens and 8 spacing tokens present verbatim in globals.css
@@ -72,7 +72,7 @@ Next.js 15 App Router project bootstrapped with TypeScript strict mode, Tailwind
 
 **1. [Rule 2 - Missing a11y] Added lang attribute to root html element**
 - **Found during:** Task 1
-- **Issue:** ESLint/JSX a11y rule requires `lang` attribute on `<html>` element
+- **Issue:** Biome/JSX a11y rule requires `lang` attribute on `<html>` element
 - **Fix:** Added `lang="en"` to root layout (will be replaced by locale-aware `lang` in Plan 02 when next-intl is wired)
 - **Files modified:** src/app/layout.tsx
 - **Commit:** 0da4929
@@ -83,7 +83,7 @@ Next.js SWC mandates `esModuleInterop: true` and adds `noEmit: true` on first bu
 
 ### Scaffolder version difference
 
-`create-next-app` defaulted to Next.js 16.2.4 (latest at install time). Downgraded to `^15.5.15` per plan constraint. `npm install next@15` resolved to 15.5.15.
+`create-next-app` defaulted to Next.js 16.2.4 (latest at install time). Downgraded to `^15.5.15` per plan constraint. `pnpm install next@15` resolved to 15.5.15.
 
 ## Known Stubs
 

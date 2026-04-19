@@ -20,10 +20,11 @@ By Blendstrup is a website for a handmade ceramics shop that showcases the owner
 ## Technology Stack
 
 ## Recommended Stack
+
 | Layer | Choice | Version (verify at install) | Rationale | Confidence |
 |---|---|---|---|---|
 | Framework | Next.js (App Router) | 15.x | Locked by constraints. App Router is the current default; best fit for Vercel + Keystatic. RSC reduces client JS for image-heavy pages. | HIGH |
-| Runtime | Node.js | 20 LTS (or 22 LTS) | Vercel default; required by Next 15 + Keystatic. | HIGH |
+| Runtime | Node.js / ppnpm | 20 LTS (or 22 LTS) | Vercel default; required by Next 15 + Keystatic. ppnpm for faster, disk-efficient package management. | HIGH |
 | Language | TypeScript | 5.x (strict) | Keystatic schemas are TS-native; type-safety across content → UI is a major DX win. | HIGH |
 | CMS | Keystatic | latest 0.5.x / 1.x line | Locked by constraints. Git-based, free, ships a local Admin UI (`/keystatic`) and a Next.js Reader API. | HIGH |
 | Content storage | Markdoc / MDX via Keystatic `document` or `markdoc` field | — | Markdoc is Keystatic's first-class rich-text format; structured, sanitizable, easier to theme than raw Markdown. | MEDIUM |
@@ -41,9 +42,12 @@ By Blendstrup is a website for a handmade ceramics shop that showcases the owner
 | Icons | `lucide-react` | latest | Clean, consistent line icons that suit minimalist aesthetic. | HIGH |
 | Analytics (optional) | Vercel Analytics or Plausible | — | Cookieless, lightweight; Plausible has an affordable EU-hosted tier (not free). Vercel Analytics is free on hobby at low volume. | MEDIUM |
 | SEO | `next-sitemap` or built-in `sitemap.ts` + `robots.ts` + `generateMetadata` per route | — | App Router has first-class metadata APIs; no extra lib strictly needed. | HIGH |
-| Linting/format | ESLint (next config) + Prettier + `prettier-plugin-tailwindcss` | — | Keeps Tailwind class order stable. | HIGH |
+| Linting/format | Biome | latest | Unified, fast tool for linting and formatting; replaces Biome/Biome. | HIGH |
+
 ## Key Integration Notes
+
 ### Keystatic + Next.js App Router
+
 - **Two entry points.** Keystatic ships an Admin UI (mounted at `/keystatic` via a catch-all route) and a Reader API used in server components to read content at build / request time.
 - **Storage mode.** Start with `storage: { kind: 'local' }` for development. For production on Vercel, switch to `storage: { kind: 'github' }` so non-technical edits go through Keystatic Cloud → GitHub commits → Vercel redeploys. This preserves the "no server" promise.
 - **Keystatic Cloud** is the recommended auth layer for GitHub storage when the owner is editing from a browser without installing anything. It is free for individuals at time of training data — verify current pricing before committing (LOW confidence on tier details).
@@ -51,20 +55,26 @@ By Blendstrup is a website for a handmade ceramics shop that showcases the owner
 - **Content change → redeploy.** Every Keystatic save is a git commit; Vercel auto-deploys. Builds must stay fast (target <60s) so a content edit feels near-instant. Keep the site statically rendered (`generateStaticParams`) wherever possible.
 - **Local dev gotcha.** The Keystatic admin route must run in the Node runtime, not Edge. Force it via `export const runtime = 'nodejs'` in the catch-all page/route.
 - **Do not put Keystatic behind auth middleware** that blocks `/keystatic/*` — the Admin UI needs its own routes to function.
+
 ### Schema patterns for a ceramics portfolio/shop
+
 - `collection: works` — every ceramic piece (whether for sale or archived).
 - `singleton: homepage` — featured works ordering, hero copy (localized), intro paragraph.
 - `singleton: about` — artist statement, studio photo, contact info (all localized).
 - `singleton: customOrders` — page copy describing what's possible, lead times, starting prices (localized).
 - `singleton: settings` — site title, SEO defaults, social links, inquiry recipient email.
+
 ## i18n Approach
+
 - Use `next-intl`'s middleware for locale negotiation (`Accept-Language` header → redirect).
 - UI strings (nav labels, button text, form validation) live in `messages/en.json` and `messages/da.json` — short files, committed with code. These are developer strings, not content.
 - Content strings (work titles, descriptions, page copy) come from Keystatic via the sibling-field pattern. Selected via the current locale in the RSC.
 - Language toggle is a simple client component that calls `next-intl`'s `useRouter()` with the other locale — preserves path.
 - Set `<html lang={locale}>` in the locale layout for a11y/SEO.
 - `hreflang` alternates in `generateMetadata` for SEO.
+
 ## Image Strategy
+
 - **Always use `next/image`.** Never `<img>` for content imagery.
 - **Source assets:** export from Lightroom/Capture One as sRGB JPEG at ~2400px long edge, quality 85. `next/image` handles downscaling and format conversion. Don't ship TIFF or HEIC.
 - **Hero/featured:** `priority` + explicit `sizes="(max-width: 768px) 100vw, 80vw"`.
@@ -73,7 +83,9 @@ By Blendstrup is a website for a handmade ceramics shop that showcases the owner
 - **Aspect ratios:** constrain in the design system — recommend a single hero ratio (e.g. 4:5 portrait) and square for grid thumbs. Consistency enforces Japandi rhythm.
 - **Color space:** deliver sRGB; avoid wide-gamut exports — color will shift on non-P3 screens.
 - **Alt text:** required in the Keystatic schema for every image field. Localized. Non-negotiable for a11y + SEO.
+
 ## Styling Decision
+
 - Japandi is defined by restraint — generous whitespace, few type sizes, muted palette, hairline borders, quiet transitions. Tailwind forces you to restate every value, which normally feels verbose, but with a token-locked config it *enforces* consistency (which is exactly what a minimalist aesthetic needs).
 - Override the default palette entirely. Ship ~8 custom neutrals (warm off-white, oat, clay, stone, ink) + 1–2 accent earth tones. Delete everything else so developers literally can't reach for a stray color.
 - Use Tailwind's spacing scale but lean on the larger end (`py-24`, `gap-16`) — Japandi breathes.
@@ -81,12 +93,17 @@ By Blendstrup is a website for a handmade ceramics shop that showcases the owner
 - Native CSS `@theme` block replaces `tailwind.config.ts` for tokens — simpler to hand off.
 - Oxide engine is faster; no measurable build impact on a site this size.
 - Works with `next/font` out of the box.
+
 ## Animation & Transitions
+
 - **Framer Motion (now Motion)** for:
 - **CSS-only** for:
 - **View Transitions API** (optional, progressive enhancement) for cross-fade between gallery → detail page. Fallback gracefully on unsupported browsers.
+
 ## Forms
+
 ## What NOT to Use
+
 | Rejected | Reason |
 |---|---|
 | Pages Router | App Router is the current default and required for best Keystatic integration patterns going forward. |
@@ -104,13 +121,17 @@ By Blendstrup is a website for a handmade ceramics shop that showcases the owner
 | Google Analytics | Cookie banner overhead; Vercel Analytics or Plausible are cookieless alternatives. |
 | `next-sitemap` (as a separate lib) | App Router has first-class `sitemap.ts` — one less dependency. |
 | Framer Motion's `LazyMotion` optimization layer for MVP | Premature optimization on a site with minimal animation surface. Add later if bundle analysis flags it. |
+
 ## Open Questions / Flags
-- **Keystatic Cloud pricing & limits in 2026** — verify at https://keystatic.com before committing the GitHub-storage path for production. (LOW confidence)
+
+- **Keystatic Cloud pricing & limits in 2026** — verify at <https://keystatic.com> before committing the GitHub-storage path for production. (LOW confidence)
 - **Vercel Image Optimization transformation quota on hobby tier in 2026** — verify current cap before launch; have a fallback plan if exceeded. (LOW confidence)
 - **Next.js View Transitions API** — still experimental; treat as progressive enhancement only. (LOW confidence)
 - **Default locale decision (da vs en)** — needs owner input. Affects middleware config and canonical URLs.
 - **Tailwind v4 stability** — v4 stable channel should be production-ready by 2026; verify no regressions for `next/font` + Turbopack before adoption. If in doubt, pin Tailwind v3.4 for MVP and migrate later. (MEDIUM confidence)
+
 ## Sources
+
 - Training-data knowledge of: Next.js 15 App Router, Keystatic 0.5+, next-intl 3.x, Tailwind v4, Framer Motion, React Hook Form, Zod, Resend, Cloudflare Turnstile.
 - **Live web verification was unavailable during this research pass** — findings flagged LOW confidence (version numbers, pricing tiers, quota limits, API stability) should be verified against official docs before any install/commit decision. Recommend running a quick Context7 pass on `keystatic`, `next-intl`, and `tailwindcss` once tooling permits.
 <!-- GSD:stack-end -->
@@ -139,14 +160,13 @@ No project skills found. Add skills to any of: `.claude/skills/`, `.agents/skill
 Before using Edit, Write, or other file-changing tools, start work through a GSD command so planning artifacts and execution context stay in sync.
 
 Use these entry points:
+
 - `/gsd-quick` for small fixes, doc updates, and ad-hoc tasks
 - `/gsd-debug` for investigation and bug fixing
 - `/gsd-execute-phase` for planned phase work
 
 Do not make direct repo edits outside a GSD workflow unless the user explicitly asks to bypass it.
 <!-- GSD:workflow-end -->
-
-
 
 <!-- GSD:profile-start -->
 ## Developer Profile

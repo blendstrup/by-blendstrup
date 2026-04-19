@@ -29,7 +29,7 @@
 | Icons | `lucide-react` | latest | Clean, consistent line icons that suit minimalist aesthetic. | HIGH |
 | Analytics (optional) | Vercel Analytics or Plausible | — | Cookieless, lightweight; Plausible has an affordable EU-hosted tier (not free). Vercel Analytics is free on hobby at low volume. | MEDIUM |
 | SEO | `next-sitemap` or built-in `sitemap.ts` + `robots.ts` + `generateMetadata` per route | — | App Router has first-class metadata APIs; no extra lib strictly needed. | HIGH |
-| Linting/format | ESLint (next config) + Prettier + `prettier-plugin-tailwindcss` | — | Keeps Tailwind class order stable. | HIGH |
+| Linting/format | Biome (next config) + Biome + `@biomejs/biome` | — | Keeps Tailwind class order stable. | HIGH |
 
 ---
 

@@ -59,6 +59,8 @@ A visitor should immediately feel the quality and uniqueness of By Blendstrup's 
 | Vercel hosting | Free tier, zero-config Next.js deployment, auto-deploys on Keystatic content edits | — Pending |
 | Bilingual (DA + EN) | Owner wants to reach both Danish and international audiences | — Pending |
 | Imagery-first layout | Products and craftsmanship should be immediately visible — design serves the ceramics, not vice versa | — Pending |
+| pppnpm | Faster, disk-efficient package management | — Decided |
+| Biome | Unified, fast tool for linting and formatting (replaces Biome/Biome) | — Decided |
 
 ## Evolution
 

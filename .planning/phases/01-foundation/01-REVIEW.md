@@ -4,9 +4,9 @@ reviewed: 2026-04-18T00:00:00Z
 depth: standard
 files_reviewed: 24
 files_reviewed_list:
-  - .eslintrc.json
+  - biome.json
   - .gitignore
-  - .prettierrc
+  - biome.json
   - messages/da.json
   - messages/en.json
   - next.config.ts

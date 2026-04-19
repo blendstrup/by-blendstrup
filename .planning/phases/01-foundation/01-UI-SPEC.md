@@ -173,7 +173,7 @@ Phase 1 delivers the layout shell that all pages inherit.
 
 ## Registry Safety
 
-No shadcn/ui. No third-party component registries. All components in Phase 1 are built from scratch using Tailwind v4 utilities and (optionally) Radix UI primitives pulled directly from npm.
+No shadcn/ui. No third-party component registries. All components in Phase 1 are built from scratch using Tailwind v4 utilities and (optionally) Radix UI primitives pulled directly from pnpm.
 
 | Registry | Blocks Used | Safety Gate |
 |----------|-------------|-------------|

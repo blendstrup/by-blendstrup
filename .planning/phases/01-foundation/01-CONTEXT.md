@@ -41,7 +41,7 @@ This phase delivers no public-facing product features — it delivers locked con
 - next-intl middleware `pathnames` vs bare `locales` config — choose the simpler path for a 2-locale site with no custom path mapping
 - Test content entry field name and structure — only needs to exercise the full deploy loop
 - Git branch strategy for Keystatic GitHub storage — use `main` as the content branch unless Keystatic docs recommend otherwise
-- TypeScript strict config and ESLint/Prettier setup — follow CLAUDE.md recommendations
+- TypeScript strict config and Biome/Biome setup — follow CLAUDE.md recommendations
 
 </decisions>
 

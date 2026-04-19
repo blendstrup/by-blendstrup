@@ -57,7 +57,7 @@
 - Keystatic Cloud account setup steps and environment variable names
 - Test content entry field structure
 - Git branch strategy for Keystatic GitHub storage
-- TypeScript strict config, ESLint, Prettier setup
+- TypeScript strict config, Biome, Biome setup
 
 ## Deferred Ideas
 

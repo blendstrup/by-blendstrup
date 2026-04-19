@@ -61,7 +61,7 @@ next-intl bilingual routing with Accept-Language detection, sticky 64px oat head
 ## Verification Results
 
 - `npx tsc --noEmit` exits 0
-- `npm run build` exits 0 — all 5 static pages generated
+- `pnpm run build` exits 0 — all 5 static pages generated
 - `localeDetection: true` confirmed in src/i18n/routing.ts
 - `min-h-[44px]` confirmed in LanguageToggle.tsx (WCAG 2.5.5 AA touch target)
 - `sr-only` + `focus-visible:not-sr-only` confirmed on skip link
