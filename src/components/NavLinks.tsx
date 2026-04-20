@@ -9,7 +9,6 @@ export function NavLinks() {
 
 	const links = [
 		{ href: "/gallery" as const, key: "gallery" },
-		{ href: "/shop" as const, key: "shop" },
 		{ href: "/contact" as const, key: "contact" },
 	]
 
@@ -23,7 +22,7 @@ export function NavLinks() {
 						href={href}
 						className={
 							isActive
-								? "font-medium text-sm text-ink underline decoration-terracotta transition-colors duration-150"
+								? "font-medium text-ink text-sm underline decoration-terracotta transition-colors duration-150"
 								: "font-medium text-sm text-stone transition-colors duration-150 hover:text-ink hover:underline hover:decoration-terracotta"
 						}
 					>

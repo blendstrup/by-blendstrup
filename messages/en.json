@@ -4,8 +4,7 @@
   },
   "navigation": {
     "skipToContent": "Skip to content",
-    "gallery": "Works",
-    "shop": "Shop",
+    "gallery": "Ceramics",
     "contact": "Contact"
   },
   "languageToggle": {
@@ -18,6 +17,8 @@
   },
   "home": {
     "hero": {
+      "headline": "Handcrafted ceramics",
+      "cta": "Shop the collection",
       "scrollIndicator": "Scroll"
     },
     "shopPreview": {
@@ -69,7 +70,7 @@
     }
   },
   "gallery": {
-    "title": "Works",
+    "title": "Ceramics",
     "filterAll": "All",
     "filterForSale": "For Sale",
     "filterLabel": "Filter works",
