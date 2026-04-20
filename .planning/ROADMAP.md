@@ -87,9 +87,14 @@ Plans:
 **Success Criteria** (what must be TRUE):
   1. Visitor can submit a custom order request capturing what they want, quantity, free-form description, contact info, plus optional budget and timeline
   2. Visitor can submit a purchase inquiry from any for-sale piece's "Contact to buy" CTA, carrying the piece reference into the email
-  3. Both forms reject spam via Turnstile or honeypot without blocking legitimate submissions
+  3. Both forms reject spam via honeypot without blocking legitimate submissions
   4. Owner receives every submission as a deliverable email (SPF, DKIM, and DMARC pass) within seconds
-**Plans**: TBD
+**Plans**: 4 plans
+Plans:
+- [ ] 05-01-PLAN.md — Dependencies (resend, react-hook-form, zod) + Zod schemas + honeypot utility + Wave 0 tests
+- [ ] 05-02-PLAN.md — Purchase inquiry form (/contact/purchase), server action, ShopCard + WorkDetail CTA updates
+- [ ] 05-03-PLAN.md — Custom order form (/custom-orders), server action, all required + optional fields
+- [ ] 05-04-PLAN.md — Resend DNS setup (SPF/DKIM/DMARC), env vars, end-to-end email verification checkpoint
 **UI hint**: yes
 
 ### Phase 6: Polish & Launch
@@ -113,7 +118,7 @@ Plans:
 | 2. Content Model & CMS UX | 0/0 | Not started | - |
 | 3. Gallery & Works | 0/0 | Not started | - |
 | 4. Homepage, Shop & Contact | 0/6 | Planned | - |
-| 5. Inquiries & Email Delivery | 0/0 | Not started | - |
+| 5. Inquiries & Email Delivery | 0/4 | Planned | - |
 | 6. Polish & Launch | 0/0 | Not started | - |
 
 ## Coverage
@@ -137,3 +142,4 @@ All 30 v1 requirements mapped to exactly one phase. No orphans, no duplicates.
 *Roadmap created: 2026-04-18*
 *Updated: 2026-04-18 — Phase 1 plans added (01-01, 01-02, 01-03)*
 *Updated: 2026-04-19 — Phase 4 plans added (04-01 through 04-06)*
+*Updated: 2026-04-20 — Phase 5 plans added (05-01 through 05-04)*
