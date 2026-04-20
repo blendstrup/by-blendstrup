@@ -33,6 +33,7 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
 
 	return (
 		<WorkDetail
+			slug={slug}
 			title={title}
 			description={description ?? ""}
 			saleStatus={work.saleStatus as "available" | "sold" | "notListed"}

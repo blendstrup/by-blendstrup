@@ -1,7 +1,8 @@
-import Link from "next/link"
 import Image from "next/image"
+import Link from "next/link"
 
 interface WorkDetailProps {
+	slug: string
 	title: string
 	description: string
 	saleStatus: "available" | "sold" | "notListed"
@@ -19,6 +20,7 @@ const BLUR_DATA_URL =
 	"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAABAAEDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABAMC/8QAHxAAAQQCAwEAAAAAAAAAAAAAAgABAxESITFB/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCwABr3XS0VGJVyD7nmf//Z"
 
 export function WorkDetail({
+	slug,
 	title,
 	description,
 	saleStatus,
@@ -62,7 +64,7 @@ export function WorkDetail({
 					<div className="mt-8">
 						{saleStatus === "available" && (
 							<Link
-								href="/custom-orders"
+								href={`/contact/purchase?piece=${slug}`}
 								className="inline-block bg-terracotta px-6 py-3 font-medium text-linen text-sm transition-colors duration-150 hover:bg-fault"
 							>
 								{ctaLabels.contactToBuy}

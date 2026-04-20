@@ -61,7 +61,22 @@
     "purchase": {
       "heading": "Køb et stykke",
       "body": "Send mig en besked om det stykke, du er interesseret i.",
-      "cta": "Send en forespørgsel"
+      "cta": "Send en forespørgsel",
+      "form": {
+        "heading": "Forespørgsel",
+        "regardingLabel": "Forespørgsel om",
+        "nameLabel": "Navn",
+        "emailLabel": "E-mail",
+        "messageLabel": "Besked",
+        "messagePlaceholder": "Fortæl mig, hvad du tænker...",
+        "submit": "Send forespørgsel",
+        "submitting": "Sender...",
+        "successHeading": "Tak for din henvendelse",
+        "successBody": "Jeg vender tilbage til dig hurtigst muligt.",
+        "errorBanner": "Noget gik galt. Prøv igen, eller send mig en e-mail direkte.",
+        "validationRequired": "Dette felt er påkrævet",
+        "validationEmail": "Indtast en gyldig e-mailadresse"
+      }
     },
     "customOrders": {
       "heading": "Specialbestilling",

@@ -55,7 +55,7 @@ export function ShopCard({ slug, entry, labels }: ShopCardProps) {
 
 				<div className="absolute inset-0 hidden items-center justify-center bg-ink/15 opacity-0 transition-opacity duration-200 group-hover:opacity-100 sm:flex">
 					<Link
-						href="/contact"
+						href={`/contact/purchase?piece=${slug}`}
 						className="cursor-pointer bg-terracotta px-6 py-3 font-medium font-sans text-linen text-sm transition-colors duration-150 hover:bg-stone focus-visible:outline-2 focus-visible:outline-terracotta focus-visible:outline-offset-2 active:bg-ink"
 					>
 						{labels.contactToBuy}
@@ -65,7 +65,7 @@ export function ShopCard({ slug, entry, labels }: ShopCardProps) {
 
 			<div className="sm:hidden">
 				<Link
-					href="/contact"
+					href={`/contact/purchase?piece=${slug}`}
 					className="block w-full cursor-pointer bg-terracotta px-6 py-3 text-center font-medium font-sans text-linen text-sm transition-colors duration-150 hover:bg-stone focus-visible:outline-2 focus-visible:outline-terracotta focus-visible:outline-offset-2 active:bg-ink"
 				>
 					{labels.contactToBuy}
