@@ -34,9 +34,9 @@ export default async function LocaleLayout({
 				{t("skipToContent")}
 			</a>
 			<SiteHeader />
-			<main id="main-content" className="min-h-screen">
+			<div id="main-content" className="min-h-screen">
 				{children}
-			</main>
+			</div>
 			<SiteFooter />
 		</NextIntlClientProvider>
 	)
