@@ -20,7 +20,7 @@ A visitor should immediately feel the quality and uniqueness of By Blendstrup's 
 - [ ] Homepage that showcases featured/highlighted ceramics with large imagery
 - [x] Works gallery — browsable collection of current and past pieces — *Validated in Phase 03: gallery grid, detail page, URL-based for-sale filter, locale-aware content*
 - [x] For-sale listings — items available to purchase with "contact to buy" flow — *Validated in Phase 03: saleStatus filter, terracotta CTA, sold/portfolio-only treatments*
-- [ ] Custom order inquiry form (what they want, quantity, contact info) — owner responds by email
+- [x] Custom order inquiry form (what they want, quantity, contact info) — owner responds by email — *Validated in Phase 05: purchase inquiry + custom order forms, Resend delivery, honeypot spam protection, DNS verified*
 - [ ] Bilingual support — Danish and English with a language toggle
 - [ ] Owner can manage all content via Keystatic CMS (no code required): add/edit products, upload images, highlight homepage features
 - [ ] Minimal, Japandi-inspired visual design — lots of white space, clean typography, muted earth tones
@@ -81,4 +81,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-04-19 after Phase 03 complete — Gallery & Works delivered (grid, detail page, for-sale filter)*
+*Last updated: 2026-04-20 after Phase 05 complete — Inquiries & Email Delivery (purchase inquiry form, custom order form, Resend email delivery, honeypot spam protection)*
