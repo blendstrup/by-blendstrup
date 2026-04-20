@@ -45,7 +45,7 @@ export function WorkDetail({
 							/>
 						</div>
 					) : (
-						<div className="relative aspect-[4/5] bg-oat" />
+						<div className="relative aspect-4/5 bg-oat" />
 					)}
 				</div>
 
@@ -92,7 +92,7 @@ export function WorkDetail({
 					{images.slice(1).map((img, i) => (
 						<div
 							key={img.image || i}
-							className="relative aspect-[4/5] overflow-hidden bg-oat"
+							className="relative aspect-4/5 overflow-hidden bg-oat"
 						>
 							<Image
 								src={img.image}

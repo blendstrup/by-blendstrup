@@ -72,11 +72,11 @@ Plans:
   5. Visitor can find a contact page with general contact information in their chosen language
 **Plans**: 6 plans
 Plans:
-- [ ] 04-01-PLAN.md — Keystatic about singleton + settings extensions + lucide-react + Wave 0 tests
-- [ ] 04-02-PLAN.md — Phase 4 i18n keys (en.json + da.json) + NavLinks client component
-- [ ] 04-03-PLAN.md — ShopCard component (overlay scrim, hover CTA, always-visible mobile CTA)
-- [ ] 04-04-PLAN.md — Homepage: hero + shop preview + about section + custom order CTA
-- [ ] 04-05-PLAN.md — Shop page (for-sale grid) + Contact page (email, Instagram, stub CTAs)
+- [x] 04-01-PLAN.md — Keystatic about singleton + settings extensions + lucide-react + Wave 0 tests
+- [x] 04-02-PLAN.md — Phase 4 i18n keys (en.json + da.json) + NavLinks client component
+- [x] 04-03-PLAN.md — ShopCard component (overlay scrim, hover CTA, always-visible mobile CTA)
+- [x] 04-04-PLAN.md — Homepage: hero + shop preview + about section + custom order CTA
+- [x] 04-05-PLAN.md — Shop page (for-sale grid) + Contact page (email, Instagram, stub CTAs)
 - [ ] 04-06-PLAN.md — SiteHeader NavLinks update + final build+test checkpoint
 **UI hint**: yes
 
