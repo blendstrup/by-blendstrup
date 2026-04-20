@@ -17,7 +17,8 @@ progress:
 # State: By Blendstrup
 
 **Project started:** 2026-04-18
-**Last updated:** 2026-04-18
+**Last updated:** 2026-04-20
+**Last activity:** 2026-04-20 - Completed quick task 260420-c1o: Remove i18n setup and English language support, keeping only Danish throughout the entire site and Keystatic CMS configuration
 
 ## Project Reference
 
@@ -56,8 +57,8 @@ progress:
 
 ### Key Decisions
 
-- Next.js App Router + Tailwind + next-intl + Keystatic on Vercel free tier
-- Bilingual DA/EN via path-based routing (`/da`, `/en`) — locked in Phase 1
+- Next.js App Router + Tailwind + Keystatic on Vercel free tier
+- Danish-only site — i18n removed, no locale prefix in URLs
 - Git-based CMS; owner UX is the highest-risk area (Phase 2)
 - Resend for transactional email (Phase 5) with SPF/DKIM/DMARC
 - No online payments, no user accounts, no inventory tracking
@@ -75,6 +76,12 @@ progress:
 ### Blockers
 
 None.
+
+### Quick Tasks Completed
+
+| # | Description | Date | Commit | Directory |
+|---|-------------|------|--------|-----------|
+| 260420-c1o | Remove i18n setup and English language support, keeping only Danish throughout the entire site and Keystatic CMS configuration | 2026-04-20 | 1daf834 | [260420-c1o-remove-i18n-setup-and-english-language-s](./quick/260420-c1o-remove-i18n-setup-and-english-language-s/) |
 
 ## Session Continuity
 
