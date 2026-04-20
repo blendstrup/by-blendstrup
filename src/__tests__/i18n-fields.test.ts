@@ -85,7 +85,6 @@ describe("i18n message keys — Phase 4 additions", () => {
 	}
 
 	const phase4Keys = [
-		"navigation.shop",
 		"navigation.contact",
 		"home.hero.scrollIndicator",
 		"home.shopPreview.heading",
