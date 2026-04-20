@@ -91,9 +91,9 @@ Plans:
   4. Owner receives every submission as a deliverable email (SPF, DKIM, and DMARC pass) within seconds
 **Plans**: 4 plans
 Plans:
-- [ ] 05-01-PLAN.md — Dependencies (resend, react-hook-form, zod) + Zod schemas + honeypot utility + Wave 0 tests
-- [ ] 05-02-PLAN.md — Purchase inquiry form (/contact/purchase), server action, ShopCard + WorkDetail CTA updates
-- [ ] 05-03-PLAN.md — Custom order form (/custom-orders), server action, all required + optional fields
+- [x] 05-01-PLAN.md — Dependencies (resend, react-hook-form, zod) + Zod schemas + honeypot utility + Wave 0 tests
+- [x] 05-02-PLAN.md — Purchase inquiry form (/contact/purchase), server action, ShopCard + WorkDetail CTA updates
+- [x] 05-03-PLAN.md — Custom order form (/custom-orders), server action, all required + optional fields
 - [ ] 05-04-PLAN.md — Resend DNS setup (SPF/DKIM/DMARC), env vars, end-to-end email verification checkpoint
 **UI hint**: yes
 
