@@ -1,9 +1,9 @@
-import { Link } from "@/i18n/navigation"
 import { createReader } from "@keystatic/core/reader"
 import { Mail } from "lucide-react"
-import { getTranslations } from "next-intl/server"
+import Link from "next/link"
 import Image from "next/image"
-import keystaticConfig from "../../../../keystatic.config"
+import keystaticConfig from "../../../keystatic.config"
+import da from "../../../messages/da.json"
 
 const LINEN_BLUR =
 	"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAAIAAgDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABgUE/8QAIhAAAQQCAgMBAAAAAAAAAAAAAQIDBBEFEiExQf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCr2/aFXt2lXrNgtMON44FY0SSBR4JAHfgdiPIr1bN+vLbtIkzJjj3SWVJOVHk8kk+9FFFf/9k="
@@ -29,15 +29,7 @@ function InstagramIcon() {
 	)
 }
 
-interface ContactPageProps {
-	params: Promise<{ locale: string }>
-}
-
-export default async function ContactPage({ params }: ContactPageProps) {
-	const { locale } = await params
-
-	const t = await getTranslations("contact")
-
+export default async function ContactPage() {
 	const reader = createReader(process.cwd(), keystaticConfig)
 	const [settings, aboutData] = await Promise.all([
 		reader.singletons.settings.read(),
@@ -46,10 +38,7 @@ export default async function ContactPage({ params }: ContactPageProps) {
 
 	const contactEmail = settings?.contactEmail ?? ""
 	const instagramHandle = settings?.instagramHandle ?? ""
-	const photoAlt =
-		locale === "da"
-			? (aboutData?.photoAltDa ?? "")
-			: (aboutData?.photoAltEn ?? "")
+	const photoAlt = aboutData?.photoAlt ?? ""
 
 	return (
 		<main className="py-24 pb-16">
@@ -73,14 +62,14 @@ export default async function ContactPage({ params }: ContactPageProps) {
 				) : null}
 
 				<h1 className="mb-12 font-normal font-serif text-5xl text-ink tracking-tight">
-					{t("heading")}
+					{da.contact.heading}
 				</h1>
 
 				<div className="space-y-12">
 					{/* Block 1: Contact information */}
 					<section>
 						<h2 className="mb-4 font-normal font-serif text-[28px] text-ink tracking-tight">
-							{t("info.heading")}
+							{da.contact.info.heading}
 						</h2>
 						<div className="space-y-4">
 							{contactEmail ? (
@@ -119,32 +108,32 @@ export default async function ContactPage({ params }: ContactPageProps) {
 					{/* Block 2: Purchase inquiry stub */}
 					<section>
 						<h2 className="mb-4 font-normal font-serif text-[28px] text-ink tracking-tight">
-							{t("purchase.heading")}
+							{da.contact.purchase.heading}
 						</h2>
 						<p className="mb-8 font-normal font-sans text-base text-stone">
-							{t("purchase.body")}
+							{da.contact.purchase.body}
 						</p>
 						<Link
 							href="/contact/purchase"
 							className="inline-block bg-terracotta px-6 py-3 font-medium font-sans text-linen text-sm transition-colors duration-150 hover:bg-stone focus-visible:outline-2 focus-visible:outline-terracotta focus-visible:outline-offset-2 active:bg-ink"
 						>
-							{t("purchase.cta")}
+							{da.contact.purchase.cta}
 						</Link>
 					</section>
 
 					{/* Block 3: Custom order stub */}
 					<section>
 						<h2 className="mb-4 font-normal font-serif text-[28px] text-ink tracking-tight">
-							{t("customOrders.heading")}
+							{da.contact.customOrders.heading}
 						</h2>
 						<p className="mb-8 font-normal font-sans text-base text-stone">
-							{t("customOrders.body")}
+							{da.contact.customOrders.body}
 						</p>
 						<Link
 							href="/custom-orders"
 							className="inline-block bg-terracotta px-6 py-3 font-medium font-sans text-linen text-sm transition-colors duration-150 hover:bg-stone focus-visible:outline-2 focus-visible:outline-terracotta focus-visible:outline-offset-2 active:bg-ink"
 						>
-							{t("customOrders.cta")}
+							{da.contact.customOrders.cta}
 						</Link>
 					</section>
 				</div>

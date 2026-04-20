@@ -26,14 +26,9 @@ const categories = collection({
           "Unique identifier for this category (used in URLs and relationships).",
       },
     }),
-    nameDa: fields.text({
-      label: "Name (Danish)",
-      description: "Category name shown to Danish visitors.",
-      validation: { length: { min: 1, max: 60 } },
-    }),
-    nameEn: fields.text({
-      label: "Name (English)",
-      description: "Category name shown to English visitors.",
+    displayName: fields.text({
+      label: "Display Name",
+      description: "Category name shown in the CMS.",
       validation: { length: { min: 1, max: 60 } },
     }),
   },
@@ -56,24 +51,13 @@ const works = collection({
       description: "When checked, this piece appears on the public website.",
       defaultValue: false,
     }),
-    titleDa: fields.text({
-      label: "Title (Danish)",
-      description: "The piece title shown to Danish visitors.",
+    title: fields.text({
+      label: "Title",
+      description: "The piece title.",
       validation: { length: { min: 1, max: 80 } },
     }),
-    titleEn: fields.text({
-      label: "Title (English)",
-      description: "The piece title shown to English visitors.",
-      validation: { length: { min: 1, max: 80 } },
-    }),
-    descriptionDa: fields.text({
-      label: "Description (Danish)",
-      description: "Description shown to Danish visitors.",
-      multiline: true,
-    }),
-    descriptionEn: fields.text({
-      label: "Description (English)",
-      description: "Description shown to English visitors.",
+    description: fields.text({
+      label: "Description",
       multiline: true,
     }),
     saleStatus: fields.select({
@@ -129,15 +113,9 @@ const about = singleton({
   path: "content/about",
   format: { data: "yaml" },
   schema: {
-    aboutTextDa: fields.text({
-      label: "About text (Danish)",
-      description: "Short bio or studio description shown to Danish visitors.",
-      multiline: true,
-      validation: { length: { max: 1000 } },
-    }),
-    aboutTextEn: fields.text({
-      label: "About text (English)",
-      description: "Short bio or studio description shown to English visitors.",
+    aboutText: fields.text({
+      label: "About text",
+      description: "Short bio or studio description.",
       multiline: true,
       validation: { length: { max: 1000 } },
     }),
@@ -148,14 +126,9 @@ const about = singleton({
       directory: "public/images/about",
       publicPath: "/images/about/",
     }),
-    photoAltDa: fields.text({
-      label: "Photo alt text (Danish)",
-      description: "Describe the photo for screen readers (Danish).",
-      validation: { length: { min: 1, max: 120 } },
-    }),
-    photoAltEn: fields.text({
-      label: "Photo alt text (English)",
-      description: "Describe the photo for screen readers (English).",
+    photoAlt: fields.text({
+      label: "Photo alt text",
+      description: "Describe the photo for screen readers.",
       validation: { length: { min: 1, max: 120 } },
     }),
   },

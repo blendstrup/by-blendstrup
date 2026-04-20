@@ -1,9 +1,8 @@
-import { Link } from "@/i18n/navigation"
 import Image from "next/image"
+import Link from "next/link"
 
 export interface ShopCardEntry {
-	titleDa: string
-	titleEn: string
+	title: string
 	price: string
 	leadTime: string
 	saleStatus: "available" | "sold" | "notListed"
@@ -13,7 +12,6 @@ export interface ShopCardEntry {
 interface ShopCardProps {
 	slug: string
 	entry: ShopCardEntry
-	locale: string
 	labels: {
 		sold: string
 		forSale: string
@@ -21,9 +19,7 @@ interface ShopCardProps {
 	}
 }
 
-export function ShopCard({ slug, entry, locale, labels }: ShopCardProps) {
-	const title = locale === "da" ? entry.titleDa : entry.titleEn
-
+export function ShopCard({ slug, entry, labels }: ShopCardProps) {
 	return (
 		<div className="group relative overflow-hidden rounded-2xl">
 			<div className="relative aspect-[4/5]">
@@ -39,13 +35,11 @@ export function ShopCard({ slug, entry, locale, labels }: ShopCardProps) {
 					/>
 				)}
 
-				{/* Gradient scrim — always visible */}
 				<div className="pointer-events-none absolute inset-x-0 bottom-0 h-[50%] bg-gradient-to-t from-ink/75 to-transparent" />
 
-				{/* Title + price info — always visible */}
 				<div className="absolute inset-x-0 bottom-0 p-4">
 					<p className="font-medium font-sans text-linen text-sm leading-snug">
-						{title}
+						{entry.title}
 					</p>
 					{entry.price ? (
 						<p className="mt-0.5 font-medium font-sans text-linen/90 text-sm leading-snug">
@@ -59,7 +53,6 @@ export function ShopCard({ slug, entry, locale, labels }: ShopCardProps) {
 					) : null}
 				</div>
 
-				{/* Desktop hover CTA */}
 				<div className="absolute inset-0 hidden items-center justify-center bg-ink/15 opacity-0 transition-opacity duration-200 group-hover:opacity-100 sm:flex">
 					<Link
 						href="/contact"
@@ -70,7 +63,6 @@ export function ShopCard({ slug, entry, locale, labels }: ShopCardProps) {
 				</div>
 			</div>
 
-			{/* Mobile always-visible CTA */}
 			<div className="sm:hidden">
 				<Link
 					href="/contact"

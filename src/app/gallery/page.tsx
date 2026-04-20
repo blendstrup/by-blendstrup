@@ -1,23 +1,18 @@
 import { GalleryFilterToggle } from "@/components/GalleryFilterToggle"
 import { GalleryGrid } from "@/components/GalleryGrid"
-import { Link } from "@/i18n/navigation"
 import { createReader } from "@keystatic/core/reader"
-import { getTranslations } from "next-intl/server"
-import keystaticConfig from "../../../../keystatic.config"
+import Link from "next/link"
+import keystaticConfig from "../../../keystatic.config"
+import da from "../../../messages/da.json"
 
 interface GalleryPageProps {
-	params: Promise<{ locale: string }>
 	searchParams: Promise<{ filter?: string }>
 }
 
 // searchParams opt-in: this route is dynamic per request (filter state)
 export const dynamic = "force-dynamic"
 
-export default async function GalleryPage({
-	params,
-	searchParams,
-}: GalleryPageProps) {
-	const { locale } = await params
+export default async function GalleryPage({ searchParams }: GalleryPageProps) {
 	const { filter } = await searchParams
 
 	const reader = createReader(process.cwd(), keystaticConfig)
@@ -32,12 +27,10 @@ export default async function GalleryPage({
 			? published.filter((w) => w.entry.saleStatus === "available")
 			: published
 
-	const t = await getTranslations("gallery")
-
 	return (
 		<section className="mx-auto max-w-screen-xl px-12 py-16 lg:px-16 lg:py-24">
 			<h1 className="mb-12 font-normal font-serif text-5xl text-ink tracking-tight">
-				{t("title")}
+				{da.gallery.title}
 			</h1>
 			<GalleryFilterToggle />
 			<div className="mt-8">
@@ -45,33 +38,32 @@ export default async function GalleryPage({
 					filter === "for-sale" ? (
 						<div className="py-24 text-center">
 							<p className="font-sans text-base text-stone">
-								{t("emptyForSaleHeading")}
+								{da.gallery.emptyForSaleHeading}
 							</p>
 							<p className="mt-2 font-sans text-sm text-stone">
-								{t("emptyForSaleBody")}
+								{da.gallery.emptyForSaleBody}
 							</p>
 							<Link
 								href="/custom-orders"
 								className="mt-6 inline-block border border-terracotta px-6 py-3 font-medium text-sm text-terracotta transition-colors duration-150 hover:bg-terracotta hover:text-linen"
 							>
-								{t("emptyForSaleCta")}
+								{da.gallery.emptyForSaleCta}
 							</Link>
 						</div>
 					) : (
 						<div className="py-24 text-center">
 							<p className="font-sans text-base text-stone">
-								{t("emptyAllHeading")}
+								{da.gallery.emptyAllHeading}
 							</p>
 							<p className="mt-2 font-sans text-sm text-stone">
-								{t("emptyAllBody")}
+								{da.gallery.emptyAllBody}
 							</p>
 						</div>
 					)
 				) : (
 					<GalleryGrid
 						works={works}
-						locale={locale}
-						labels={{ sold: t("soldLabel"), forSale: t("forSaleLabel") }}
+						labels={{ sold: da.gallery.soldLabel, forSale: da.gallery.forSaleLabel }}
 					/>
 				)}
 			</div>

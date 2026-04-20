@@ -1,25 +1,24 @@
 import { WorkDetail } from "@/components/WorkDetail"
 import { createReader } from "@keystatic/core/reader"
-import { getTranslations } from "next-intl/server"
 import { notFound } from "next/navigation"
-import keystaticConfig from "../../../../../keystatic.config"
+import keystaticConfig from "../../../../keystatic.config"
+import da from "../../../../messages/da.json"
 
 interface WorkDetailPageProps {
-	params: Promise<{ locale: string; slug: string }>
+	params: Promise<{ slug: string }>
 }
 
 export async function generateStaticParams() {
 	const reader = createReader(process.cwd(), keystaticConfig)
 	const works = await reader.collections.works.all()
-	const locales = ["da", "en"]
 
 	return works
 		.filter((w) => w.entry.published)
-		.flatMap((w) => locales.map((locale) => ({ locale, slug: w.slug })))
+		.map((w) => ({ slug: w.slug }))
 }
 
 export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
-	const { locale, slug } = await params
+	const { slug } = await params
 
 	const reader = createReader(process.cwd(), keystaticConfig)
 	const work = await reader.collections.works.read(slug)
@@ -29,10 +28,8 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
 		notFound()
 	}
 
-	const title = locale === "da" ? work.titleDa : work.titleEn
-	const description = locale === "da" ? work.descriptionDa : work.descriptionEn
-
-	const t = await getTranslations("gallery")
+	const title = work.title
+	const description = work.description
 
 	return (
 		<WorkDetail
@@ -46,9 +43,9 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
 				}),
 			)}
 			ctaLabels={{
-				contactToBuy: t("contactToBuy"),
-				soldMessage: t("soldMessage"),
-				soldCta: t("soldCta"),
+				contactToBuy: da.gallery.contactToBuy,
+				soldMessage: da.gallery.soldMessage,
+				soldCta: da.gallery.soldCta,
 			}}
 		/>
 	)

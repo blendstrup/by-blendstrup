@@ -20,7 +20,7 @@ describe("filterAvailableWorks", () => {
 	it("returns only published + available works", () => {
 		const result = filterAvailableWorks(mockWorks)
 		expect(result).toHaveLength(1)
-		expect(result[0].slug).toBe("bowl-1")
+		expect(result[0]?.slug).toBe("bowl-1")
 	})
 
 	it("excludes unpublished works even if available", () => {

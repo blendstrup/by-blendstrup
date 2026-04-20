@@ -1,14 +1,12 @@
 "use client"
 
-import { usePathname, useRouter } from "@/i18n/navigation"
-import { useTranslations } from "next-intl"
-import { useSearchParams } from "next/navigation"
+import { usePathname, useRouter, useSearchParams } from "next/navigation"
+import da from "../../messages/da.json"
 
 export function GalleryFilterToggle() {
 	const router = useRouter()
 	const pathname = usePathname()
 	const searchParams = useSearchParams()
-	const t = useTranslations("gallery")
 	const isFiltered = searchParams.get("filter") === "for-sale"
 
 	function setFilter(active: boolean) {
@@ -30,14 +28,14 @@ export function GalleryFilterToggle() {
 
 	return (
 		<fieldset className="m-0 flex gap-0 border-0 p-0">
-			<legend className="sr-only">{t("filterLabel")}</legend>
+			<legend className="sr-only">{da.gallery.filterLabel}</legend>
 			<button
 				type="button"
 				onClick={() => setFilter(false)}
 				aria-pressed={!isFiltered}
 				className={`${baseClasses} ${!isFiltered ? activeClasses : inactiveClasses}`}
 			>
-				{t("filterAll")}
+				{da.gallery.filterAll}
 			</button>
 			<button
 				type="button"
@@ -45,7 +43,7 @@ export function GalleryFilterToggle() {
 				aria-pressed={isFiltered}
 				className={`${baseClasses} ${isFiltered ? activeClasses : inactiveClasses}`}
 			>
-				{t("filterForSale")}
+				{da.gallery.filterForSale}
 			</button>
 		</fieldset>
 	)

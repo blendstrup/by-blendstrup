@@ -1,5 +1,7 @@
+import SiteFooter from "@/components/SiteFooter"
+import SiteHeader from "@/components/SiteHeader"
 import { DM_Sans, Fraunces } from "next/font/google"
-import { getLocale } from "next-intl/server"
+import da from "../../messages/da.json"
 import "./globals.css"
 
 const fraunces = Fraunces({
@@ -16,19 +18,25 @@ const dmSans = DM_Sans({
 	weight: ["400", "500"],
 })
 
-export default async function RootLayout({
+export default function RootLayout({
 	children,
 }: {
 	children: React.ReactNode
 }) {
-	const locale = await getLocale()
 	return (
-		<html
-			lang={locale}
-			className={`${fraunces.variable} ${dmSans.variable}`}
-		>
+		<html lang="da" className={`${fraunces.variable} ${dmSans.variable}`}>
 			<body className="bg-linen font-sans text-ink antialiased">
-				{children}
+				<a
+					href="#main-content"
+					className="sr-only focus-visible:not-sr-only focus-visible:fixed focus-visible:top-2 focus-visible:left-2 focus-visible:z-50 focus-visible:bg-oat focus-visible:px-4 focus-visible:py-2 focus-visible:font-medium focus-visible:text-ink focus-visible:text-sm"
+				>
+					{da.navigation.skipToContent}
+				</a>
+				<SiteHeader />
+				<div id="main-content" className="min-h-screen">
+					{children}
+				</div>
+				<SiteFooter />
 			</body>
 		</html>
 	)

@@ -1,9 +1,7 @@
 slug: bowl-test
 published: true
-titleDa: Test skål
-titleEn: Test Bowl
-descriptionDa: Lorem ipsum.
-descriptionEn: Dolor sit amet.
+title: Test skål
+description: Lorem ipsum.
 saleStatus: available
 price: 1.200 kr.
 leadTime: Ready to ship

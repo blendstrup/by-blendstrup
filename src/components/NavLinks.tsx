@@ -1,20 +1,20 @@
 "use client"
 
-import { Link, usePathname } from "@/i18n/navigation"
-import { useTranslations } from "next-intl"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import da from "../../messages/da.json"
 
 export function NavLinks() {
 	const pathname = usePathname()
-	const t = useTranslations("navigation")
 
 	const links = [
-		{ href: "/gallery" as const, key: "gallery" },
-		{ href: "/contact" as const, key: "contact" },
+		{ href: "/gallery", label: da.navigation.gallery },
+		{ href: "/contact", label: da.navigation.contact },
 	]
 
 	return (
 		<nav aria-label="Main navigation" className="flex gap-8">
-			{links.map(({ href, key }) => {
+			{links.map(({ href, label }) => {
 				const isActive = pathname === href || pathname.startsWith(`${href}/`)
 				return (
 					<Link
@@ -26,7 +26,7 @@ export function NavLinks() {
 								: "font-medium text-sm text-stone transition-colors duration-150 hover:text-ink hover:underline hover:decoration-terracotta"
 						}
 					>
-						{t(key)}
+						{label}
 					</Link>
 				)
 			})}

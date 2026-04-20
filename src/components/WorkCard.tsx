@@ -1,10 +1,9 @@
-import { Link } from "@/i18n/navigation"
 import Image from "next/image"
+import Link from "next/link"
 import { StatusBadge } from "./StatusBadge"
 
 export interface WorkCardEntry {
-	titleDa: string
-	titleEn: string
+	title: string
 	saleStatus: "available" | "sold" | "notListed"
 	images: ReadonlyArray<{ readonly image: string | null; readonly alt: string }>
 }
@@ -12,13 +11,10 @@ export interface WorkCardEntry {
 interface WorkCardProps {
 	slug: string
 	entry: WorkCardEntry
-	locale: string
 	labels: { sold: string; forSale: string }
 }
 
-export function WorkCard({ slug, entry, locale, labels }: WorkCardProps) {
-	const title = locale === "da" ? entry.titleDa : entry.titleEn
-
+export function WorkCard({ slug, entry, labels }: WorkCardProps) {
 	return (
 		<Link
 			href={`/gallery/${slug}`}
@@ -36,12 +32,10 @@ export function WorkCard({ slug, entry, locale, labels }: WorkCardProps) {
 						sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
 					/>
 				)}
-				{/* Gradient scrim for text readability */}
 				<div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-ink/60 to-transparent" />
-				{/* Title + status overlay */}
 				<div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-4">
 					<p className="font-medium font-sans text-linen text-sm leading-snug">
-						{title}
+						{entry.title}
 					</p>
 					<StatusBadge status={entry.saleStatus} labels={labels} />
 				</div>
