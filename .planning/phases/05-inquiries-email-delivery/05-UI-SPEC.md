@@ -43,16 +43,16 @@ Inherited from Phase 1 without modification. Tailwind v4 `@theme` in `globals.cs
 | xl | 32px | `gap-8` / `p-8` | Spacing between form sections/field groups |
 | 2xl | 48px | `gap-12` / `p-12` | Section padding (horizontal page margins, mobile) |
 | 3xl | 64px | `gap-16` / `p-16` | Section padding (horizontal page margins, desktop) |
-| 4xl | 96px | `gap-24` / `p-24` | Major vertical section breaks |
 
 **Phase 5 form application:**
 - Between field groups: `gap-8` (xl)
 - Between label and input: `gap-2` (sm) — label stacked above input, 8px gap
 - Between input and inline validation error: `gap-1` (xs)
-- Form container padding top/bottom: `py-24` (4xl equivalent via Tailwind)
+- Form container padding top/bottom: `py-24` (see Exceptions)
 - Submit button top margin: `mt-8` (xl)
 
 Exceptions:
+- 96px (`py-24`) — page-level vertical section breaks — consistent with CLAUDE.md explicit recommendation of `py-24` for Japandi breathing room; multiple of 4, grid-safe.
 - Touch targets on submit button: minimum 44px height (WCAG 2.5.5 AA)
 - Honeypot field: absolutely positioned off-screen — takes zero layout space
 
