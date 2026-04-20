@@ -6,7 +6,7 @@
 		"useIgnoreFile": true
 	},
 	"files": {
-		"includes": ["src/**/*", "!src/paraglide"]
+		"include": ["src/**/*", "!src/paraglide"]
 	},
 	"formatter": {
 		"enabled": true,
@@ -47,12 +47,10 @@
 			"semicolons": "asNeeded"
 		}
 	},
-	"assist": {
-		"enabled": true,
-		"actions": {
-			"source": {
-				"organizeImports": "on"
-			}
-		}
+	"organizeImports": {
+		"enabled": true
+	},
+	"assists": {
+		"enabled": true
 	}
 }
