@@ -53,24 +53,28 @@ export function ShopCard({ slug, entry, labels }: ShopCardProps) {
 					) : null}
 				</div>
 
-				<div className="absolute inset-0 hidden items-center justify-center bg-ink/15 opacity-0 transition-opacity duration-200 group-hover:opacity-100 sm:flex">
+				{entry.saleStatus === "available" && (
+					<div className="absolute inset-0 hidden items-center justify-center bg-ink/15 opacity-0 transition-opacity duration-200 group-hover:opacity-100 sm:flex">
+						<Link
+							href={`/contact/purchase?piece=${slug}`}
+							className="cursor-pointer bg-terracotta px-6 py-3 font-medium font-sans text-linen text-sm transition-colors duration-150 hover:bg-stone focus-visible:outline-2 focus-visible:outline-terracotta focus-visible:outline-offset-2 active:bg-ink"
+						>
+							{labels.contactToBuy}
+						</Link>
+					</div>
+				)}
+			</div>
+
+			{entry.saleStatus === "available" && (
+				<div className="sm:hidden">
 					<Link
 						href={`/contact/purchase?piece=${slug}`}
-						className="cursor-pointer bg-terracotta px-6 py-3 font-medium font-sans text-linen text-sm transition-colors duration-150 hover:bg-stone focus-visible:outline-2 focus-visible:outline-terracotta focus-visible:outline-offset-2 active:bg-ink"
+						className="block w-full cursor-pointer bg-terracotta px-6 py-3 text-center font-medium font-sans text-linen text-sm transition-colors duration-150 hover:bg-stone focus-visible:outline-2 focus-visible:outline-terracotta focus-visible:outline-offset-2 active:bg-ink"
 					>
 						{labels.contactToBuy}
 					</Link>
 				</div>
-			</div>
-
-			<div className="sm:hidden">
-				<Link
-					href={`/contact/purchase?piece=${slug}`}
-					className="block w-full cursor-pointer bg-terracotta px-6 py-3 text-center font-medium font-sans text-linen text-sm transition-colors duration-150 hover:bg-stone focus-visible:outline-2 focus-visible:outline-terracotta focus-visible:outline-offset-2 active:bg-ink"
-				>
-					{labels.contactToBuy}
-				</Link>
-			</div>
+			)}
 		</div>
 	)
 }
