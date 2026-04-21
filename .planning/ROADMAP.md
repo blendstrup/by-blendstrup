@@ -11,7 +11,7 @@
 - [ ] **Phase 3: Gallery & Works** — Works grid, piece detail pages, for-sale filter, sold piece treatment
 - [ ] **Phase 4: Homepage, Shop & Contact** — Homepage (hero, about, shop preview, CTA), dedicated shop page, contact page
 - [ ] **Phase 5: Inquiries & Email Delivery** — Purchase inquiry form, custom order form, Resend delivery with SPF/DKIM, spam protection
-- [ ] **Phase 6: Polish & Launch** — SEO, hreflang, image optimization, responsive QA, owner CMS training
+- [ ] **Phase 6: Polish & Launch** — SEO metadata, AVIF image optimization, blur placeholders, responsive QA, owner CMS training
 
 ## Phase Details
 
@@ -98,16 +98,22 @@ Plans:
 **UI hint**: yes
 
 ### Phase 6: Polish & Launch
-**Goal**: Close out launch readiness — SEO and hreflang, image optimization, responsive QA across devices, e-commerce-chrome audit, and a short owner training pass on the CMS.
+**Goal**: Close out launch readiness — SEO metadata on every page, AVIF image delivery, blur placeholders on ceramic images, responsive QA, e-commerce-chrome audit, and a written owner training guide for the CMS. I18N-04 (hreflang) is retired — site is Danish-only.
 **Depends on**: Phase 5
 **Requirements**: I18N-04, DSGN-02, DSGN-03, DSGN-04
 **Success Criteria** (what must be TRUE):
-  1. Every page emits correct hreflang tags pairing `/da` and `/en` variants so search engines index both languages
-  2. Ceramics imagery loads via next/image with AVIF output and blur placeholders; Lighthouse performance scores stay green on representative pages
+  1. I18N-04 retired — site is Danish-only; no hreflang code needed (D-02 decision)
+  2. Ceramics imagery loads via next/image with AVIF output and real blur placeholders from plaiceholder; Lighthouse performance scores ≥ 80 on mobile
   3. Every page renders cleanly on mobile, tablet, and desktop breakpoints with no horizontal scroll or broken layouts
   4. Site contains no e-commerce chrome — no cart icons, star ratings, stock counters, or discount badges
-  5. Owner demonstrates, unaided, adding a new piece, marking one as sold, and curating the homepage
-**Plans**: TBD
+  5. Owner CMS guide committed at docs/cms-guide.md covering: add piece, mark sold, curate homepage, edit settings
+**Plans**: 5 plans
+Plans:
+- [ ] 06-01-PLAN.md — Install plaiceholder + sharp, AVIF config in next.config.ts, remove next-intl, blur-placeholder utility + unit tests
+- [ ] 06-02-PLAN.md — SEO infrastructure: baseMetadata, sitemap.ts, robots.ts, og-default.jpg, .env.example
+- [ ] 06-03-PLAN.md — Apply blur placeholders: WorkCard, ShopCard, WorkDetail + RSC parents (gallery, homepage)
+- [ ] 06-04-PLAN.md — generateMetadata on all 7 page files (layout + 6 routes)
+- [ ] 06-05-PLAN.md — Owner CMS guide + Lighthouse QA checkpoint (DSGN-03 + DSGN-04 audit)
 **UI hint**: yes
 
 ## Progress
@@ -119,7 +125,7 @@ Plans:
 | 3. Gallery & Works | 0/0 | Not started | - |
 | 4. Homepage, Shop & Contact | 0/6 | Planned | - |
 | 5. Inquiries & Email Delivery | 0/4 | Planned | - |
-| 6. Polish & Launch | 0/0 | Not started | - |
+| 6. Polish & Launch | 0/5 | Planned | - |
 
 ## Coverage
 
@@ -138,8 +144,11 @@ All 30 v1 requirements mapped to exactly one phase. No orphans, no duplicates.
 
 **Note on SHOP-04:** The "Contact to buy" CTA itself ships in Phase 4 (the button exists), but the inquiry form it opens is built in Phase 5. The requirement is owned by Phase 4; Phase 5 completes its behavior.
 
+**Note on I18N-04:** Hreflang is retired from v1 scope. The site is Danish-only (i18n removed in quick task 260420-c1o). I18N-04 appears in Phase 6 plans as a formal retirement decision, not as code work.
+
 ---
 *Roadmap created: 2026-04-18*
 *Updated: 2026-04-18 — Phase 1 plans added (01-01, 01-02, 01-03)*
 *Updated: 2026-04-19 — Phase 4 plans added (04-01 through 04-06)*
 *Updated: 2026-04-20 — Phase 5 plans added (05-01 through 05-04)*
+*Updated: 2026-04-21 — Phase 6 plans added (06-01 through 06-05); I18N-04 retired*
