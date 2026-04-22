@@ -1,9 +1,6 @@
-import SiteFooter from "@/components/SiteFooter"
-import SiteHeader from "@/components/SiteHeader"
 import { baseMetadata } from "@/lib/metadata"
 import type { Metadata } from "next"
 import { DM_Sans, Fraunces } from "next/font/google"
-import da from "../../messages/da.json"
 import "./globals.css"
 
 export const metadata: Metadata = {
@@ -30,7 +27,8 @@ const dmSans = DM_Sans({
 	weight: ["400", "500"],
 })
 
-//TODO Add login page/blocker for keystatic admin page to prevent public access
+//TODO SEO optimizations and images
+//TODO Footer about creator (me) of site and link to linkedin
 
 export default function RootLayout({
 	children,
@@ -39,19 +37,7 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="da" className={`${fraunces.variable} ${dmSans.variable}`}>
-			<body className="bg-linen font-sans text-ink antialiased">
-				<a
-					href="#main-content"
-					className="sr-only focus-visible:not-sr-only focus-visible:fixed focus-visible:top-2 focus-visible:left-2 focus-visible:z-50 focus-visible:bg-oat focus-visible:px-4 focus-visible:py-2 focus-visible:font-medium focus-visible:text-ink focus-visible:text-sm"
-				>
-					{da.navigation.skipToContent}
-				</a>
-				<SiteHeader />
-				<div id="main-content" className="min-h-screen">
-					{children}
-				</div>
-				<SiteFooter />
-			</body>
+			<body className="bg-linen font-sans text-ink antialiased">{children}</body>
 		</html>
 	)
 }
