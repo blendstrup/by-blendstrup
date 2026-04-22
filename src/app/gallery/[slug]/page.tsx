@@ -1,11 +1,65 @@
 import { WorkDetail } from "@/components/WorkDetail"
+import { baseMetadata } from "@/lib/metadata"
 import { createReader } from "@keystatic/core/reader"
+import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import keystaticConfig from "../../../../keystatic.config"
 import da from "../../../../messages/da.json"
 
 interface WorkDetailPageProps {
 	params: Promise<{ slug: string }>
+}
+
+type Props = { params: Promise<{ slug: string }> }
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+	const { slug } = await params
+	const reader = createReader(process.cwd(), keystaticConfig)
+	const work = await reader.collections.works.read(slug)
+
+	if (!work || !work.published) {
+		return {
+			...baseMetadata,
+			title: "Keramik",
+		}
+	}
+
+	const firstImagePath =
+		(work.images as Array<{ image: string | null; alt: string }>)[0]?.image ??
+		null
+	const firstImageAlt =
+		(work.images as Array<{ image: string | null; alt: string }>)[0]?.alt ??
+		work.title
+
+	// Trim description at word boundary to ~120 chars
+	const rawDesc = work.description ?? ""
+	const trimmedDesc =
+		rawDesc.length > 120
+			? `${rawDesc.slice(0, 120).replace(/\s+\S*$/, "")} — By Blendstrup.`
+			: rawDesc || undefined
+
+	return {
+		...baseMetadata,
+		title: work.title,
+		description: trimmedDesc,
+		openGraph: {
+			...baseMetadata.openGraph,
+			title: `${work.title} — By Blendstrup`,
+			description: trimmedDesc,
+			...(firstImagePath
+				? {
+						images: [
+							{
+								url: firstImagePath,
+								width: 1200,
+								height: 630,
+								alt: firstImageAlt,
+							},
+						],
+					}
+				: {}),
+		},
+	}
 }
 
 export async function generateStaticParams() {
