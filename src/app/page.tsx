@@ -152,6 +152,7 @@ export default async function HomePage() {
 												| "sold"
 												| "notListed",
 											images: entry.images,
+											video: (entry.video as string | null) ?? null,
 										}}
 										labels={{
 											sold: da.shop.saleStatus.sold,

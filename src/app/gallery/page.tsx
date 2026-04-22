@@ -47,6 +47,10 @@ export default async function GalleryPage({ searchParams }: GalleryPageProps) {
 	const works = await Promise.all(
 		filtered.map(async (w) => ({
 			...w,
+			entry: {
+				...w.entry,
+				video: (w.entry.video as string | null) ?? null,
+			},
 			blurDataUrl: await getBlurDataUrl(w.entry.images[0]?.image ?? null),
 		})),
 	)

@@ -7,6 +7,7 @@ export interface ShopCardEntry {
 	leadTime: string
 	saleStatus: "available" | "sold" | "notListed"
 	images: ReadonlyArray<{ readonly image: string | null; readonly alt: string }>
+	video?: string | null
 }
 
 interface ShopCardProps {
@@ -24,7 +25,17 @@ export function ShopCard({ slug, entry, labels, blurDataUrl }: ShopCardProps) {
 	return (
 		<div className="group relative overflow-hidden rounded-2xl">
 			<div className="relative aspect-[4/5]">
-				{entry.images.length === 0 ? (
+				{entry.video ? (
+					<video
+						src={entry.video}
+						autoPlay
+						muted
+						loop
+						playsInline
+						className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+						aria-label={entry.images[0]?.alt ?? entry.title}
+					/>
+				) : entry.images.length === 0 ? (
 					<div className="absolute inset-0 bg-clay/30" />
 				) : (
 					<Image
