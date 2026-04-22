@@ -1,7 +1,14 @@
+import { createReader } from "@keystatic/core/reader"
 import Image from "next/image"
 import Link from "next/link"
+import keystaticConfig from "../../keystatic.config"
 
-export default function SiteFooter() {
+export default async function SiteFooter() {
+	const reader = createReader(process.cwd(), keystaticConfig)
+	const settings = await reader.singletons.settings.read()
+	const contactEmail = settings?.contactEmail ?? ""
+	const instagramHandle = settings?.instagramHandle ?? ""
+
 	return (
 		<footer className="bg-ink-surface px-12 py-12 lg:px-16 lg:py-16">
 			<div className="mx-auto flex max-w-screen-xl flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
@@ -19,7 +26,7 @@ export default function SiteFooter() {
 							By Blendstrup
 						</span>
 					</div>
-					<p className="max-w-xs font-sans text-sm text-stone leading-relaxed">
+					<p className="max-w-screen-xs font-sans text-sm text-stone leading-relaxed">
 						Håndlavede keramikker med sjæl — hvert stykke er unikt.
 					</p>
 				</div>
@@ -29,20 +36,24 @@ export default function SiteFooter() {
 					<p className="mb-1 font-sans text-stone text-xs uppercase tracking-widest">
 						Kontakt
 					</p>
-					<Link
-						href="mailto:jonasblendstrup@gmail.com"
-						className="font-sans text-linen/70 text-sm transition-colors hover:text-linen"
-					>
-						jonasblendstrup@gmail.com
-					</Link>
-					<Link
-						href="https://www.instagram.com/byblendstrup"
-						target="_blank"
-						rel="noopener noreferrer"
-						className="font-sans text-linen/70 text-sm transition-colors hover:text-linen"
-					>
-						Instagram
-					</Link>
+					{contactEmail && (
+						<Link
+							href={`mailto:${contactEmail}`}
+							className="font-sans text-linen/70 text-sm transition-colors hover:text-linen"
+						>
+							{contactEmail}
+						</Link>
+					)}
+					{instagramHandle && (
+						<Link
+							href={`https://www.instagram.com/${instagramHandle}`}
+							target="_blank"
+							rel="noopener noreferrer"
+							className="font-sans text-linen/70 text-sm transition-colors hover:text-linen"
+						>
+							@{instagramHandle}
+						</Link>
+					)}
 				</div>
 			</div>
 
