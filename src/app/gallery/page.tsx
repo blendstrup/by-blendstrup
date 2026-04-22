@@ -1,10 +1,25 @@
 import { GalleryFilterToggle } from "@/components/GalleryFilterToggle"
 import { GalleryGrid } from "@/components/GalleryGrid"
 import { getBlurDataUrl } from "@/lib/blur-placeholder"
+import { baseMetadata } from "@/lib/metadata"
 import { createReader } from "@keystatic/core/reader"
+import type { Metadata } from "next"
 import Link from "next/link"
 import keystaticConfig from "../../../keystatic.config"
 import da from "../../../messages/da.json"
+
+export const metadata: Metadata = {
+	...baseMetadata,
+	title: "Keramik",
+	description:
+		"Gennemse alle håndlavede keramikker fra By Blendstrup. Filtrer efter stykker til salg.",
+	openGraph: {
+		...baseMetadata.openGraph,
+		title: "Keramik — By Blendstrup",
+		description:
+			"Gennemse alle håndlavede keramikker fra By Blendstrup. Filtrer efter stykker til salg.",
+	},
+}
 
 interface GalleryPageProps {
 	searchParams: Promise<{ filter?: string }>

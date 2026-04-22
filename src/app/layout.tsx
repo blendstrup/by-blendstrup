@@ -1,8 +1,20 @@
 import SiteFooter from "@/components/SiteFooter"
 import SiteHeader from "@/components/SiteHeader"
+import { baseMetadata } from "@/lib/metadata"
+import type { Metadata } from "next"
 import { DM_Sans, Fraunces } from "next/font/google"
 import da from "../../messages/da.json"
 import "./globals.css"
+
+export const metadata: Metadata = {
+	...baseMetadata,
+	title: {
+		default: "By Blendstrup",
+		template: "%s — By Blendstrup",
+	},
+	description:
+		"Håndlavede keramikker fra By Blendstrup. Unikke stykker til salg og mulighed for at bestille specialfremstillede keramikker.",
+}
 
 const fraunces = Fraunces({
 	subsets: ["latin"],

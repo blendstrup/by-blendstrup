@@ -1,11 +1,26 @@
 import { ShopCard } from "@/components/ShopCard"
 import { getBlurDataUrl } from "@/lib/blur-placeholder"
+import { baseMetadata } from "@/lib/metadata"
 import { createReader } from "@keystatic/core/reader"
 import { ChevronDown } from "lucide-react"
+import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import keystaticConfig from "../../keystatic.config"
 import da from "../../messages/da.json"
+
+export const metadata: Metadata = {
+	...baseMetadata,
+	title: "By Blendstrup — Håndlavet keramik",
+	description:
+		"Oplev håndlavede keramikker skabt med omhu. Se aktuelle stykker til salg og bestil din egen specialkeramik.",
+	openGraph: {
+		...baseMetadata.openGraph,
+		title: "By Blendstrup — Håndlavet keramik",
+		description:
+			"Oplev håndlavede keramikker skabt med omhu. Se aktuelle stykker til salg og bestil din egen specialkeramik.",
+	},
+}
 
 // Inline linen-colored blur placeholder (8x8 base64 JPEG)
 // avoids plaiceholder dependency; acceptable for MVP hero
