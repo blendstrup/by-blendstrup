@@ -30,6 +30,8 @@ const dmSans = DM_Sans({
 	weight: ["400", "500"],
 })
 
+//TODO Add login page/blocker for keystatic admin page to prevent public access
+
 export default function RootLayout({
 	children,
 }: {
