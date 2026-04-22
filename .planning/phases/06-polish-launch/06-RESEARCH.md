@@ -633,25 +633,22 @@ Phase 6 introduces minimal new attack surface. The primary security deliverable 
 
 ---
 
-## Open Questions (RESOLVED)
+## Open Questions
 
 1. **OG fallback image asset availability**
    - What we know: D-05 specifies a static `/public/og-default.jpg` at 1200×630px sourced from owner's existing assets.
    - What's unclear: The owner has not yet provided this asset. The planner should include a task for the executor to either use an existing photo from `/public/images/` resized/cropped, or request the asset from the owner.
    - Recommendation: Have the executor pick the best existing ceramic photo from `/public/images/works/` and crop it to 1200×630px using an image editor or sharp script.
-   - **RESOLVED:** Plan 06-02 Task 2 includes a sharp script that scans `/public/images/works/`, picks the first available ceramic photo, and crops it to 1200×630px JPEG at quality 85. If no images are available a placeholder is created. The file is written to `public/og-default.jpg`.
 
 2. **next-intl removal**
    - What we know: `next-intl` is in `package.json` but unused. Removed from source in the quick task.
    - What's unclear: Whether removing the package is in scope for Phase 6 or left as a v2 cleanup.
    - Recommendation: Include as a low-effort cleanup task in Wave 1 (`pnpm remove next-intl`) since it reduces bundle size and removes a stale dependency.
-   - **RESOLVED:** Plan 06-01 Task 1 runs `pnpm remove next-intl` as part of the dependency installation step. Removal is in scope for Phase 6.
 
 3. **NEXT_PUBLIC_SITE_URL environment variable**
    - What we know: sitemap.ts and robots.ts fall back to a hardcoded domain.
    - What's unclear: Whether the Vercel project is already configured with this env var.
    - Recommendation: Planner includes a verification step — check Vercel dashboard or add `NEXT_PUBLIC_SITE_URL` to `.env.example` with instructions.
-   - **RESOLVED:** Plan 06-02 Task 2 writes `NEXT_PUBLIC_SITE_URL=https://byblendstrup.dk` to `.env.example` with instructions to set the same value in Vercel project settings. The hardcoded fallback in sitemap.ts/robots.ts handles local development safely.
 
 ---
 
