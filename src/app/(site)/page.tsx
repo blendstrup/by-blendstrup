@@ -6,8 +6,8 @@ import { ChevronDown } from "lucide-react"
 import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
-import keystaticConfig from "../../keystatic.config"
-import da from "../../messages/da.json"
+import keystaticConfig from "../../../keystatic.config"
+import da from "../../../messages/da.json"
 
 export const metadata: Metadata = {
 	...baseMetadata,

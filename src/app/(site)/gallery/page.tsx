@@ -5,8 +5,8 @@ import { baseMetadata } from "@/lib/metadata"
 import { createReader } from "@keystatic/core/reader"
 import type { Metadata } from "next"
 import Link from "next/link"
-import keystaticConfig from "../../../keystatic.config"
-import da from "../../../messages/da.json"
+import keystaticConfig from "../../../../keystatic.config"
+import da from "../../../../messages/da.json"
 
 export const metadata: Metadata = {
 	...baseMetadata,

@@ -1,7 +1,7 @@
 import { CustomOrderForm } from "@/components/CustomOrderForm"
 import { baseMetadata } from "@/lib/metadata"
 import type { Metadata } from "next"
-import da from "../../../messages/da.json"
+import da from "../../../../messages/da.json"
 
 export const metadata: Metadata = {
 	...baseMetadata,
