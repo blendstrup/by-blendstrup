@@ -1,10 +1,26 @@
 import { ShopCard } from "@/components/ShopCard"
+import { getBlurDataUrl } from "@/lib/blur-placeholder"
+import { baseMetadata } from "@/lib/metadata"
 import { createReader } from "@keystatic/core/reader"
 import { ChevronDown } from "lucide-react"
-import Link from "next/link"
+import type { Metadata } from "next"
 import Image from "next/image"
+import Link from "next/link"
 import keystaticConfig from "../../keystatic.config"
 import da from "../../messages/da.json"
+
+export const metadata: Metadata = {
+	...baseMetadata,
+	title: "By Blendstrup — Håndlavet keramik",
+	description:
+		"Oplev håndlavede keramikker skabt med omhu. Se aktuelle stykker til salg og bestil din egen specialkeramik.",
+	openGraph: {
+		...baseMetadata.openGraph,
+		title: "By Blendstrup — Håndlavet keramik",
+		description:
+			"Oplev håndlavede keramikker skabt med omhu. Se aktuelle stykker til salg og bestil din egen specialkeramik.",
+	},
+}
 
 // Inline linen-colored blur placeholder (8x8 base64 JPEG)
 // avoids plaiceholder dependency; acceptable for MVP hero
@@ -33,11 +49,19 @@ export default async function HomePage() {
 			return { slug, entry }
 		}),
 	)
-	const shopPreviewWorks = shopPreviewWorksRaw.filter(
+	const shopPreviewWorksFiltered = shopPreviewWorksRaw.filter(
 		(w): w is { slug: string; entry: NonNullable<typeof w.entry> } =>
 			w.entry !== null &&
 			w.entry.published === true &&
 			w.entry.saleStatus === "available",
+	)
+
+	// DSGN-02: compute LQIP blur placeholder for each ShopCard's first image in parallel
+	const shopPreviewWorks = await Promise.all(
+		shopPreviewWorksFiltered.map(async (w) => ({
+			...w,
+			blurDataUrl: await getBlurDataUrl(w.entry.images[0]?.image ?? null),
+		})),
 	)
 
 	const heroImage = heroWork?.images?.[0] ?? null
@@ -113,27 +137,30 @@ export default async function HomePage() {
 						</p>
 					) : (
 						<div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-							{shopPreviewWorks.slice(0, 6).map(({ slug, entry }) => (
-								<ShopCard
-									key={slug}
-									slug={slug}
-									entry={{
-										title: entry.title,
-										price: entry.price ?? "",
-										leadTime: entry.leadTime ?? "",
-										saleStatus: entry.saleStatus as
-											| "available"
-											| "sold"
-											| "notListed",
-										images: entry.images,
-									}}
-									labels={{
-										sold: da.shop.saleStatus.sold,
-										forSale: da.shop.saleStatus.available,
-										contactToBuy: da.shop.card.contactToBuy,
-									}}
-								/>
-							))}
+							{shopPreviewWorks
+								.slice(0, 6)
+								.map(({ slug, entry, blurDataUrl }) => (
+									<ShopCard
+										key={slug}
+										slug={slug}
+										entry={{
+											title: entry.title,
+											price: entry.price ?? "",
+											leadTime: entry.leadTime ?? "",
+											saleStatus: entry.saleStatus as
+												| "available"
+												| "sold"
+												| "notListed",
+											images: entry.images,
+										}}
+										labels={{
+											sold: da.shop.saleStatus.sold,
+											forSale: da.shop.saleStatus.available,
+											contactToBuy: da.shop.card.contactToBuy,
+										}}
+										blurDataUrl={blurDataUrl}
+									/>
+								))}
 						</div>
 					)}
 				</div>
@@ -167,16 +194,14 @@ export default async function HomePage() {
 							</h2>
 							{aboutData ? (
 								<>
-									{aboutData?.aboutText
-										?.split("\n\n")
-										.map((paragraph) => (
-											<p
-												key={paragraph.slice(0, 40)}
-												className="font-normal font-sans text-base text-ink leading-relaxed"
-											>
-												{paragraph}
-											</p>
-										))}
+									{aboutData?.aboutText?.split("\n\n").map((paragraph) => (
+										<p
+											key={paragraph.slice(0, 40)}
+											className="font-normal font-sans text-base text-ink leading-relaxed"
+										>
+											{paragraph}
+										</p>
+									))}
 								</>
 							) : null}
 						</div>

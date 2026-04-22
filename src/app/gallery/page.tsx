@@ -1,9 +1,25 @@
 import { GalleryFilterToggle } from "@/components/GalleryFilterToggle"
 import { GalleryGrid } from "@/components/GalleryGrid"
+import { getBlurDataUrl } from "@/lib/blur-placeholder"
+import { baseMetadata } from "@/lib/metadata"
 import { createReader } from "@keystatic/core/reader"
+import type { Metadata } from "next"
 import Link from "next/link"
 import keystaticConfig from "../../../keystatic.config"
 import da from "../../../messages/da.json"
+
+export const metadata: Metadata = {
+	...baseMetadata,
+	title: "Keramik",
+	description:
+		"Gennemse alle håndlavede keramikker fra By Blendstrup. Filtrer efter stykker til salg.",
+	openGraph: {
+		...baseMetadata.openGraph,
+		title: "Keramik — By Blendstrup",
+		description:
+			"Gennemse alle håndlavede keramikker fra By Blendstrup. Filtrer efter stykker til salg.",
+	},
+}
 
 interface GalleryPageProps {
 	searchParams: Promise<{ filter?: string }>
@@ -22,10 +38,18 @@ export default async function GalleryPage({ searchParams }: GalleryPageProps) {
 	const published = allWorks.filter((w) => w.entry.published)
 
 	// GALL-03: URL-based filter
-	const works =
+	const filtered =
 		filter === "for-sale"
 			? published.filter((w) => w.entry.saleStatus === "available")
 			: published
+
+	// DSGN-02: compute LQIP blur placeholder for each card's first image in parallel
+	const works = await Promise.all(
+		filtered.map(async (w) => ({
+			...w,
+			blurDataUrl: await getBlurDataUrl(w.entry.images[0]?.image ?? null),
+		})),
+	)
 
 	return (
 		<section className="mx-auto max-w-screen-xl px-12 py-16 lg:px-16 lg:py-24">
@@ -63,7 +87,10 @@ export default async function GalleryPage({ searchParams }: GalleryPageProps) {
 				) : (
 					<GalleryGrid
 						works={works}
-						labels={{ sold: da.gallery.soldLabel, forSale: da.gallery.forSaleLabel }}
+						labels={{
+							sold: da.gallery.soldLabel,
+							forSale: da.gallery.forSaleLabel,
+						}}
 					/>
 				)}
 			</div>
