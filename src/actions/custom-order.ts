@@ -5,7 +5,7 @@ import {
 	type CustomOrderFormData,
 	customOrderSchema,
 } from "@/lib/schemas/custom-order"
-import { escHtml } from "@/lib/email-utils"
+import { emailShell, emailField, emailDivider } from "@/lib/email-utils"
 import { Resend } from "resend"
 
 const resend = new Resend(process.env.RESEND_API_KEY)
@@ -66,7 +66,7 @@ export async function submitCustomOrder(
 	const { error } = await resend.emails.send({
 		from: fromAddress,
 		to: recipientEmail,
-		subject: `Ny specialbestilling fra ${result.data.name}`,
+		subject: `Specialbestilling fra ${result.data.name}`,
 		html: buildCustomOrderEmail(result.data),
 	})
 
@@ -82,16 +82,15 @@ export async function submitCustomOrder(
 }
 
 function buildCustomOrderEmail(data: CustomOrderFormData): string {
-	return `
-    <div style="font-family: sans-serif; color: #2C2418; max-width: 600px; margin: 0 auto;">
-      <h2 style="color: #A85C3A; margin-bottom: 24px;">Ny specialbestilling</h2>
-      <p><strong>Navn:</strong><br>${escHtml(data.name)}</p>
-      <p><strong>E-mail:</strong><br><a href="mailto:${escHtml(data.email)}" style="color: #A85C3A;">${escHtml(data.email)}</a></p>
-      <hr style="border-color: #C4A882; margin: 16px 0;" />
-      <p><strong>Hvad ønskes:</strong><br>${escHtml(data.description)}</p>
-      <p><strong>Antal:</strong><br>${escHtml(data.quantity)}</p>
-      ${data.budget ? `<p><strong>Budget:</strong><br>${escHtml(data.budget)}</p>` : ""}
-      ${data.timeline ? `<p><strong>Ønsket tidslinje:</strong><br>${escHtml(data.timeline)}</p>` : ""}
-    </div>
+	const subject = `Specialbestilling fra ${data.name}`
+	const body = `
+    ${emailField("Navn", data.name)}
+    ${emailField("E-mail", data.email, { href: `mailto:${data.email}` })}
+    ${emailDivider()}
+    ${emailField("Hvad ønskes", data.description)}
+    ${emailField("Antal", data.quantity)}
+    ${data.budget ? emailField("Budget", data.budget) : ""}
+    ${data.timeline ? emailField("Ønsket tidslinje", data.timeline) : ""}
   `
+	return emailShell(body, subject)
 }

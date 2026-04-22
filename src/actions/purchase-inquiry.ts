@@ -5,7 +5,7 @@ import {
 	type PurchaseInquiryData,
 	purchaseInquirySchema,
 } from "@/lib/schemas/purchase-inquiry"
-import { escHtml } from "@/lib/email-utils"
+import { emailShell, emailField, emailDivider, emailCallout } from "@/lib/email-utils"
 import { createReader } from "@keystatic/core/reader"
 import keystaticConfig from "../../keystatic.config"
 import { Resend } from "resend"
@@ -77,7 +77,7 @@ export async function submitPurchaseInquiry(
 	const { error } = await resend.emails.send({
 		from: fromAddress,
 		to: recipientEmail,
-		subject: `Ny forespørgsel: ${verifiedPieceTitle ?? "Generel forespørgsel"}`,
+		subject: `Forespørgsel: ${verifiedPieceTitle ?? "Generel forespørgsel"}`,
 		html: buildPurchaseEmail(result.data, verifiedPieceTitle),
 	})
 
@@ -96,20 +96,13 @@ function buildPurchaseEmail(
 	data: PurchaseInquiryData,
 	verifiedPieceTitle?: string,
 ): string {
-	return `
-    <div style="font-family: sans-serif; color: #2C2418; max-width: 600px; margin: 0 auto;">
-      <h2 style="color: #A85C3A; margin-bottom: 24px;">Ny forespørgsel</h2>
-      ${
-			verifiedPieceTitle
-				? `
-        <p><strong>Stykke:</strong><br>${escHtml(verifiedPieceTitle)}</p>
-        <hr style="border-color: #C4A882; margin: 16px 0;" />
-      `
-				: ""
-		}
-      <p><strong>Navn:</strong><br>${escHtml(data.name)}</p>
-      <p><strong>E-mail:</strong><br><a href="mailto:${escHtml(data.email)}" style="color: #A85C3A;">${escHtml(data.email)}</a></p>
-      <p><strong>Besked:</strong><br>${escHtml(data.message)}</p>
-    </div>
+	const subject = `Forespørgsel: ${verifiedPieceTitle ?? "Generel forespørgsel"}`
+	const body = `
+    ${verifiedPieceTitle ? emailCallout("Forespørgsel om", verifiedPieceTitle) : ""}
+    ${emailField("Navn", data.name)}
+    ${emailField("E-mail", data.email, { href: `mailto:${data.email}` })}
+    ${emailDivider()}
+    ${emailField("Besked", data.message)}
   `
+	return emailShell(body, subject)
 }
