@@ -19,7 +19,7 @@ progress:
 
 **Project started:** 2026-04-18
 **Last updated:** 2026-04-20
-**Last activity:** 2026-04-22 - Completed quick task 260422-wd4: Add login page/blocker for Keystatic admin to prevent public access
+**Last activity:** 2026-04-22 - Completed quick task 260423-0ar: Use Next.js route groups to isolate site layout from Keystatic admin
 
 ## Project Reference
 
@@ -86,6 +86,7 @@ None.
 | 260422-un8 | Video support for items and hero, UI polish, item preview on request form, and professional email layout | 2026-04-22 | 81a91aa | [260422-un8-video-support-for-items-and-hero-ui-poli](./quick/260422-un8-video-support-for-items-and-hero-ui-poli/) |
 | 260422-vug | Add logo.svg brand identity to header, footer (with contact details), emails, and relevant pages | 2026-04-22 | 3478362 | [260422-vug-add-logo-svg-brand-identity-to-header-fo](./quick/260422-vug-add-logo-svg-brand-identity-to-header-fo/) |
 | 260422-wd4 | Add login page/blocker for Keystatic admin to prevent public access | 2026-04-22 | 2331bd0 | [260422-wd4-add-login-page-blocker-for-keystatic-adm](./quick/260422-wd4-add-login-page-blocker-for-keystatic-adm/) |
+| 260423-0ar | Use Next.js route groups to isolate site layout — SiteHeader/SiteFooter moved to (site)/ group so Keystatic admin occupies full viewport | 2026-04-22 | 80b0443 | [260423-0ar-use-next-js-route-groups-to-isolate-site](./quick/260423-0ar-use-next-js-route-groups-to-isolate-site/) |
 
 ## Session Continuity
 
