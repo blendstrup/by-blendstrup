@@ -32,7 +32,8 @@ export async function submitPurchaseInquiry(
 		email: formData.get("email"),
 		message: formData.get("message"),
 		pieceSlug: formData.get("pieceSlug") || undefined,
-		pieceTitle: formData.get("pieceTitle") || undefined,
+		// pieceTitle deliberately omitted — title is re-verified via Keystatic
+		// (see verifiedPieceTitle below) to prevent subject-line spoofing.
 	}
 
 	const result = purchaseInquirySchema.safeParse(raw)

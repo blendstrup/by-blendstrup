@@ -8,7 +8,7 @@ describe("purchaseInquirySchema", () => {
 			email: "anna@example.com",
 			message: "Jeg er interesseret i det blå fad.",
 			pieceSlug: "blaatt-fad",
-			pieceTitle: "Blåt fad",
+			// pieceTitle is not a schema field — title is re-verified server-side via Keystatic
 		})
 		expect(result.success).toBe(true)
 	})
