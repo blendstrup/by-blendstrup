@@ -1,4 +1,3 @@
-import { getBlurDataUrl } from "@/lib/blur-placeholder"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -15,19 +14,19 @@ interface WorkDetailProps {
 	}
 }
 
-export async function WorkDetail({
+// Static 1×1 JPEG blur placeholder — satisfies next/image blurDataURL requirement
+// for dynamic src paths. Plaiceholder integration is a Phase 6 enhancement.
+const BLUR_DATA_URL =
+	"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAABAAEDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABAMC/8QAHxAAAQQCAwEAAAAAAAAAAAAAAgABAxESITFB/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCwABr3XS0VGJVyD7nmf//Z"
+
+export function WorkDetail({
 	slug,
 	title,
 	description,
 	saleStatus,
 	images,
 	ctaLabels,
-}: WorkDetailProps): Promise<React.JSX.Element> {
-	// DSGN-02: compute LQIP blur placeholders for all images in parallel
-	const blurUrls = await Promise.all(
-		images.map((img) => getBlurDataUrl(img.image || null)),
-	)
-
+}: WorkDetailProps) {
 	return (
 		<article className="mx-auto max-w-screen-lg px-12 py-16 lg:px-16 lg:py-24">
 			{/* Side-by-side on desktop (lg:grid-cols-[55fr_45fr]), stacked on mobile */}
@@ -43,8 +42,8 @@ export async function WorkDetail({
 								fill
 								className="object-contain"
 								sizes="(max-width: 1024px) 100vw, 55vw"
-								placeholder={blurUrls[0] ? "blur" : "empty"}
-								blurDataURL={blurUrls[0]}
+								placeholder="blur"
+								blurDataURL={BLUR_DATA_URL}
 							/>
 						</div>
 					) : (
@@ -103,8 +102,8 @@ export async function WorkDetail({
 								fill
 								className="object-cover"
 								sizes="(max-width: 640px) 100vw, 50vw"
-								placeholder={blurUrls[i + 1] ? "blur" : "empty"}
-								blurDataURL={blurUrls[i + 1]}
+								placeholder="blur"
+								blurDataURL={BLUR_DATA_URL}
 							/>
 						</div>
 					))}

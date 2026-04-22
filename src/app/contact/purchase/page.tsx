@@ -1,22 +1,7 @@
 import { PurchaseInquiryForm } from "@/components/PurchaseInquiryForm"
-import { baseMetadata } from "@/lib/metadata"
 import { createReader } from "@keystatic/core/reader"
-import type { Metadata } from "next"
 import keystaticConfig from "../../../../keystatic.config"
 import da from "../../../../messages/da.json"
-
-export const metadata: Metadata = {
-	...baseMetadata,
-	title: "Købsforespørgsel",
-	description:
-		"Send en forespørgsel om køb af et keramikstykke fra By Blendstrup.",
-	openGraph: {
-		...baseMetadata.openGraph,
-		title: "Købsforespørgsel — By Blendstrup",
-		description:
-			"Send en forespørgsel om køb af et keramikstykke fra By Blendstrup.",
-	},
-}
 
 interface Props {
 	searchParams: Promise<{ piece?: string }>

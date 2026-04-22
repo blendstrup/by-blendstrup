@@ -2,12 +2,10 @@ import { describe, expect, it } from "vitest"
 
 // The filter logic used in shop page and homepage shop preview
 // Works must have BOTH published=true AND saleStatus='available' to appear
-function filterAvailableWorks<
-	T extends { entry: { published: boolean; saleStatus: string } },
->(works: T[]): T[] {
-	return works.filter(
-		(w) => w.entry.published && w.entry.saleStatus === "available",
-	)
+function filterAvailableWorks<T extends { entry: { published: boolean; saleStatus: string } }>(
+	works: T[],
+): T[] {
+	return works.filter((w) => w.entry.published && w.entry.saleStatus === "available")
 }
 
 const mockWorks = [

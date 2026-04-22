@@ -1,20 +1,5 @@
 import { CustomOrderForm } from "@/components/CustomOrderForm"
-import { baseMetadata } from "@/lib/metadata"
-import type { Metadata } from "next"
 import da from "../../../messages/da.json"
-
-export const metadata: Metadata = {
-	...baseMetadata,
-	title: "Specialbestilling",
-	description:
-		"Bestil din egen specialfremstillede keramik fra By Blendstrup. Fortæl hvad du drømmer om.",
-	openGraph: {
-		...baseMetadata.openGraph,
-		title: "Specialbestilling — By Blendstrup",
-		description:
-			"Bestil din egen specialfremstillede keramik fra By Blendstrup. Fortæl hvad du drømmer om.",
-	},
-}
 
 export default function CustomOrdersPage() {
 	return (

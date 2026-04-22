@@ -1,24 +1,9 @@
-import { baseMetadata } from "@/lib/metadata"
 import { createReader } from "@keystatic/core/reader"
 import { Mail } from "lucide-react"
-import type { Metadata } from "next"
-import Image from "next/image"
 import Link from "next/link"
+import Image from "next/image"
 import keystaticConfig from "../../../keystatic.config"
 import da from "../../../messages/da.json"
-
-export const metadata: Metadata = {
-	...baseMetadata,
-	title: "Kontakt",
-	description:
-		"Kontakt By Blendstrup for køb af keramik eller generelle spørgsmål.",
-	openGraph: {
-		...baseMetadata.openGraph,
-		title: "Kontakt — By Blendstrup",
-		description:
-			"Kontakt By Blendstrup for køb af keramik eller generelle spørgsmål.",
-	},
-}
 
 const LINEN_BLUR =
 	"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAAIAAgDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABgUE/8QAIhAAAQQCAgMBAAAAAAAAAAAAAQIDBBEFEiExQf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCr2/aFXt2lXrNgtMON44FY0SSBR4JAHfgdiPIr1bN+vLbtIkzJjj3SWVJOVHk8kk+9FFFf/9k="

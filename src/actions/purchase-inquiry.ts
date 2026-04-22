@@ -1,14 +1,14 @@
 "use server"
 
-import { escHtml } from "@/lib/email-utils"
 import { checkHoneypot } from "@/lib/honeypot"
 import {
 	type PurchaseInquiryData,
 	purchaseInquirySchema,
 } from "@/lib/schemas/purchase-inquiry"
+import { escHtml } from "@/lib/email-utils"
 import { createReader } from "@keystatic/core/reader"
-import { Resend } from "resend"
 import keystaticConfig from "../../keystatic.config"
+import { Resend } from "resend"
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
@@ -56,9 +56,7 @@ export async function submitPurchaseInquiry(
 
 	const fromAddress =
 		process.env.RESEND_FROM_ADDRESS ??
-		(process.env.NODE_ENV === "development"
-			? "onboarding@resend.dev"
-			: undefined)
+		(process.env.NODE_ENV === "development" ? "onboarding@resend.dev" : undefined)
 	if (!fromAddress) {
 		return {
 			success: false,
@@ -101,13 +99,13 @@ function buildPurchaseEmail(
     <div style="font-family: sans-serif; color: #2C2418; max-width: 600px; margin: 0 auto;">
       <h2 style="color: #A85C3A; margin-bottom: 24px;">Ny forespørgsel</h2>
       ${
-				verifiedPieceTitle
-					? `
+			verifiedPieceTitle
+				? `
         <p><strong>Stykke:</strong><br>${escHtml(verifiedPieceTitle)}</p>
         <hr style="border-color: #C4A882; margin: 16px 0;" />
       `
-					: ""
-			}
+				: ""
+		}
       <p><strong>Navn:</strong><br>${escHtml(data.name)}</p>
       <p><strong>E-mail:</strong><br><a href="mailto:${escHtml(data.email)}" style="color: #A85C3A;">${escHtml(data.email)}</a></p>
       <p><strong>Besked:</strong><br>${escHtml(data.message)}</p>
