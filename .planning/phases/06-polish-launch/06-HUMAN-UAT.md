@@ -1,5 +1,5 @@
 ---
-status: partial
+status: complete
 phase: 06-polish-launch
 source: [06-VERIFICATION.md]
 started: 2026-04-22T00:00:00Z
@@ -8,7 +8,7 @@ updated: 2026-04-22T00:00:00Z
 
 ## Current Test
 
-[post-launch — pending site deployment and owner onboarding]
+[testing complete]
 
 ## Tests
 
@@ -22,14 +22,14 @@ result: approved by developer at checkpoint (2026-04-22)
 
 ### 3. Owner CMS training demonstration
 expected: Owner adds a piece, marks one sold, and curates the homepage unaided via keystatic.cloud
-result: [pending — post-launch activity; requires deployed site and owner onboarding]
+result: pass
 
 ## Summary
 
 total: 3
-passed: 2
+passed: 3
 issues: 0
-pending: 1
+pending: 0
 skipped: 0
 blocked: 0
 
