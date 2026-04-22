@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 import da from "../../messages/da.json"
 import { NavLinks } from "./NavLinks"
@@ -8,8 +9,16 @@ export default function SiteHeader() {
 			<div className="mx-auto flex h-full max-w-screen-xl items-center justify-between px-12 lg:px-16">
 				<Link
 					href="/"
-					className="font-normal font-serif text-[28px] text-ink tracking-tight transition-opacity duration-150 hover:opacity-70"
+					className="flex items-center gap-2.5 font-normal font-serif text-[28px] text-ink tracking-tight transition-opacity duration-150 hover:opacity-70"
 				>
+					<Image
+						src="/logo.svg"
+						alt="By Blendstrup"
+						width={36}
+						height={36}
+						className="shrink-0"
+						priority
+					/>
 					{da.site.name}
 				</Link>
 				<NavLinks />
