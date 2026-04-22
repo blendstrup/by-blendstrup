@@ -63,7 +63,10 @@ export default async function GalleryPage({ searchParams }: GalleryPageProps) {
 				) : (
 					<GalleryGrid
 						works={works}
-						labels={{ sold: da.gallery.soldLabel, forSale: da.gallery.forSaleLabel }}
+						labels={{
+							sold: da.gallery.soldLabel,
+							forSale: da.gallery.forSaleLabel,
+						}}
 					/>
 				)}
 			</div>

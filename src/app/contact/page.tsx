@@ -1,7 +1,7 @@
 import { createReader } from "@keystatic/core/reader"
 import { Mail } from "lucide-react"
-import Link from "next/link"
 import Image from "next/image"
+import Link from "next/link"
 import keystaticConfig from "../../../keystatic.config"
 import da from "../../../messages/da.json"
 
