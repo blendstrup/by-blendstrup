@@ -83,6 +83,7 @@ None.
 | # | Description | Date | Commit | Directory |
 |---|-------------|------|--------|-----------|
 | 260420-c1o | Remove i18n setup and English language support, keeping only Danish throughout the entire site and Keystatic CMS configuration | 2026-04-20 | 1daf834 | [260420-c1o-remove-i18n-setup-and-english-language-s](./quick/260420-c1o-remove-i18n-setup-and-english-language-s/) |
+| 260422-un8 | Video support for items and hero, UI polish, item preview on request form, and professional email layout | 2026-04-22 | 81a91aa | [260422-un8-video-support-for-items-and-hero-ui-poli](./quick/260422-un8-video-support-for-items-and-hero-ui-poli/) |
 
 ## Session Continuity
 
