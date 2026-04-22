@@ -35,7 +35,7 @@ export async function WorkDetail({
 				{/* Left column: primary image */}
 				<div className="relative w-full">
 					{images.length > 0 ? (
-						<div className="relative w-full" style={{ minHeight: "400px" }}>
+						<div className="relative aspect-[4/5] w-full overflow-hidden">
 							<Image
 								src={images[0]?.image ?? ""}
 								alt={images[0]?.alt ?? ""}
