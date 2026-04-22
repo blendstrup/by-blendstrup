@@ -64,14 +64,25 @@ export default async function HomePage() {
 		})),
 	)
 
-	const heroImage = heroWork?.images?.[0] ?? null
+	const heroImage = homepageData?.heroVideo ? null : (heroWork?.images?.[0] ?? null)
 
 	return (
 		<main>
 			{/* ─── Hero Section (HOME-01, D-01, D-02, D-03) ─── */}
 			{/* Height subtracts sticky header (h-16 = 4rem) so hero fills visible viewport */}
 			<section className="relative h-[calc(100svh-4rem)] w-full bg-linen">
-				{heroImage?.image ? (
+				{/* Hero media: video takes priority over image */}
+				{homepageData?.heroVideo ? (
+					<video
+						src={homepageData.heroVideo as string}
+						autoPlay
+						muted
+						loop
+						playsInline
+						tabIndex={-1}
+						className="absolute inset-0 h-full w-full object-cover"
+					/>
+				) : heroImage?.image ? (
 					<Image
 						src={heroImage.image}
 						alt={heroImage.alt ?? ""}
@@ -84,23 +95,23 @@ export default async function HomePage() {
 					/>
 				) : null}
 
-				{/* Subtle dark vignette so text is legible over any photo */}
+				{/* Subtle dark vignette so text is legible over any photo or video */}
 				<div className="pointer-events-none absolute inset-0 bg-ink/25" />
 
-				{/* Hero copy — centered, encourages exploration */}
-				<div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
+				{/* Hero copy — bottom-left for Japandi editorial feel */}
+				<div className="absolute inset-0 flex flex-col items-start justify-end px-8 pb-16 sm:px-12 lg:px-16 lg:pb-20">
 					<h1 className="font-normal font-serif text-5xl text-linen tracking-tight drop-shadow-sm md:text-7xl">
 						{da.home.hero.headline}
 					</h1>
 					<Link
 						href="/gallery"
-						className="mt-8 inline-block border border-linen px-8 py-3 font-medium font-sans text-linen text-sm transition-colors duration-200 hover:bg-linen hover:text-ink focus-visible:outline-2 focus-visible:outline-linen focus-visible:outline-offset-2"
+						className="mt-6 inline-block border border-linen px-8 py-3 font-medium font-sans text-linen text-sm transition-colors duration-200 hover:bg-linen hover:text-ink focus-visible:outline-2 focus-visible:outline-linen focus-visible:outline-offset-2"
 					>
 						{da.home.hero.cta}
 					</Link>
 				</div>
 
-				{/* Scroll indicator */}
+				{/* Scroll indicator — centered, decorative */}
 				<div
 					aria-hidden="true"
 					className="-translate-x-1/2 absolute bottom-8 left-1/2 flex flex-col items-center gap-1"
