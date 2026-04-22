@@ -19,7 +19,7 @@ progress:
 
 **Project started:** 2026-04-18
 **Last updated:** 2026-04-20
-**Last activity:** 2026-04-22
+**Last activity:** 2026-04-22 - Completed quick task 260422-vug: Add logo.svg brand identity to header, footer (with contact details), emails, and relevant pages
 
 ## Project Reference
 
@@ -84,6 +84,7 @@ None.
 |---|-------------|------|--------|-----------|
 | 260420-c1o | Remove i18n setup and English language support, keeping only Danish throughout the entire site and Keystatic CMS configuration | 2026-04-20 | 1daf834 | [260420-c1o-remove-i18n-setup-and-english-language-s](./quick/260420-c1o-remove-i18n-setup-and-english-language-s/) |
 | 260422-un8 | Video support for items and hero, UI polish, item preview on request form, and professional email layout | 2026-04-22 | 81a91aa | [260422-un8-video-support-for-items-and-hero-ui-poli](./quick/260422-un8-video-support-for-items-and-hero-ui-poli/) |
+| 260422-vug | Add logo.svg brand identity to header, footer (with contact details), emails, and relevant pages | 2026-04-22 | 3478362 | [260422-vug-add-logo-svg-brand-identity-to-header-fo](./quick/260422-vug-add-logo-svg-brand-identity-to-header-fo/) |
 
 ## Session Continuity
 
