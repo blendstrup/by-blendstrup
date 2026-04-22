@@ -12,9 +12,10 @@ interface WorkCardProps {
 	slug: string
 	entry: WorkCardEntry
 	labels: { sold: string; forSale: string }
+	blurDataUrl?: string
 }
 
-export function WorkCard({ slug, entry, labels }: WorkCardProps) {
+export function WorkCard({ slug, entry, labels, blurDataUrl }: WorkCardProps) {
 	return (
 		<Link
 			href={`/gallery/${slug}`}
@@ -30,6 +31,8 @@ export function WorkCard({ slug, entry, labels }: WorkCardProps) {
 						fill
 						className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
 						sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+						placeholder={blurDataUrl ? "blur" : "empty"}
+						blurDataURL={blurDataUrl}
 					/>
 				)}
 				<div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-ink/60 to-transparent" />

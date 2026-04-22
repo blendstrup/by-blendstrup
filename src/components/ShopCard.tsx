@@ -17,9 +17,10 @@ interface ShopCardProps {
 		forSale: string
 		contactToBuy: string
 	}
+	blurDataUrl?: string
 }
 
-export function ShopCard({ slug, entry, labels }: ShopCardProps) {
+export function ShopCard({ slug, entry, labels, blurDataUrl }: ShopCardProps) {
 	return (
 		<div className="group relative overflow-hidden rounded-2xl">
 			<div className="relative aspect-[4/5]">
@@ -32,6 +33,8 @@ export function ShopCard({ slug, entry, labels }: ShopCardProps) {
 						fill
 						className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
 						sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+						placeholder={blurDataUrl ? "blur" : "empty"}
+						blurDataURL={blurDataUrl}
 					/>
 				)}
 
