@@ -95,6 +95,7 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
 					alt: img.alt,
 				}),
 			)}
+			video={(work.video as string | null) ?? null}
 			ctaLabels={{
 				contactToBuy: da.gallery.contactToBuy,
 				soldMessage: da.gallery.soldMessage,
