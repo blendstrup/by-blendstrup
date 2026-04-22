@@ -1,4 +1,5 @@
 import { createReader } from "@keystatic/core/reader"
+import { Code2 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import keystaticConfig from "../../keystatic.config"
@@ -61,6 +62,18 @@ export default async function SiteFooter() {
 			<div className="mx-auto mt-10 max-w-screen-xl border-stone/20 border-t pt-6">
 				<p className="font-sans text-stone/60 text-xs">
 					© {new Date().getFullYear()} By Blendstrup
+				</p>
+				<p className="mt-4 flex gap-1.5 font-sans text-stone text-xs">
+					<Code2 size={12} className="shrink-0" />
+					Udviklet af{" "}
+					<Link
+						href="https://www.linkedin.com/in/jonas-blendstrup-rasmussen-a03173200/"
+						target="_blank"
+						rel="noopener noreferrer"
+						className="transition-colors hover:text-stone/70"
+					>
+						Jonas Blendstrup Rasmussen
+					</Link>
 				</p>
 			</div>
 		</footer>

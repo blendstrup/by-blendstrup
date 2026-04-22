@@ -28,7 +28,7 @@ const dmSans = DM_Sans({
 })
 
 //TODO SEO optimizations and images
-//TODO Footer about creator (me) of site and link to linkedin
+//TODO Switch to github mode for keystatic
 
 export default function RootLayout({
 	children,
@@ -37,7 +37,9 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="da" className={`${fraunces.variable} ${dmSans.variable}`}>
-			<body className="bg-linen font-sans text-ink antialiased">{children}</body>
+			<body className="bg-linen font-sans text-ink antialiased">
+				{children}
+			</body>
 		</html>
 	)
 }
