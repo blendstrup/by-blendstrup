@@ -2,9 +2,7 @@
 import { createHmac } from "crypto"
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
-
-export const ADMIN_COOKIE = "admin_session"
-export const COOKIE_MAX_AGE = 60 * 60 * 8 // 8 hours
+import { ADMIN_COOKIE, COOKIE_MAX_AGE } from "./constants"
 
 function deriveToken(): string {
   return createHmac("sha256", process.env.ADMIN_PASSWORD ?? "")
