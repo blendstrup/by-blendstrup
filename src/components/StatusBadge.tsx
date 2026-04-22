@@ -15,7 +15,7 @@ export function StatusBadge({ status, labels }: StatusBadgeProps) {
 	return (
 		<span
 			aria-label={label}
-			className={`absolute top-2 left-2 rounded-full px-2 py-1 font-medium text-linen text-sm ${colorClass}`}
+			className={`absolute top-4 left-4 z-10 rounded-full px-2 py-1 font-medium text-linen text-sm ${colorClass}`}
 		>
 			{label}
 		</span>

@@ -1,5 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
+import { StatusBadge } from "./StatusBadge"
 
 export interface ShopCardEntry {
 	title: string
@@ -51,12 +52,14 @@ export function ShopCard({ slug, entry, labels, blurDataUrl }: ShopCardProps) {
 
 				<div className="pointer-events-none absolute inset-x-0 bottom-0 h-[50%] bg-linear-to-t from-ink/75 to-transparent" />
 
-				<div className="absolute inset-x-0 bottom-0 p-4">
+				<StatusBadge status={entry.saleStatus} labels={labels} />
+
+				<div className="absolute inset-x-0 bottom-0 flex flex-col items-start gap-1 p-4">
 					<p className="font-medium font-sans text-linen text-sm leading-snug">
 						{entry.title}
 					</p>
 					{entry.price ? (
-						<p className="mt-0.5 font-medium font-sans text-linen/90 text-sm leading-snug">
+						<p className="font-medium font-sans text-linen/90 text-sm leading-snug">
 							{entry.price}
 						</p>
 					) : null}

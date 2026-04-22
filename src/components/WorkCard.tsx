@@ -47,11 +47,12 @@ export function WorkCard({ slug, entry, labels, blurDataUrl }: WorkCardProps) {
 					/>
 				)}
 				<div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-linear-to-t from-ink/60 to-transparent" />
-				<div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-4">
+				<StatusBadge status={entry.saleStatus} labels={labels} />
+
+				<div className="absolute inset-x-0 bottom-0 flex flex-col items-start gap-1 p-4">
 					<p className="font-medium font-sans text-linen text-sm leading-snug">
 						{entry.title}
 					</p>
-					<StatusBadge status={entry.saleStatus} labels={labels} />
 				</div>
 			</div>
 		</Link>
