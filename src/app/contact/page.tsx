@@ -61,7 +61,7 @@ export default async function ContactPage() {
 				{/* Profile photo */}
 				{aboutData?.photo ? (
 					<div className="mb-12 overflow-hidden rounded-2xl">
-						<div className="relative aspect-[3/2] w-full">
+						<div className="relative aspect-3/2 w-full">
 							<Image
 								src={aboutData.photo}
 								alt={photoAlt}
@@ -130,7 +130,7 @@ export default async function ContactPage() {
 						</p>
 						<Link
 							href="/contact/purchase"
-							className="inline-block bg-terracotta px-6 py-3 font-medium font-sans text-linen text-sm transition-colors duration-150 hover:bg-stone focus-visible:outline-2 focus-visible:outline-terracotta focus-visible:outline-offset-2 active:bg-ink"
+							className="inline-block cursor-pointer rounded-sm bg-terracotta px-6 py-3 font-medium font-sans text-linen text-sm transition-colors duration-150 hover:bg-stone focus-visible:outline-2 focus-visible:outline-terracotta focus-visible:outline-offset-2 active:bg-ink"
 						>
 							{da.contact.purchase.cta}
 						</Link>
@@ -146,7 +146,7 @@ export default async function ContactPage() {
 						</p>
 						<Link
 							href="/custom-orders"
-							className="inline-block bg-terracotta px-6 py-3 font-medium font-sans text-linen text-sm transition-colors duration-150 hover:bg-stone focus-visible:outline-2 focus-visible:outline-terracotta focus-visible:outline-offset-2 active:bg-ink"
+							className="inline-block cursor-pointer rounded-sm bg-terracotta px-6 py-3 font-medium font-sans text-linen text-sm transition-colors duration-150 hover:bg-stone focus-visible:outline-2 focus-visible:outline-terracotta focus-visible:outline-offset-2 active:bg-ink"
 						>
 							{da.contact.customOrders.cta}
 						</Link>

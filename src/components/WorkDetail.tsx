@@ -44,31 +44,31 @@ export async function WorkDetail({
 				{/* Left column: primary media (video or image) */}
 				<div className="relative w-full">
 					{video ? (
-						<div className="relative aspect-[4/5] w-full overflow-hidden border border-clay bg-oat shadow-sm">
+						<div className="relative aspect-4/5 w-full overflow-hidden rounded-md border border-clay bg-oat shadow-sm">
 							<video
 								src={video}
 								autoPlay
 								muted
 								loop
 								playsInline
-								className="absolute inset-0 h-full w-full object-contain"
+								className="absolute inset-0 h-full w-full object-cover"
 							/>
 						</div>
 					) : images.length > 0 ? (
-						<div className="relative aspect-[4/5] w-full overflow-hidden border border-clay bg-oat shadow-sm">
+						<div className="relative aspect-4/5 w-full overflow-hidden rounded-md border border-clay bg-oat shadow-sm">
 							<Image
 								src={images[0]?.image ?? ""}
 								alt={images[0]?.alt ?? ""}
 								priority
 								fill
-								className="object-contain"
+								className="object-cover"
 								sizes="(max-width: 1024px) 100vw, 55vw"
 								placeholder={blurUrls[0] ? "blur" : "empty"}
 								blurDataURL={blurUrls[0]}
 							/>
 						</div>
 					) : (
-						<div className="relative aspect-[4/5] border border-clay bg-oat" />
+						<div className="relative aspect-4/5 rounded-md border border-clay bg-oat" />
 					)}
 				</div>
 
@@ -96,7 +96,7 @@ export async function WorkDetail({
 						{saleStatus === "available" && (
 							<Link
 								href={`/contact/purchase?piece=${slug}`}
-								className="inline-block bg-terracotta px-6 py-3 font-medium text-linen text-sm transition-colors duration-150 hover:bg-fault"
+								className="inline-block cursor-pointer rounded-sm bg-terracotta px-6 py-3 font-medium text-linen text-sm transition-colors duration-150 hover:bg-fault"
 							>
 								{ctaLabels.contactToBuy}
 							</Link>
@@ -108,7 +108,7 @@ export async function WorkDetail({
 								</p>
 								<Link
 									href="/custom-orders"
-									className="mt-4 inline-block border border-terracotta bg-transparent px-6 py-3 font-medium text-sm text-terracotta transition-colors duration-150 hover:bg-terracotta hover:text-linen"
+									className="mt-4 inline-block cursor-pointer rounded-sm border border-terracotta bg-transparent px-6 py-3 font-medium text-sm text-terracotta transition-colors duration-150 hover:bg-terracotta hover:text-linen"
 								>
 									{ctaLabels.soldCta} →
 								</Link>

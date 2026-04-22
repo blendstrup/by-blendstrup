@@ -14,7 +14,7 @@ import da from "../../messages/da.json"
 const initialState: ActionState = { success: false }
 
 const inputClass =
-	"w-full border border-clay bg-linen px-4 py-3 font-normal font-sans text-base text-ink placeholder:text-stone focus:border-ink focus:outline-none aria-[invalid=true]:border-fault"
+	"w-full overflow-hidden rounded-sm border border-clay bg-linen px-4 py-3 font-normal font-sans text-base text-ink outline-none! ring-0! placeholder:text-stone focus:border-ink aria-invalid=true:border-fault"
 
 const labelClass = "font-medium font-sans text-ink text-sm"
 

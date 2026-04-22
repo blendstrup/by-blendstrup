@@ -40,7 +40,10 @@ export default async function PurchaseInquiryPage({ searchParams }: Props) {
 		const entry = await reader.collections.works.read(slug)
 		if (entry) {
 			// Image path comes from Keystatic (server-side trusted source) — T-un8-03-02
-			const images = entry.images as Array<{ image: string | null; alt: string }>
+			const images = entry.images as Array<{
+				image: string | null
+				alt: string
+			}>
 			pieceEntry = {
 				title: entry.title,
 				firstImage: images[0]?.image ?? null,
@@ -63,7 +66,7 @@ export default async function PurchaseInquiryPage({ searchParams }: Props) {
 						{/* Left: item preview card */}
 						<div className="flex flex-col gap-4">
 							{pieceEntry.firstImage && (
-								<div className="relative aspect-[4/5] overflow-hidden border border-clay bg-oat">
+								<div className="relative aspect-4/5 overflow-hidden rounded-md border border-clay bg-oat">
 									<Image
 										src={pieceEntry.firstImage}
 										alt={pieceEntry.firstImageAlt}
@@ -78,12 +81,17 @@ export default async function PurchaseInquiryPage({ searchParams }: Props) {
 									{pieceEntry.title}
 								</p>
 								{pieceEntry.price && (
-									<p className="mt-1 font-sans text-sm text-stone">{pieceEntry.price}</p>
+									<p className="mt-1 font-sans text-sm text-stone">
+										{pieceEntry.price}
+									</p>
 								)}
 							</div>
 						</div>
 						{/* Right: form */}
-						<PurchaseInquiryForm pieceSlug={slug} pieceTitle={pieceEntry.title} />
+						<PurchaseInquiryForm
+							pieceSlug={slug}
+							pieceTitle={pieceEntry.title}
+						/>
 					</div>
 				) : (
 					// Full-width form when no item context (direct URL or invalid slug)

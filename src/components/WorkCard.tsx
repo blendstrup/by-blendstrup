@@ -22,7 +22,7 @@ export function WorkCard({ slug, entry, labels, blurDataUrl }: WorkCardProps) {
 			href={`/gallery/${slug}`}
 			className="group relative block cursor-pointer overflow-hidden rounded-2xl"
 		>
-			<div className="relative aspect-[4/5]">
+			<div className="relative aspect-4/5">
 				{entry.video ? (
 					<video
 						src={entry.video}
@@ -46,7 +46,7 @@ export function WorkCard({ slug, entry, labels, blurDataUrl }: WorkCardProps) {
 						blurDataURL={blurDataUrl}
 					/>
 				)}
-				<div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-ink/60 to-transparent" />
+				<div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-linear-to-t from-ink/60 to-transparent" />
 				<div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-4">
 					<p className="font-medium font-sans text-linen text-sm leading-snug">
 						{entry.title}

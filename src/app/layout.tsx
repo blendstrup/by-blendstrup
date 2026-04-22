@@ -30,9 +30,6 @@ const dmSans = DM_Sans({
 	weight: ["400", "500"],
 })
 
-//TODO Use video for hero section and make text/cta more clear
-//TODO Add preview of selected item when making request for specific piece and add to email
-
 export default function RootLayout({
 	children,
 }: {

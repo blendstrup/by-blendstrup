@@ -72,7 +72,7 @@ export function PurchaseInquiryForm({
 					<p className="font-medium font-sans text-sm text-stone">
 						{da.contact.purchase.form.regardingLabel}
 					</p>
-					<div className="border border-clay bg-oat px-4 py-3 font-medium font-sans text-base text-ink">
+					<div className="w-full overflow-hidden rounded-sm border border-clay bg-oat px-4 py-3 font-medium font-sans text-base text-ink">
 						{pieceTitle}
 					</div>
 				</div>
@@ -91,7 +91,7 @@ export function PurchaseInquiryForm({
 					type="text"
 					autoComplete="name"
 					{...register("name")}
-					className="w-full border border-clay bg-linen px-4 py-3 font-normal font-sans text-base text-ink placeholder:text-stone focus:border-ink focus:outline-none aria-[invalid=true]:border-fault"
+					className="w-full overflow-hidden rounded-sm border border-clay bg-linen px-4 py-3 font-normal font-sans text-base text-ink outline-none! ring-0! placeholder:text-stone focus:border-ink aria-invalid=true:border-fault"
 					aria-invalid={errors.name ? "true" : undefined}
 				/>
 				{errors.name && (
@@ -125,7 +125,7 @@ export function PurchaseInquiryForm({
 					type="email"
 					autoComplete="email"
 					{...register("email")}
-					className="w-full border border-clay bg-linen px-4 py-3 font-normal font-sans text-base text-ink placeholder:text-stone focus:border-ink focus:outline-none aria-[invalid=true]:border-fault"
+					className="w-full overflow-hidden rounded-sm border border-clay bg-linen px-4 py-3 font-normal font-sans text-base text-ink outline-none! ring-0! placeholder:text-stone focus:border-ink aria-invalid=true:border-fault"
 					aria-invalid={errors.email ? "true" : undefined}
 				/>
 				{errors.email && (
@@ -159,7 +159,7 @@ export function PurchaseInquiryForm({
 					rows={5}
 					{...register("message")}
 					placeholder={da.contact.purchase.form.messagePlaceholder}
-					className="min-h-[120px] w-full resize-y border border-clay bg-linen px-4 py-3 font-normal font-sans text-base text-ink placeholder:text-stone focus:border-ink focus:outline-none aria-[invalid=true]:border-fault"
+					className="min-h-[120px] w-full resize-y overflow-hidden rounded-sm border border-clay bg-linen px-4 py-3 font-normal font-sans text-base text-ink outline-none! ring-0! placeholder:text-stone focus:border-ink aria-invalid=true:border-fault"
 					aria-invalid={errors.message ? "true" : undefined}
 				/>
 				{errors.message && (

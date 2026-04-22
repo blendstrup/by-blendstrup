@@ -64,7 +64,9 @@ export default async function HomePage() {
 		})),
 	)
 
-	const heroImage = homepageData?.heroVideo ? null : (heroWork?.images?.[0] ?? null)
+	const heroImage = homepageData?.heroVideo
+		? null
+		: (heroWork?.images?.[0] ?? null)
 
 	return (
 		<main>
@@ -105,7 +107,7 @@ export default async function HomePage() {
 					</h1>
 					<Link
 						href="/gallery"
-						className="mt-6 inline-block border border-linen px-8 py-3 font-medium font-sans text-linen text-sm transition-colors duration-200 hover:bg-linen hover:text-ink focus-visible:outline-2 focus-visible:outline-linen focus-visible:outline-offset-2"
+						className="mt-6 inline-block cursor-pointer rounded-sm border border-linen px-8 py-3 font-medium font-sans text-linen text-sm transition-colors duration-200 hover:bg-linen hover:text-ink focus-visible:outline-2 focus-visible:outline-linen focus-visible:outline-offset-2"
 					>
 						{da.home.hero.cta}
 					</Link>
@@ -183,7 +185,7 @@ export default async function HomePage() {
 				<div className="mx-auto max-w-screen-xl px-6 sm:px-12 lg:px-16">
 					<div className="grid grid-cols-1 gap-8 lg:grid-cols-[2fr_3fr] lg:gap-16">
 						{/* Photo — left column on desktop, top on mobile */}
-						<div className="relative aspect-square overflow-hidden border border-clay lg:aspect-4/5">
+						<div className="relative aspect-square overflow-hidden rounded-md border border-clay lg:aspect-4/5">
 							{aboutData?.photo ? (
 								<Image
 									src={aboutData.photo}
@@ -233,7 +235,7 @@ export default async function HomePage() {
 					<div className="mt-8">
 						<Link
 							href="/custom-orders"
-							className="inline-block cursor-pointer bg-terracotta px-6 py-3 font-medium font-sans text-linen text-sm transition-colors duration-150 hover:bg-stone focus-visible:outline-2 focus-visible:outline-terracotta focus-visible:outline-offset-2 active:bg-ink"
+							className="inline-block cursor-pointer rounded-sm bg-terracotta px-6 py-3 font-medium font-sans text-linen text-sm transition-colors duration-150 hover:bg-stone focus-visible:outline-2 focus-visible:outline-terracotta focus-visible:outline-offset-2 active:bg-ink"
 						>
 							{da.home.customOrders.cta}
 						</Link>

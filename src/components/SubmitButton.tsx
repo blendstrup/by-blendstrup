@@ -19,7 +19,7 @@ export function SubmitButton({
 			disabled={isPending}
 			className={
 				className ??
-				"bg-terracotta px-6 py-3 font-medium font-sans text-linen text-sm transition-colors duration-150 hover:bg-stone focus-visible:outline-2 focus-visible:outline-terracotta focus-visible:outline-offset-2 active:bg-ink disabled:cursor-not-allowed disabled:bg-clay disabled:opacity-60"
+				"cursor-pointer rounded-sm bg-terracotta px-6 py-3 font-medium font-sans text-linen text-sm transition-colors duration-150 hover:bg-stone focus-visible:outline-2 focus-visible:outline-terracotta focus-visible:outline-offset-2 active:bg-ink disabled:cursor-not-allowed disabled:bg-clay disabled:opacity-60"
 			}
 		>
 			{isPending ? pendingLabel : label}
