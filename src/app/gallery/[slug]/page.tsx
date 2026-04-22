@@ -12,9 +12,7 @@ export async function generateStaticParams() {
 	const reader = createReader(process.cwd(), keystaticConfig)
 	const works = await reader.collections.works.all()
 
-	return works
-		.filter((w) => w.entry.published)
-		.map((w) => ({ slug: w.slug }))
+	return works.filter((w) => w.entry.published).map((w) => ({ slug: w.slug }))
 }
 
 export default async function WorkDetailPage({ params }: WorkDetailPageProps) {

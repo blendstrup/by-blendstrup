@@ -1,8 +1,8 @@
 import { ShopCard } from "@/components/ShopCard"
 import { createReader } from "@keystatic/core/reader"
 import { ChevronDown } from "lucide-react"
-import Link from "next/link"
 import Image from "next/image"
+import Link from "next/link"
 import keystaticConfig from "../../keystatic.config"
 import da from "../../messages/da.json"
 
@@ -167,16 +167,14 @@ export default async function HomePage() {
 							</h2>
 							{aboutData ? (
 								<>
-									{aboutData?.aboutText
-										?.split("\n\n")
-										.map((paragraph) => (
-											<p
-												key={paragraph.slice(0, 40)}
-												className="font-normal font-sans text-base text-ink leading-relaxed"
-											>
-												{paragraph}
-											</p>
-										))}
+									{aboutData?.aboutText?.split("\n\n").map((paragraph) => (
+										<p
+											key={paragraph.slice(0, 40)}
+											className="font-normal font-sans text-base text-ink leading-relaxed"
+										>
+											{paragraph}
+										</p>
+									))}
 								</>
 							) : null}
 						</div>

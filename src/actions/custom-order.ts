@@ -1,11 +1,11 @@
 "use server"
 
+import { escHtml } from "@/lib/email-utils"
 import { checkHoneypot } from "@/lib/honeypot"
 import {
 	type CustomOrderFormData,
 	customOrderSchema,
 } from "@/lib/schemas/custom-order"
-import { escHtml } from "@/lib/email-utils"
 import { Resend } from "resend"
 
 const resend = new Resend(process.env.RESEND_API_KEY)
@@ -55,7 +55,9 @@ export async function submitCustomOrder(
 
 	const fromAddress =
 		process.env.RESEND_FROM_ADDRESS ??
-		(process.env.NODE_ENV === "development" ? "onboarding@resend.dev" : undefined)
+		(process.env.NODE_ENV === "development"
+			? "onboarding@resend.dev"
+			: undefined)
 	if (!fromAddress) {
 		return {
 			success: false,
