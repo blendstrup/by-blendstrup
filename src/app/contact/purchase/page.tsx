@@ -56,7 +56,7 @@ export default async function PurchaseInquiryPage({ searchParams }: Props) {
 
 	return (
 		<main className="py-16 lg:py-24">
-			<div className="mx-auto max-w-screen-lg px-6 sm:px-12 lg:px-16">
+			<div className="mx-auto max-w-screen-xl px-12 lg:px-16">
 				<h1 className="mb-12 font-normal font-serif text-5xl text-ink tracking-tight">
 					{da.contact.purchase.form.heading}
 				</h1>

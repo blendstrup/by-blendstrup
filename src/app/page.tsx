@@ -131,7 +131,7 @@ export default async function HomePage() {
 
 			{/* ─── Shop Preview Section (HOME-02, D-01 shopPreviewWorks) ─── */}
 			<section className="border-clay border-t py-24">
-				<div className="mx-auto max-w-screen-xl px-6 sm:px-12 lg:px-16">
+				<div className="mx-auto max-w-screen-xl px-12 lg:px-16">
 					<div className="mb-8 flex items-baseline justify-between">
 						<h2 className="font-normal font-serif text-5xl text-ink tracking-tight">
 							{da.home.shopPreview.heading}
@@ -182,7 +182,7 @@ export default async function HomePage() {
 
 			{/* ─── About Section (HOME-04) ─── */}
 			<section className="border-clay border-t bg-oat py-24">
-				<div className="mx-auto max-w-screen-xl px-6 sm:px-12 lg:px-16">
+				<div className="mx-auto max-w-screen-xl px-12 lg:px-16">
 					<div className="grid grid-cols-1 gap-8 lg:grid-cols-[2fr_3fr] lg:gap-16">
 						{/* Photo — left column on desktop, top on mobile */}
 						<div className="relative aspect-square overflow-hidden rounded-md border border-clay lg:aspect-4/5">
@@ -225,7 +225,7 @@ export default async function HomePage() {
 
 			{/* ─── Custom Order CTA Section (HOME-03, D-13) ─── */}
 			<section className="border-clay border-t bg-oat py-24">
-				<div className="mx-auto max-w-screen-md px-6 text-center sm:px-12 lg:px-16">
+				<div className="mx-auto max-w-screen-xl px-12 text-center lg:px-16">
 					<h2 className="font-normal font-serif text-[28px] text-ink tracking-tight">
 						{da.home.customOrders.heading}
 					</h2>

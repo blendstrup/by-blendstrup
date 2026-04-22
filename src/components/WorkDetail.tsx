@@ -38,9 +38,9 @@ export async function WorkDetail({
 				: null
 
 	return (
-		<article className="mx-auto max-w-screen-lg px-6 py-16 sm:px-12 lg:px-16 lg:py-24">
+		<article className="mx-auto max-w-screen-xl px-12 py-16 lg:px-16 lg:py-24">
 			{/* Side-by-side on desktop (lg:grid-cols-[55fr_45fr]), stacked on mobile */}
-			<div className="grid grid-cols-1 gap-8 lg:grid-cols-[55fr_45fr]">
+			<div className="grid grid-cols-1 gap-24 lg:grid-cols-[55fr_45fr]">
 				{/* Left column: primary media (video or image) */}
 				<div className="relative w-full">
 					{video ? (

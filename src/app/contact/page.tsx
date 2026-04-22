@@ -56,11 +56,11 @@ export default async function ContactPage() {
 	const photoAlt = aboutData?.photoAlt ?? ""
 
 	return (
-		<main className="py-24 pb-16">
-			<div className="mx-auto max-w-screen-md px-6 sm:px-12 lg:px-16">
+		<main className="py-16 lg:py-24">
+			<div className="mx-auto max-w-screen-xl px-12 lg:px-16">
 				{/* Profile photo */}
 				{aboutData?.photo ? (
-					<div className="mb-12 overflow-hidden rounded-2xl">
+					<div className="mb-12 max-h-96 overflow-hidden rounded-2xl">
 						<div className="relative aspect-3/2 w-full">
 							<Image
 								src={aboutData.photo}
