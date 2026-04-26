@@ -186,7 +186,7 @@ export default async function HomePage() {
 				<div className="mx-auto max-w-screen-xl px-12 lg:px-16">
 					<div className="grid grid-cols-1 gap-8 lg:grid-cols-[2fr_3fr] lg:gap-16">
 						{/* Photo — left column on desktop, top on mobile */}
-						<div className="relative aspect-square overflow-hidden rounded-md border border-clay lg:aspect-4/5">
+						<div className="relative aspect-square overflow-hidden rounded-2xl border border-clay lg:aspect-4/5">
 							{aboutData?.photo ? (
 								<Image
 									src={aboutData.photo}

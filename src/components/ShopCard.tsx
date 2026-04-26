@@ -71,7 +71,7 @@ export function ShopCard({ slug, entry, labels, blurDataUrl }: ShopCardProps) {
 				</div>
 
 				{entry.saleStatus === "available" && (
-					<div className="absolute inset-0 hidden items-center justify-center bg-ink/15 opacity-0 transition-opacity duration-200 group-hover:opacity-100 sm:flex">
+					<div className="absolute inset-0 z-20 hidden items-center justify-center bg-ink/15 opacity-0 transition-opacity duration-200 group-hover:opacity-100 sm:flex">
 						<Link
 							href={`/contact/purchase?piece=${slug}`}
 							className="cursor-pointer rounded-sm bg-terracotta px-6 py-3 font-medium font-sans text-linen text-sm transition-colors duration-150 hover:bg-stone focus-visible:outline-2 focus-visible:outline-terracotta focus-visible:outline-offset-2 active:bg-ink"
@@ -83,7 +83,7 @@ export function ShopCard({ slug, entry, labels, blurDataUrl }: ShopCardProps) {
 			</div>
 
 			{entry.saleStatus === "available" && (
-				<div className="sm:hidden">
+				<div className="relative z-20 sm:hidden">
 					<Link
 						href={`/contact/purchase?piece=${slug}`}
 						className="block w-full cursor-pointer rounded-sm bg-terracotta px-6 py-3 text-center font-medium font-sans text-linen text-sm transition-colors duration-150 hover:bg-stone focus-visible:outline-2 focus-visible:outline-terracotta focus-visible:outline-offset-2 active:bg-ink"
@@ -92,6 +92,14 @@ export function ShopCard({ slug, entry, labels, blurDataUrl }: ShopCardProps) {
 					</Link>
 				</div>
 			)}
+
+			{/* Stretched link — last in DOM so it sits above image content (z-10)
+			    but below the buy button overlay (z-20) */}
+			<Link
+				href={`/gallery/${slug}`}
+				className="absolute inset-0 z-10"
+				aria-label={entry.title}
+			/>
 		</div>
 	)
 }

@@ -38,7 +38,7 @@ export async function MediaGallery({
 			<div className="grid grid-cols-2 gap-4 lg:grid-cols-3 lg:gap-6">
 				{items.map((item, i) => (
 					<div key={`${item.image ?? item.video ?? i}`}>
-						<div className="relative aspect-4/5 overflow-hidden border border-clay bg-oat">
+						<div className="relative aspect-4/5 overflow-hidden rounded-2xl bg-oat">
 							{item.type === "video" && item.video ? (
 								<video
 									src={item.video}
