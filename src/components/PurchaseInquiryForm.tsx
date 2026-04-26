@@ -13,9 +13,34 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useActionState } from "react"
 import { useForm } from "react-hook-form"
 
+interface PurchaseInquiryStrings {
+	regarding: string
+	nameLabel: string
+	emailLabel: string
+	messageLabel: string
+	messagePlaceholder: string
+	submit: string
+	pending: string
+	successHeading: string
+	successBody: string
+}
+
 interface PurchaseInquiryFormProps {
 	pieceSlug?: string
 	pieceTitle?: string
+	strings?: PurchaseInquiryStrings
+}
+
+const defaultStrings: PurchaseInquiryStrings = {
+	regarding: "Forespørgsel om",
+	nameLabel: "Navn",
+	emailLabel: "E-mail",
+	messageLabel: "Besked",
+	messagePlaceholder: "Fortæl mig, hvad du tænker...",
+	submit: "Send forespørgsel",
+	pending: "Sender...",
+	successHeading: "Tak for din henvendelse",
+	successBody: "Jeg vender tilbage til dig hurtigst muligt.",
 }
 
 const initialState: ActionState = { success: false }
@@ -23,7 +48,9 @@ const initialState: ActionState = { success: false }
 export function PurchaseInquiryForm({
 	pieceSlug,
 	pieceTitle,
+	strings,
 }: PurchaseInquiryFormProps) {
+	const s = { ...defaultStrings, ...strings }
 	const [state, formAction, isPending] = useActionState(
 		submitPurchaseInquiry,
 		initialState,
@@ -40,10 +67,10 @@ export function PurchaseInquiryForm({
 		return (
 			<div className="py-12 text-center">
 				<p className="mb-4 font-normal font-serif text-[28px] text-ink tracking-tight">
-					Tak for din henvendelse
+					{s.successHeading}
 				</p>
 				<p className="font-normal font-sans text-base text-stone">
-					Jeg vender tilbage til dig hurtigst muligt.
+					{s.successBody}
 				</p>
 			</div>
 		)
@@ -69,7 +96,7 @@ export function PurchaseInquiryForm({
 			{pieceTitle && (
 				<div className="flex flex-col gap-2">
 					<p className="font-medium font-sans text-sm text-stone">
-						Forespørgsel om
+						{s.regarding}
 					</p>
 					<div className="w-full overflow-hidden rounded-sm border border-clay bg-oat px-4 py-3 font-medium font-sans text-base text-ink">
 						{pieceTitle}
@@ -83,7 +110,7 @@ export function PurchaseInquiryForm({
 					htmlFor="name"
 					className="font-medium font-sans text-ink text-sm"
 				>
-					Navn
+					{s.nameLabel}
 				</label>
 				<input
 					id="name"
@@ -117,7 +144,7 @@ export function PurchaseInquiryForm({
 					htmlFor="email"
 					className="font-medium font-sans text-ink text-sm"
 				>
-					E-mail
+					{s.emailLabel}
 				</label>
 				<input
 					id="email"
@@ -151,13 +178,13 @@ export function PurchaseInquiryForm({
 					htmlFor="message"
 					className="font-medium font-sans text-ink text-sm"
 				>
-					Besked
+					{s.messageLabel}
 				</label>
 				<textarea
 					id="message"
 					rows={5}
 					{...register("message")}
-					placeholder="Fortæl mig, hvad du tænker..."
+					placeholder={s.messagePlaceholder}
 					className="min-h-[120px] w-full resize-y overflow-hidden rounded-sm border border-clay bg-linen px-4 py-3 font-normal font-sans text-base text-ink outline-none! ring-0! placeholder:text-stone focus:border-ink aria-invalid=true:border-fault"
 					aria-invalid={errors.message ? "true" : undefined}
 				/>
@@ -193,8 +220,8 @@ export function PurchaseInquiryForm({
 			<div className="mt-8">
 				<SubmitButton
 					isPending={isPending}
-					label="Send forespørgsel"
-					pendingLabel="Sender..."
+					label={s.submit}
+					pendingLabel={s.pending}
 				/>
 			</div>
 		</form>

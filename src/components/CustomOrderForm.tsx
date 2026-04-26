@@ -10,6 +10,40 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useActionState } from "react"
 import { useForm } from "react-hook-form"
 
+interface CustomOrderStrings {
+	nameLabel: string
+	emailLabel: string
+	descriptionLabel: string
+	descriptionPlaceholder: string
+	quantityLabel: string
+	quantityPlaceholder: string
+	budgetLabel: string
+	budgetPlaceholder: string
+	timelineLabel: string
+	timelinePlaceholder: string
+	submit: string
+	pending: string
+	successHeading: string
+	successBody: string
+}
+
+const defaultStrings: CustomOrderStrings = {
+	nameLabel: "Navn",
+	emailLabel: "E-mail",
+	descriptionLabel: "Hvad ønsker du?",
+	descriptionPlaceholder: "Størrelse, farve, tekstur, brug — jo mere, jo bedre.",
+	quantityLabel: "Antal",
+	quantityPlaceholder: "F.eks. 2",
+	budgetLabel: "Budgetramme",
+	budgetPlaceholder: "F.eks. 500–1000 kr.",
+	timelineLabel: "Ønsket tidslinje",
+	timelinePlaceholder: "F.eks. inden jul",
+	submit: "Send bestilling",
+	pending: "Sender...",
+	successHeading: "Tak for din bestilling",
+	successBody: "Jeg gennemgår dit ønske og kontakter dig inden for få dage.",
+}
+
 const initialState: ActionState = { success: false }
 
 const inputClass =
@@ -19,7 +53,8 @@ const labelClass = "font-medium font-sans text-ink text-sm"
 
 const errorClass = "mt-1 font-normal font-sans text-fault text-sm"
 
-export function CustomOrderForm() {
+export function CustomOrderForm({ strings }: { strings?: CustomOrderStrings }) {
+	const s = { ...defaultStrings, ...strings }
 	const [state, formAction, isPending] = useActionState(
 		submitCustomOrder,
 		initialState,
@@ -36,10 +71,10 @@ export function CustomOrderForm() {
 		return (
 			<div className="py-12 text-center">
 				<p className="mb-4 font-normal font-serif text-[28px] text-ink tracking-tight">
-					Tak for din bestilling
+					{s.successHeading}
 				</p>
 				<p className="font-normal font-sans text-base text-stone">
-					Jeg gennemgår dit ønske og kontakter dig inden for få dage.
+					{s.successBody}
 				</p>
 			</div>
 		)
@@ -60,7 +95,7 @@ export function CustomOrderForm() {
 			{/* Name */}
 			<div className="flex flex-col gap-2">
 				<label htmlFor="co-name" className={labelClass}>
-					Navn
+					{s.nameLabel}
 				</label>
 				<input
 					id="co-name"
@@ -85,7 +120,7 @@ export function CustomOrderForm() {
 			{/* Email */}
 			<div className="flex flex-col gap-2">
 				<label htmlFor="co-email" className={labelClass}>
-					E-mail
+					{s.emailLabel}
 				</label>
 				<input
 					id="co-email"
@@ -110,13 +145,13 @@ export function CustomOrderForm() {
 			{/* What do you want */}
 			<div className="flex flex-col gap-2">
 				<label htmlFor="co-description" className={labelClass}>
-					Hvad ønsker du?
+					{s.descriptionLabel}
 				</label>
 				<textarea
 					id="co-description"
 					rows={5}
 					{...register("description")}
-					placeholder="Størrelse, farve, tekstur, brug — jo mere, jo bedre."
+					placeholder={s.descriptionPlaceholder}
 					className={`${inputClass} min-h-[120px] resize-y`}
 					aria-invalid={errors.description ? "true" : undefined}
 				/>
@@ -135,14 +170,14 @@ export function CustomOrderForm() {
 			{/* Quantity */}
 			<div className="flex flex-col gap-2">
 				<label htmlFor="co-quantity" className={labelClass}>
-					Antal
+					{s.quantityLabel}
 				</label>
 				<input
 					id="co-quantity"
 					type="text"
 					inputMode="numeric"
 					{...register("quantity")}
-					placeholder="F.eks. 2"
+					placeholder={s.quantityPlaceholder}
 					className={inputClass}
 					aria-invalid={errors.quantity ? "true" : undefined}
 				/>
@@ -161,14 +196,14 @@ export function CustomOrderForm() {
 			{/* Budget — optional (CUST-02) */}
 			<div className="flex flex-col gap-2">
 				<label htmlFor="co-budget" className={labelClass}>
-					Budgetramme{" "}
+					{s.budgetLabel}{" "}
 					<span className="font-normal text-stone">(valgfri)</span>
 				</label>
 				<input
 					id="co-budget"
 					type="text"
 					{...register("budget")}
-					placeholder="F.eks. 500–1000 kr."
+					placeholder={s.budgetPlaceholder}
 					className={inputClass}
 				/>
 			</div>
@@ -176,14 +211,14 @@ export function CustomOrderForm() {
 			{/* Timeline — optional (CUST-02) */}
 			<div className="flex flex-col gap-2">
 				<label htmlFor="co-timeline" className={labelClass}>
-					Ønsket tidslinje{" "}
+					{s.timelineLabel}{" "}
 					<span className="font-normal text-stone">(valgfri)</span>
 				</label>
 				<input
 					id="co-timeline"
 					type="text"
 					{...register("timeline")}
-					placeholder="F.eks. inden jul"
+					placeholder={s.timelinePlaceholder}
 					className={inputClass}
 				/>
 			</div>
@@ -202,8 +237,8 @@ export function CustomOrderForm() {
 			<div className="mt-8">
 				<SubmitButton
 					isPending={isPending}
-					label="Send bestilling"
-					pendingLabel="Sender..."
+					label={s.submit}
+					pendingLabel={s.pending}
 				/>
 			</div>
 		</form>

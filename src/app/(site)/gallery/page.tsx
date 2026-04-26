@@ -94,8 +94,8 @@ export default async function GalleryPage({ searchParams }: GalleryPageProps) {
 					<GalleryGrid
 						works={works}
 						labels={{
-							sold: "Solgt",
-							forSale: "Til salg",
+							sold: galleryContent?.soldBadge ?? "Solgt",
+							forSale: galleryContent?.forSaleBadge ?? "Til salg",
 						}}
 					/>
 				)}
