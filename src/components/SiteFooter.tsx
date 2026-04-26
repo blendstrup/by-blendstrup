@@ -59,10 +59,7 @@ export default async function SiteFooter() {
 			</div>
 
 			{/* Bottom rule */}
-			<div className="mx-auto mt-10 max-w-screen-xl border-stone/20 border-t pt-6">
-				<p className="font-sans text-stone/60 text-xs">
-					© {new Date().getFullYear()} By Blendstrup
-				</p>
+			<div className="mx-auto mt-8 max-w-screen-xl border-stone/20 border-t pt-4">
 				<p className="mt-4 flex gap-1.5 font-sans text-stone text-xs">
 					<Code2 size={12} className="shrink-0" />
 					Udviklet af{" "}
@@ -74,6 +71,9 @@ export default async function SiteFooter() {
 					>
 						Jonas Blendstrup Rasmussen
 					</Link>
+				</p>
+				<p className="mt-4 font-sans text-stone/60 text-xs">
+					© {new Date().getFullYear()} By Blendstrup
 				</p>
 			</div>
 		</footer>
