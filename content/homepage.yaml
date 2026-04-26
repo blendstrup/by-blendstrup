@@ -2,6 +2,17 @@ heroWorks:
   - bowl-test
 shopPreviewWorks:
   - bowl-test
+heroHeadline: Håndlavet keramik
+heroCta: Se samlingen
+heroScrollIndicator: Rul ned
+shopPreviewHeading: Til salg
+shopPreviewViewAll: Se alle varer
+shopPreviewEmpty: Ingen stykker til salg i øjeblikket.
+aboutHeading: Om Laura
+customOrdersHeading: Noget særligt i tankerne?
+customOrdersBody: Jeg laver specialbestillinger — fortæl mig, hvad du forestiller dig.
+customOrdersCta: Start en specialbestilling
+galleryHeading: Galleri
 mediaGallery:
   - type: video
     video: /videos/gallery/mediaGallery/0/video.mp4

@@ -215,6 +215,63 @@ const homepage = singleton({
       publicPath: "/videos/hero/",
       validation: { isRequired: false },
     }),
+    heroHeadline: fields.text({
+      label: "Hero — overskrift",
+      description: "Den store overskrift over heltebilledet.",
+      defaultValue: "Håndlavet keramik",
+      validation: { length: { min: 1, max: 80 } },
+    }),
+    heroCta: fields.text({
+      label: "Hero — knaptekst",
+      defaultValue: "Se samlingen",
+      validation: { length: { min: 1, max: 60 } },
+    }),
+    heroScrollIndicator: fields.text({
+      label: "Hero — rul-ned tekst",
+      defaultValue: "Rul ned",
+      validation: { length: { max: 40 } },
+    }),
+    shopPreviewHeading: fields.text({
+      label: "Til salg — sektionsoverskrift",
+      defaultValue: "Til salg",
+      validation: { length: { min: 1, max: 80 } },
+    }),
+    shopPreviewViewAll: fields.text({
+      label: "Til salg — 'Se alle'-link",
+      defaultValue: "Se alle varer",
+      validation: { length: { max: 60 } },
+    }),
+    shopPreviewEmpty: fields.text({
+      label: "Til salg — tom-tilstand tekst",
+      defaultValue: "Ingen stykker til salg i øjeblikket.",
+      validation: { length: { max: 200 } },
+    }),
+    aboutHeading: fields.text({
+      label: "Om-sektion — overskrift",
+      defaultValue: "Om Laura",
+      validation: { length: { min: 1, max: 80 } },
+    }),
+    customOrdersHeading: fields.text({
+      label: "Specialbestilling — overskrift",
+      defaultValue: "Noget særligt i tankerne?",
+      validation: { length: { min: 1, max: 80 } },
+    }),
+    customOrdersBody: fields.text({
+      label: "Specialbestilling — brødtekst",
+      defaultValue: "Jeg laver specialbestillinger — fortæl mig, hvad du forestiller dig.",
+      multiline: true,
+      validation: { length: { max: 300 } },
+    }),
+    customOrdersCta: fields.text({
+      label: "Specialbestilling — knaptekst",
+      defaultValue: "Start en specialbestilling",
+      validation: { length: { max: 60 } },
+    }),
+    galleryHeading: fields.text({
+      label: "Galleri-sektion — overskrift",
+      defaultValue: "Galleri",
+      validation: { length: { max: 60 } },
+    }),
     mediaGallery: fields.array(
       fields.object({
         type: fields.select({
@@ -265,6 +322,127 @@ const homepage = singleton({
   },
 });
 
+const gallery = singleton({
+  label: "Gallery Page",
+  path: "content/gallery",
+  format: { data: "yaml" },
+  schema: {
+    title: fields.text({
+      label: "Sideoverskrift",
+      defaultValue: "Keramik",
+      validation: { length: { min: 1, max: 80 } },
+    }),
+    emptyAllHeading: fields.text({
+      label: "Tom tilstand (alle) — overskrift",
+      defaultValue: "Ingen arbejder endnu.",
+      validation: { length: { max: 120 } },
+    }),
+    emptyAllBody: fields.text({
+      label: "Tom tilstand (alle) — brødtekst",
+      defaultValue: "Kom tilbage snart — nye stykker tilføjes løbende.",
+      multiline: true,
+      validation: { length: { max: 200 } },
+    }),
+    emptyForSaleHeading: fields.text({
+      label: "Tom tilstand (til salg) — overskrift",
+      defaultValue: "Intet til salg lige nu.",
+      validation: { length: { max: 120 } },
+    }),
+    emptyForSaleBody: fields.text({
+      label: "Tom tilstand (til salg) — brødtekst",
+      defaultValue: "Alle stykker er solgt eller ikke annonceret. Interesseret i noget skræddersyet?",
+      multiline: true,
+      validation: { length: { max: 200 } },
+    }),
+    emptyForSaleCta: fields.text({
+      label: "Tom tilstand (til salg) — knaptekst",
+      defaultValue: "Bestil et skræddersyet stykke",
+      validation: { length: { max: 80 } },
+    }),
+    soldMessage: fields.text({
+      label: "Solgt-besked (detalje-side)",
+      defaultValue: "Dette stykke er solgt.",
+      validation: { length: { max: 120 } },
+    }),
+    soldCta: fields.text({
+      label: "Solgt — knaptekst",
+      defaultValue: "Bestil noget tilsvarende",
+      validation: { length: { max: 80 } },
+    }),
+    contactToBuy: fields.text({
+      label: "'Kontakt for køb'-knap",
+      defaultValue: "Kontakt for køb",
+      validation: { length: { max: 60 } },
+    }),
+  },
+});
+
+const contact = singleton({
+  label: "Contact Page",
+  path: "content/contact",
+  format: { data: "yaml" },
+  schema: {
+    heading: fields.text({
+      label: "Sideoverskrift",
+      defaultValue: "Kontakt",
+      validation: { length: { min: 1, max: 80 } },
+    }),
+    infoHeading: fields.text({
+      label: "Kontaktoplysninger — overskrift",
+      defaultValue: "Kontaktoplysninger",
+      validation: { length: { max: 80 } },
+    }),
+    purchaseHeading: fields.text({
+      label: "Køb-sektion — overskrift",
+      defaultValue: "Køb et stykke",
+      validation: { length: { max: 80 } },
+    }),
+    purchaseBody: fields.text({
+      label: "Køb-sektion — brødtekst",
+      defaultValue: "Send mig en besked om det stykke, du er interesseret i.",
+      multiline: true,
+      validation: { length: { max: 300 } },
+    }),
+    purchaseCta: fields.text({
+      label: "Køb-sektion — knaptekst",
+      defaultValue: "Send en forespørgsel",
+      validation: { length: { max: 60 } },
+    }),
+    customOrdersHeading: fields.text({
+      label: "Specialbestilling-sektion — overskrift",
+      defaultValue: "Specialbestilling",
+      validation: { length: { max: 80 } },
+    }),
+    customOrdersBody: fields.text({
+      label: "Specialbestilling-sektion — brødtekst",
+      defaultValue: "Har du et stykke i tankerne, der ikke allerede er i butikken?",
+      multiline: true,
+      validation: { length: { max: 300 } },
+    }),
+    customOrdersCta: fields.text({
+      label: "Specialbestilling-sektion — knaptekst",
+      defaultValue: "Start en specialbestilling",
+      validation: { length: { max: 60 } },
+    }),
+    customOrdersFormHeading: fields.text({
+      label: "Specialbestillings-formular — overskrift",
+      defaultValue: "Specialbestilling",
+      validation: { length: { max: 80 } },
+    }),
+    customOrdersFormSubCopy: fields.text({
+      label: "Specialbestillings-formular — underoverskrift",
+      defaultValue: "Fortæl mig, hvad du forestiller dig — jeg vender tilbage med et tilbud.",
+      multiline: true,
+      validation: { length: { max: 300 } },
+    }),
+    purchaseFormHeading: fields.text({
+      label: "Forespørgsels-formular — overskrift",
+      defaultValue: "Forespørgsel",
+      validation: { length: { max: 80 } },
+    }),
+  },
+});
+
 export default config({
   storage,
   collections: {
@@ -300,13 +478,15 @@ export default config({
     }),
     homepage,
     about,
+    gallery,
+    contact,
   },
   ui: {
     brand: { name: "By Blendstrup" },
     navigation: {
       Pieces: ["works"],
       Taxonomy: ["categories"],
-      Pages: ["homepage", "settings", "about"],
+      Pages: ["homepage", "settings", "about", "gallery", "contact"],
     },
   },
 });
