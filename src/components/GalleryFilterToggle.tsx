@@ -1,7 +1,6 @@
 "use client"
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
-import da from "../../messages/da.json"
 
 export function GalleryFilterToggle() {
 	const router = useRouter()
@@ -28,14 +27,14 @@ export function GalleryFilterToggle() {
 
 	return (
 		<fieldset className="m-0 flex gap-0 border-0 p-0">
-			<legend className="sr-only">{da.gallery.filterLabel}</legend>
+			<legend className="sr-only">Filtrer arbejder</legend>
 			<button
 				type="button"
 				onClick={() => setFilter(false)}
 				aria-pressed={!isFiltered}
 				className={`${baseClasses} ${!isFiltered ? activeClasses : inactiveClasses}`}
 			>
-				{da.gallery.filterAll}
+				Alle
 			</button>
 			<button
 				type="button"
@@ -43,7 +42,7 @@ export function GalleryFilterToggle() {
 				aria-pressed={isFiltered}
 				className={`${baseClasses} ${isFiltered ? activeClasses : inactiveClasses}`}
 			>
-				{da.gallery.filterForSale}
+				Til salg
 			</button>
 		</fieldset>
 	)

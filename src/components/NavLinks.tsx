@@ -2,14 +2,13 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import da from "../../messages/da.json"
 
 export function NavLinks() {
 	const pathname = usePathname()
 
 	const links = [
-		{ href: "/gallery", label: da.navigation.gallery },
-		{ href: "/contact", label: da.navigation.contact },
+		{ href: "/gallery", label: "Keramik" },
+		{ href: "/contact", label: "Kontakt" },
 	]
 
 	return (

@@ -12,7 +12,6 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useActionState } from "react"
 import { useForm } from "react-hook-form"
-import da from "../../messages/da.json"
 
 interface PurchaseInquiryFormProps {
 	pieceSlug?: string
@@ -41,10 +40,10 @@ export function PurchaseInquiryForm({
 		return (
 			<div className="py-12 text-center">
 				<p className="mb-4 font-normal font-serif text-[28px] text-ink tracking-tight">
-					{da.contact.purchase.form.successHeading}
+					Tak for din henvendelse
 				</p>
 				<p className="font-normal font-sans text-base text-stone">
-					{da.contact.purchase.form.successBody}
+					Jeg vender tilbage til dig hurtigst muligt.
 				</p>
 			</div>
 		)
@@ -70,7 +69,7 @@ export function PurchaseInquiryForm({
 			{pieceTitle && (
 				<div className="flex flex-col gap-2">
 					<p className="font-medium font-sans text-sm text-stone">
-						{da.contact.purchase.form.regardingLabel}
+						Forespørgsel om
 					</p>
 					<div className="w-full overflow-hidden rounded-sm border border-clay bg-oat px-4 py-3 font-medium font-sans text-base text-ink">
 						{pieceTitle}
@@ -84,7 +83,7 @@ export function PurchaseInquiryForm({
 					htmlFor="name"
 					className="font-medium font-sans text-ink text-sm"
 				>
-					{da.contact.purchase.form.nameLabel}
+					Navn
 				</label>
 				<input
 					id="name"
@@ -99,7 +98,7 @@ export function PurchaseInquiryForm({
 						role="alert"
 						className="mt-1 font-normal font-sans text-fault text-sm"
 					>
-						{errors.name.message ?? da.contact.purchase.form.validationRequired}
+						{errors.name.message ?? "Dette felt er påkrævet"}
 					</p>
 				)}
 				{state.fieldErrors?.name && (
@@ -118,7 +117,7 @@ export function PurchaseInquiryForm({
 					htmlFor="email"
 					className="font-medium font-sans text-ink text-sm"
 				>
-					{da.contact.purchase.form.emailLabel}
+					E-mail
 				</label>
 				<input
 					id="email"
@@ -133,7 +132,7 @@ export function PurchaseInquiryForm({
 						role="alert"
 						className="mt-1 font-normal font-sans text-fault text-sm"
 					>
-						{errors.email.message ?? da.contact.purchase.form.validationEmail}
+						{errors.email.message ?? "Indtast en gyldig e-mailadresse"}
 					</p>
 				)}
 				{state.fieldErrors?.email && (
@@ -152,13 +151,13 @@ export function PurchaseInquiryForm({
 					htmlFor="message"
 					className="font-medium font-sans text-ink text-sm"
 				>
-					{da.contact.purchase.form.messageLabel}
+					Besked
 				</label>
 				<textarea
 					id="message"
 					rows={5}
 					{...register("message")}
-					placeholder={da.contact.purchase.form.messagePlaceholder}
+					placeholder="Fortæl mig, hvad du tænker..."
 					className="min-h-[120px] w-full resize-y overflow-hidden rounded-sm border border-clay bg-linen px-4 py-3 font-normal font-sans text-base text-ink outline-none! ring-0! placeholder:text-stone focus:border-ink aria-invalid=true:border-fault"
 					aria-invalid={errors.message ? "true" : undefined}
 				/>
@@ -167,8 +166,7 @@ export function PurchaseInquiryForm({
 						role="alert"
 						className="mt-1 font-normal font-sans text-fault text-sm"
 					>
-						{errors.message.message ??
-							da.contact.purchase.form.validationRequired}
+						{errors.message.message ?? "Dette felt er påkrævet"}
 					</p>
 				)}
 				{state.fieldErrors?.message && (
@@ -195,8 +193,8 @@ export function PurchaseInquiryForm({
 			<div className="mt-8">
 				<SubmitButton
 					isPending={isPending}
-					label={da.contact.purchase.form.submit}
-					pendingLabel={da.contact.purchase.form.submitting}
+					label="Send forespørgsel"
+					pendingLabel="Sender..."
 				/>
 			</div>
 		</form>

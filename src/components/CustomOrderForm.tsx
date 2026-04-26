@@ -9,7 +9,6 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useActionState } from "react"
 import { useForm } from "react-hook-form"
-import da from "../../messages/da.json"
 
 const initialState: ActionState = { success: false }
 
@@ -37,10 +36,10 @@ export function CustomOrderForm() {
 		return (
 			<div className="py-12 text-center">
 				<p className="mb-4 font-normal font-serif text-[28px] text-ink tracking-tight">
-					{da.contact.customOrders.form.successHeading}
+					Tak for din bestilling
 				</p>
 				<p className="font-normal font-sans text-base text-stone">
-					{da.contact.customOrders.form.successBody}
+					Jeg gennemgår dit ønske og kontakter dig inden for få dage.
 				</p>
 			</div>
 		)
@@ -61,7 +60,7 @@ export function CustomOrderForm() {
 			{/* Name */}
 			<div className="flex flex-col gap-2">
 				<label htmlFor="co-name" className={labelClass}>
-					{da.contact.customOrders.form.nameLabel}
+					Navn
 				</label>
 				<input
 					id="co-name"
@@ -73,8 +72,7 @@ export function CustomOrderForm() {
 				/>
 				{errors.name && (
 					<p role="alert" className={errorClass}>
-						{errors.name.message ??
-							da.contact.customOrders.form.validationRequired}
+						{errors.name.message ?? "Dette felt er påkrævet"}
 					</p>
 				)}
 				{state.fieldErrors?.name && (
@@ -87,7 +85,7 @@ export function CustomOrderForm() {
 			{/* Email */}
 			<div className="flex flex-col gap-2">
 				<label htmlFor="co-email" className={labelClass}>
-					{da.contact.customOrders.form.emailLabel}
+					E-mail
 				</label>
 				<input
 					id="co-email"
@@ -99,8 +97,7 @@ export function CustomOrderForm() {
 				/>
 				{errors.email && (
 					<p role="alert" className={errorClass}>
-						{errors.email.message ??
-							da.contact.customOrders.form.validationEmail}
+						{errors.email.message ?? "Indtast en gyldig e-mailadresse"}
 					</p>
 				)}
 				{state.fieldErrors?.email && (
@@ -113,20 +110,19 @@ export function CustomOrderForm() {
 			{/* What do you want */}
 			<div className="flex flex-col gap-2">
 				<label htmlFor="co-description" className={labelClass}>
-					{da.contact.customOrders.form.whatLabel}
+					Hvad ønsker du?
 				</label>
 				<textarea
 					id="co-description"
 					rows={5}
 					{...register("description")}
-					placeholder={da.contact.customOrders.form.descriptionPlaceholder}
+					placeholder="Størrelse, farve, tekstur, brug — jo mere, jo bedre."
 					className={`${inputClass} min-h-[120px] resize-y`}
 					aria-invalid={errors.description ? "true" : undefined}
 				/>
 				{errors.description && (
 					<p role="alert" className={errorClass}>
-						{errors.description.message ??
-							da.contact.customOrders.form.validationRequired}
+						{errors.description.message ?? "Dette felt er påkrævet"}
 					</p>
 				)}
 				{state.fieldErrors?.description && (
@@ -139,21 +135,20 @@ export function CustomOrderForm() {
 			{/* Quantity */}
 			<div className="flex flex-col gap-2">
 				<label htmlFor="co-quantity" className={labelClass}>
-					{da.contact.customOrders.form.quantityLabel}
+					Antal
 				</label>
 				<input
 					id="co-quantity"
 					type="text"
 					inputMode="numeric"
 					{...register("quantity")}
-					placeholder={da.contact.customOrders.form.quantityPlaceholder}
+					placeholder="F.eks. 2"
 					className={inputClass}
 					aria-invalid={errors.quantity ? "true" : undefined}
 				/>
 				{errors.quantity && (
 					<p role="alert" className={errorClass}>
-						{errors.quantity.message ??
-							da.contact.customOrders.form.validationRequired}
+						{errors.quantity.message ?? "Dette felt er påkrævet"}
 					</p>
 				)}
 				{state.fieldErrors?.quantity && (
@@ -166,16 +161,14 @@ export function CustomOrderForm() {
 			{/* Budget — optional (CUST-02) */}
 			<div className="flex flex-col gap-2">
 				<label htmlFor="co-budget" className={labelClass}>
-					{da.contact.customOrders.form.budgetLabel}{" "}
-					<span className="font-normal text-stone">
-						{da.contact.customOrders.form.budgetOptional}
-					</span>
+					Budgetramme{" "}
+					<span className="font-normal text-stone">(valgfri)</span>
 				</label>
 				<input
 					id="co-budget"
 					type="text"
 					{...register("budget")}
-					placeholder={da.contact.customOrders.form.budgetPlaceholder}
+					placeholder="F.eks. 500–1000 kr."
 					className={inputClass}
 				/>
 			</div>
@@ -183,16 +176,14 @@ export function CustomOrderForm() {
 			{/* Timeline — optional (CUST-02) */}
 			<div className="flex flex-col gap-2">
 				<label htmlFor="co-timeline" className={labelClass}>
-					{da.contact.customOrders.form.timelineLabel}{" "}
-					<span className="font-normal text-stone">
-						{da.contact.customOrders.form.timelineOptional}
-					</span>
+					Ønsket tidslinje{" "}
+					<span className="font-normal text-stone">(valgfri)</span>
 				</label>
 				<input
 					id="co-timeline"
 					type="text"
 					{...register("timeline")}
-					placeholder={da.contact.customOrders.form.timelinePlaceholder}
+					placeholder="F.eks. inden jul"
 					className={inputClass}
 				/>
 			</div>
@@ -211,8 +202,8 @@ export function CustomOrderForm() {
 			<div className="mt-8">
 				<SubmitButton
 					isPending={isPending}
-					label={da.contact.customOrders.form.submit}
-					pendingLabel={da.contact.customOrders.form.submitting}
+					label="Send bestilling"
+					pendingLabel="Sender..."
 				/>
 			</div>
 		</form>
