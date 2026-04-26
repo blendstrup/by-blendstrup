@@ -19,7 +19,7 @@ progress:
 
 **Project started:** 2026-04-18
 **Last updated:** 2026-04-20
-**Last activity:** 2026-04-26 - Completed quick task 260426-vg3: Unified card aesthetics — rounded gallery items, consistent surfaces, shop cards link to detail page
+**Last activity:** 2026-04-26 - Completed quick task 260426-vg3: Unified card aesthetics — rounded gallery items, consistent surfaces, shop cards link to detail page (fix: reliable pointer-events card link + border removal on detail/preview surfaces)
 
 ## Project Reference
 
