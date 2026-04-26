@@ -113,6 +113,53 @@ const works = collection({
       publicPath: "/videos/works/",
       validation: { isRequired: false },
     }),
+    mediaGallery: fields.array(
+      fields.object({
+        type: fields.select({
+          label: "Type",
+          options: [
+            { label: "Billede", value: "image" },
+            { label: "Video", value: "video" },
+          ],
+          defaultValue: "image",
+        }),
+        image: fields.image({
+          label: "Billede",
+          directory: "public/images/gallery",
+          publicPath: "/images/gallery/",
+        }),
+        imageAlt: fields.text({
+          label: "Alt-tekst",
+          description: "Beskriv billedet for skærmlæsere.",
+          validation: { length: { max: 120 } },
+        }),
+        video: fields.file({
+          label: "Video",
+          directory: "public/videos/gallery",
+          publicPath: "/videos/gallery/",
+          validation: { isRequired: false },
+        }),
+        title: fields.text({
+          label: "Titel",
+          description: "Valgfri billedtekst.",
+          validation: { length: { max: 80 } },
+        }),
+        tags: fields.array(fields.text({ label: "Tag" }), {
+          label: "Tags",
+          description: "Valgfrie tags (f.eks. 'stentøj', 'process').",
+          itemLabel: (p) => p.value || "Tag",
+        }),
+      }),
+      {
+        label: "Media galleri",
+        description:
+          "Valgfrie fotos og videoer med titel og tags.",
+        itemLabel: (p) =>
+          p.fields.title.value ||
+          p.fields.type.value ||
+          "Mediaelement",
+      },
+    ),
   },
 });
 
@@ -168,6 +215,53 @@ const homepage = singleton({
       publicPath: "/videos/hero/",
       validation: { isRequired: false },
     }),
+    mediaGallery: fields.array(
+      fields.object({
+        type: fields.select({
+          label: "Type",
+          options: [
+            { label: "Billede", value: "image" },
+            { label: "Video", value: "video" },
+          ],
+          defaultValue: "image",
+        }),
+        image: fields.image({
+          label: "Billede",
+          directory: "public/images/gallery",
+          publicPath: "/images/gallery/",
+        }),
+        imageAlt: fields.text({
+          label: "Alt-tekst",
+          description: "Beskriv billedet for skærmlæsere.",
+          validation: { length: { max: 120 } },
+        }),
+        video: fields.file({
+          label: "Video",
+          directory: "public/videos/gallery",
+          publicPath: "/videos/gallery/",
+          validation: { isRequired: false },
+        }),
+        title: fields.text({
+          label: "Titel",
+          description: "Valgfri billedtekst.",
+          validation: { length: { max: 80 } },
+        }),
+        tags: fields.array(fields.text({ label: "Tag" }), {
+          label: "Tags",
+          description: "Valgfrie tags (f.eks. 'stentøj', 'process').",
+          itemLabel: (p) => p.value || "Tag",
+        }),
+      }),
+      {
+        label: "Media galleri",
+        description:
+          "Valgfrie fotos og videoer med titel og tags.",
+        itemLabel: (p) =>
+          p.fields.title.value ||
+          p.fields.type.value ||
+          "Mediaelement",
+      },
+    ),
   },
 });
 
