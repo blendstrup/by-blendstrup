@@ -66,7 +66,7 @@ export default async function PurchaseInquiryPage({ searchParams }: Props) {
 						{/* Left: item preview card */}
 						<div className="flex flex-col gap-4">
 							{pieceEntry.firstImage && (
-								<div className="relative aspect-4/5 overflow-hidden rounded-md border border-clay bg-oat">
+								<div className="relative aspect-4/5 overflow-hidden rounded-2xl bg-oat">
 									<Image
 										src={pieceEntry.firstImage}
 										alt={pieceEntry.firstImageAlt}

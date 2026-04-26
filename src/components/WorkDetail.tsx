@@ -47,7 +47,7 @@ export async function WorkDetail({
 				{/* Left column: primary media (video or image) */}
 				<div className="relative w-full">
 					{video ? (
-						<div className="relative aspect-4/5 w-full overflow-hidden rounded-md border border-clay bg-oat shadow-sm">
+						<div className="relative aspect-4/5 w-full overflow-hidden rounded-2xl bg-oat">
 							<video
 								src={video}
 								autoPlay
@@ -58,7 +58,7 @@ export async function WorkDetail({
 							/>
 						</div>
 					) : images.length > 0 ? (
-						<div className="relative aspect-4/5 w-full overflow-hidden rounded-md border border-clay bg-oat shadow-sm">
+						<div className="relative aspect-4/5 w-full overflow-hidden rounded-2xl bg-oat">
 							<Image
 								src={images[0]?.image ?? ""}
 								alt={images[0]?.alt ?? ""}
@@ -71,7 +71,7 @@ export async function WorkDetail({
 							/>
 						</div>
 					) : (
-						<div className="relative aspect-4/5 rounded-md border border-clay bg-oat" />
+						<div className="relative aspect-4/5 rounded-2xl bg-oat" />
 					)}
 				</div>
 
@@ -132,7 +132,7 @@ export async function WorkDetail({
 						{images.slice(1).map((img, i) => (
 							<div
 								key={img.image || i}
-								className="relative aspect-4/5 overflow-hidden border border-clay bg-oat"
+								className="relative aspect-4/5 overflow-hidden rounded-2xl bg-oat"
 							>
 								<Image
 									src={img.image}

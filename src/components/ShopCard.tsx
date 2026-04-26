@@ -25,65 +25,70 @@ interface ShopCardProps {
 export function ShopCard({ slug, entry, labels, blurDataUrl }: ShopCardProps) {
 	return (
 		<div className="group relative overflow-hidden rounded-2xl">
-			<div className="relative aspect-4/5">
-				{entry.video ? (
-					<video
-						src={entry.video}
-						autoPlay
-						muted
-						loop
-						playsInline
-						className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
-						aria-label={entry.images[0]?.alt ?? entry.title}
-					/>
-				) : entry.images.length === 0 ? (
-					<div className="absolute inset-0 bg-clay/30" />
-				) : (
-					<Image
-						src={entry.images[0]?.image ?? ""}
-						alt={entry.images[0]?.alt ?? ""}
-						fill
-						className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
-						sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-						placeholder={blurDataUrl ? "blur" : "empty"}
-						blurDataURL={blurDataUrl}
-					/>
-				)}
+			{/* Entire image area navigates to the detail page */}
+			<Link href={`/gallery/${slug}`} className="block">
+				<div className="relative aspect-4/5">
+					{entry.video ? (
+						<video
+							src={entry.video}
+							autoPlay
+							muted
+							loop
+							playsInline
+							className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+							aria-label={entry.images[0]?.alt ?? entry.title}
+						/>
+					) : entry.images.length === 0 ? (
+						<div className="absolute inset-0 bg-clay/30" />
+					) : (
+						<Image
+							src={entry.images[0]?.image ?? ""}
+							alt={entry.images[0]?.alt ?? ""}
+							fill
+							className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+							sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+							placeholder={blurDataUrl ? "blur" : "empty"}
+							blurDataURL={blurDataUrl}
+						/>
+					)}
 
-				<div className="pointer-events-none absolute inset-x-0 bottom-0 h-[50%] bg-linear-to-t from-ink/75 to-transparent" />
+					<div className="pointer-events-none absolute inset-x-0 bottom-0 h-[50%] bg-linear-to-t from-ink/75 to-transparent" />
 
-				<StatusBadge status={entry.saleStatus} labels={labels} />
+					<StatusBadge status={entry.saleStatus} labels={labels} />
 
-				<div className="absolute inset-x-0 bottom-0 flex flex-col items-start gap-1 p-4">
-					<p className="font-medium font-sans text-linen text-sm leading-snug">
-						{entry.title}
-					</p>
-					{entry.price ? (
-						<p className="font-medium font-sans text-linen/90 text-sm leading-snug">
-							{entry.price}
+					<div className="absolute inset-x-0 bottom-0 flex flex-col items-start gap-1 p-4">
+						<p className="font-medium font-sans text-linen text-sm leading-snug">
+							{entry.title}
 						</p>
-					) : null}
-					{entry.leadTime ? (
-						<p className="font-sans text-linen/70 text-xs leading-snug">
-							{entry.leadTime}
-						</p>
-					) : null}
-				</div>
-
-				{entry.saleStatus === "available" && (
-					<div className="absolute inset-0 z-20 hidden items-center justify-center bg-ink/15 opacity-0 transition-opacity duration-200 group-hover:opacity-100 sm:flex">
-						<Link
-							href={`/contact/purchase?piece=${slug}`}
-							className="cursor-pointer rounded-sm bg-terracotta px-6 py-3 font-medium font-sans text-linen text-sm transition-colors duration-150 hover:bg-stone focus-visible:outline-2 focus-visible:outline-terracotta focus-visible:outline-offset-2 active:bg-ink"
-						>
-							{labels.contactToBuy}
-						</Link>
+						{entry.price ? (
+							<p className="font-medium font-sans text-linen/90 text-sm leading-snug">
+								{entry.price}
+							</p>
+						) : null}
+						{entry.leadTime ? (
+							<p className="font-sans text-linen/70 text-xs leading-snug">
+								{entry.leadTime}
+							</p>
+						) : null}
 					</div>
-				)}
-			</div>
+				</div>
+			</Link>
+
+			{/* Desktop hover overlay — pointer-events-none so card link still works;
+			    only the buy button inside re-enables pointer events */}
+			{entry.saleStatus === "available" && (
+				<div className="pointer-events-none absolute inset-0 hidden items-center justify-center bg-ink/15 opacity-0 transition-opacity duration-200 group-hover:opacity-100 sm:flex">
+					<Link
+						href={`/contact/purchase?piece=${slug}`}
+						className="pointer-events-auto cursor-pointer rounded-sm bg-terracotta px-6 py-3 font-medium font-sans text-linen text-sm transition-colors duration-150 hover:bg-stone focus-visible:outline-2 focus-visible:outline-terracotta focus-visible:outline-offset-2 active:bg-ink"
+					>
+						{labels.contactToBuy}
+					</Link>
+				</div>
+			)}
 
 			{entry.saleStatus === "available" && (
-				<div className="relative z-20 sm:hidden">
+				<div className="sm:hidden">
 					<Link
 						href={`/contact/purchase?piece=${slug}`}
 						className="block w-full cursor-pointer rounded-sm bg-terracotta px-6 py-3 text-center font-medium font-sans text-linen text-sm transition-colors duration-150 hover:bg-stone focus-visible:outline-2 focus-visible:outline-terracotta focus-visible:outline-offset-2 active:bg-ink"
@@ -92,14 +97,6 @@ export function ShopCard({ slug, entry, labels, blurDataUrl }: ShopCardProps) {
 					</Link>
 				</div>
 			)}
-
-			{/* Stretched link — last in DOM so it sits above image content (z-10)
-			    but below the buy button overlay (z-20) */}
-			<Link
-				href={`/gallery/${slug}`}
-				className="absolute inset-0 z-10"
-				aria-label={entry.title}
-			/>
 		</div>
 	)
 }
