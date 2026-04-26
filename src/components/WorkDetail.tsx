@@ -1,3 +1,4 @@
+import { MediaGallery, type MediaGalleryItem } from "@/components/MediaGallery"
 import { getBlurDataUrl } from "@/lib/blur-placeholder"
 import Image from "next/image"
 import Link from "next/link"
@@ -9,6 +10,7 @@ interface WorkDetailProps {
 	saleStatus: "available" | "sold" | "notListed"
 	images: Array<{ image: string; alt: string }>
 	video?: string | null
+	mediaGallery?: MediaGalleryItem[]
 	ctaLabels: {
 		contactToBuy: string
 		soldMessage: string
@@ -23,6 +25,7 @@ export async function WorkDetail({
 	saleStatus,
 	images,
 	video,
+	mediaGallery,
 	ctaLabels,
 }: WorkDetailProps): Promise<React.JSX.Element> {
 	// DSGN-02: compute LQIP blur placeholders for all images in parallel
@@ -144,6 +147,13 @@ export async function WorkDetail({
 						))}
 					</div>
 				</>
+			)}
+
+			{/* Media gallery (optional, added via CMS) */}
+			{mediaGallery && mediaGallery.length > 0 && (
+				<section className="mt-16">
+					<MediaGallery items={mediaGallery} heading="Galleri" />
+				</section>
 			)}
 		</article>
 	)

@@ -83,6 +83,24 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
 	const title = work.title
 	const description = work.description
 
+	const mediaGallery = (
+		work.mediaGallery as Array<{
+			type: string
+			image: string | null
+			imageAlt: string
+			video: string | null
+			title: string
+			tags: string[]
+		}>
+	)?.map((item) => ({
+		type: item.type as "image" | "video",
+		image: (item.image as string | null) ?? null,
+		imageAlt: item.imageAlt ?? "",
+		video: (item.video as string | null) ?? null,
+		title: item.title ?? "",
+		tags: (item.tags as string[]) ?? [],
+	}))
+
 	return (
 		<WorkDetail
 			slug={slug}
@@ -96,6 +114,7 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
 				}),
 			)}
 			video={(work.video as string | null) ?? null}
+			mediaGallery={mediaGallery ?? []}
 			ctaLabels={{
 				contactToBuy: da.gallery.contactToBuy,
 				soldMessage: da.gallery.soldMessage,

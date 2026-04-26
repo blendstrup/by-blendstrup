@@ -1,3 +1,4 @@
+import { MediaGallery } from "@/components/MediaGallery"
 import { ShopCard } from "@/components/ShopCard"
 import { getBlurDataUrl } from "@/lib/blur-placeholder"
 import { baseMetadata } from "@/lib/metadata"
@@ -242,6 +243,34 @@ export default async function HomePage() {
 					</div>
 				</div>
 			</section>
+
+			{/* ─── Homepage Media Gallery Section ─── */}
+			{homepageData?.mediaGallery && homepageData.mediaGallery.length > 0 && (
+				<section className="border-clay border-t py-24">
+					<div className="mx-auto max-w-screen-xl px-12 lg:px-16">
+						<MediaGallery
+							items={(
+								homepageData.mediaGallery as Array<{
+									type: string
+									image: string | null
+									imageAlt: string
+									video: string | null
+									title: string
+									tags: string[]
+								}>
+							).map((item) => ({
+								type: item.type as "image" | "video",
+								image: (item.image as string | null) ?? null,
+								imageAlt: item.imageAlt ?? "",
+								video: (item.video as string | null) ?? null,
+								title: item.title ?? "",
+								tags: (item.tags as string[]) ?? [],
+							}))}
+							heading={da.home.gallery.heading}
+						/>
+					</div>
+				</section>
+			)}
 		</main>
 	)
 }
