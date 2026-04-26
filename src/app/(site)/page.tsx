@@ -8,7 +8,6 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import keystaticConfig from "../../../keystatic.config"
-import da from "../../../messages/da.json"
 
 export const metadata: Metadata = {
 	...baseMetadata,
@@ -104,13 +103,13 @@ export default async function HomePage() {
 				{/* Hero copy — bottom-left for Japandi editorial feel */}
 				<div className="absolute inset-0 flex flex-col items-start justify-end px-8 pb-16 sm:px-12 lg:px-16 lg:pb-20">
 					<h1 className="font-normal font-serif text-5xl text-linen tracking-tight drop-shadow-sm md:text-7xl">
-						{da.home.hero.headline}
+						{homepageData?.heroHeadline ?? "Håndlavet keramik"}
 					</h1>
 					<Link
 						href="/gallery"
 						className="mt-6 inline-block cursor-pointer rounded-sm border border-linen px-8 py-3 font-medium font-sans text-linen text-sm transition-colors duration-200 hover:bg-linen hover:text-ink focus-visible:outline-2 focus-visible:outline-linen focus-visible:outline-offset-2"
 					>
-						{da.home.hero.cta}
+						{homepageData?.heroCta ?? "Se samlingen"}
 					</Link>
 				</div>
 
@@ -125,7 +124,7 @@ export default async function HomePage() {
 						strokeWidth={1.5}
 					/>
 					<span className="font-medium font-sans text-linen/70 text-sm">
-						{da.home.hero.scrollIndicator}
+						{homepageData?.heroScrollIndicator ?? "Rul ned"}
 					</span>
 				</div>
 			</section>
@@ -135,19 +134,19 @@ export default async function HomePage() {
 				<div className="mx-auto max-w-screen-xl px-12 lg:px-16">
 					<div className="mb-8 flex items-baseline justify-between">
 						<h2 className="font-normal font-serif text-5xl text-ink tracking-tight">
-							{da.home.shopPreview.heading}
+							{homepageData?.shopPreviewHeading ?? "Til salg"}
 						</h2>
 						<Link
 							href="/gallery?filter=for-sale"
 							className="font-medium font-sans text-sm text-stone underline-offset-2 transition-colors duration-150 hover:text-ink hover:underline hover:decoration-terracotta"
 						>
-							{da.home.shopPreview.viewAll}
+							{homepageData?.shopPreviewViewAll ?? "Se alle varer"}
 						</Link>
 					</div>
 
 					{shopPreviewWorks.length === 0 ? (
 						<p className="font-normal font-sans text-base text-stone">
-							{da.home.shopPreview.empty}
+							{homepageData?.shopPreviewEmpty ?? ""}
 						</p>
 					) : (
 						<div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
@@ -169,9 +168,9 @@ export default async function HomePage() {
 											video: (entry.video as string | null) ?? null,
 										}}
 										labels={{
-											sold: da.shop.saleStatus.sold,
-											forSale: da.shop.saleStatus.available,
-											contactToBuy: da.shop.card.contactToBuy,
+											sold: "Solgt",
+											forSale: "Til salg",
+											contactToBuy: "Kontakt for køb",
 										}}
 										blurDataUrl={blurDataUrl}
 									/>
@@ -205,7 +204,7 @@ export default async function HomePage() {
 						{/* Text — right column on desktop, below photo on mobile */}
 						<div className="flex flex-col justify-center space-y-4">
 							<h2 className="font-normal font-serif text-[28px] text-ink tracking-tight">
-								{da.home.about.heading}
+								{homepageData?.aboutHeading ?? "Om Laura"}
 							</h2>
 							{aboutData ? (
 								<>
@@ -228,17 +227,17 @@ export default async function HomePage() {
 			<section className="border-clay border-t bg-oat py-24">
 				<div className="mx-auto max-w-screen-xl px-12 text-center lg:px-16">
 					<h2 className="font-normal font-serif text-[28px] text-ink tracking-tight">
-						{da.home.customOrders.heading}
+						{homepageData?.customOrdersHeading ?? "Noget særligt i tankerne?"}
 					</h2>
 					<p className="mt-8 font-normal font-sans text-base text-stone">
-						{da.home.customOrders.body}
+						{homepageData?.customOrdersBody ?? ""}
 					</p>
 					<div className="mt-8">
 						<Link
 							href="/custom-orders"
 							className="inline-block cursor-pointer rounded-sm bg-terracotta px-6 py-3 font-medium font-sans text-linen text-sm transition-colors duration-150 hover:bg-stone focus-visible:outline-2 focus-visible:outline-terracotta focus-visible:outline-offset-2 active:bg-ink"
 						>
-							{da.home.customOrders.cta}
+							{homepageData?.customOrdersCta ?? "Start en specialbestilling"}
 						</Link>
 					</div>
 				</div>
@@ -266,7 +265,7 @@ export default async function HomePage() {
 								title: item.title ?? "",
 								tags: (item.tags as string[]) ?? [],
 							}))}
-							heading={da.home.gallery.heading}
+							heading={homepageData?.galleryHeading ?? "Galleri"}
 						/>
 					</div>
 				</section>

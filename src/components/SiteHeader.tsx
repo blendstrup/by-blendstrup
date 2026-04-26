@@ -1,6 +1,5 @@
 import Image from "next/image"
 import Link from "next/link"
-import da from "../../messages/da.json"
 import { NavLinks } from "./NavLinks"
 
 export default function SiteHeader() {
@@ -19,7 +18,7 @@ export default function SiteHeader() {
 						className="shrink-0"
 						priority
 					/>
-					{da.site.name}
+					By Blendstrup
 				</Link>
 				<NavLinks />
 				{/* LanguageToggle removed — Danish-only site */}

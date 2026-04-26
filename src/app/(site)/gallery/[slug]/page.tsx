@@ -4,7 +4,6 @@ import { createReader } from "@keystatic/core/reader"
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import keystaticConfig from "../../../../../keystatic.config"
-import da from "../../../../../messages/da.json"
 
 interface WorkDetailPageProps {
 	params: Promise<{ slug: string }>
@@ -73,7 +72,10 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
 	const { slug } = await params
 
 	const reader = createReader(process.cwd(), keystaticConfig)
-	const work = await reader.collections.works.read(slug)
+	const [work, galleryContent] = await Promise.all([
+		reader.collections.works.read(slug),
+		reader.singletons.gallery.read(),
+	])
 
 	// Security: unknown or draft slug → 404 (T-3-01, T-3-08)
 	if (!work || !work.published) {
@@ -116,9 +118,9 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
 			video={(work.video as string | null) ?? null}
 			mediaGallery={mediaGallery ?? []}
 			ctaLabels={{
-				contactToBuy: da.gallery.contactToBuy,
-				soldMessage: da.gallery.soldMessage,
-				soldCta: da.gallery.soldCta,
+				contactToBuy: galleryContent?.contactToBuy ?? "Kontakt for køb",
+				soldMessage: galleryContent?.soldMessage ?? "Dette stykke er solgt.",
+				soldCta: galleryContent?.soldCta ?? "Bestil noget tilsvarende",
 			}}
 		/>
 	)

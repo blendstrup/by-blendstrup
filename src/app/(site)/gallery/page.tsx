@@ -6,7 +6,6 @@ import { createReader } from "@keystatic/core/reader"
 import type { Metadata } from "next"
 import Link from "next/link"
 import keystaticConfig from "../../../../keystatic.config"
-import da from "../../../../messages/da.json"
 
 export const metadata: Metadata = {
 	...baseMetadata,
@@ -32,7 +31,10 @@ export default async function GalleryPage({ searchParams }: GalleryPageProps) {
 	const { filter } = await searchParams
 
 	const reader = createReader(process.cwd(), keystaticConfig)
-	const allWorks = await reader.collections.works.all()
+	const [allWorks, galleryContent] = await Promise.all([
+		reader.collections.works.all(),
+		reader.singletons.gallery.read(),
+	])
 
 	// CMS-02: never expose drafts on the public site
 	const published = allWorks.filter((w) => w.entry.published)
@@ -58,7 +60,7 @@ export default async function GalleryPage({ searchParams }: GalleryPageProps) {
 	return (
 		<section className="mx-auto max-w-screen-xl px-12 py-16 lg:px-16 lg:py-24">
 			<h1 className="mb-12 font-normal font-serif text-5xl text-ink tracking-tight">
-				{da.gallery.title}
+				{galleryContent?.title ?? "Keramik"}
 			</h1>
 			<GalleryFilterToggle />
 			<div className="mt-8">
@@ -66,25 +68,25 @@ export default async function GalleryPage({ searchParams }: GalleryPageProps) {
 					filter === "for-sale" ? (
 						<div className="py-24 text-center">
 							<p className="font-sans text-base text-stone">
-								{da.gallery.emptyForSaleHeading}
+								{galleryContent?.emptyForSaleHeading ?? ""}
 							</p>
 							<p className="mt-2 font-sans text-sm text-stone">
-								{da.gallery.emptyForSaleBody}
+								{galleryContent?.emptyForSaleBody ?? ""}
 							</p>
 							<Link
 								href="/custom-orders"
 								className="mt-6 inline-block border border-terracotta px-6 py-3 font-medium text-sm text-terracotta transition-colors duration-150 hover:bg-terracotta hover:text-linen"
 							>
-								{da.gallery.emptyForSaleCta}
+								{galleryContent?.emptyForSaleCta ?? ""}
 							</Link>
 						</div>
 					) : (
 						<div className="py-24 text-center">
 							<p className="font-sans text-base text-stone">
-								{da.gallery.emptyAllHeading}
+								{galleryContent?.emptyAllHeading ?? ""}
 							</p>
 							<p className="mt-2 font-sans text-sm text-stone">
-								{da.gallery.emptyAllBody}
+								{galleryContent?.emptyAllBody ?? ""}
 							</p>
 						</div>
 					)
@@ -92,8 +94,8 @@ export default async function GalleryPage({ searchParams }: GalleryPageProps) {
 					<GalleryGrid
 						works={works}
 						labels={{
-							sold: da.gallery.soldLabel,
-							forSale: da.gallery.forSaleLabel,
+							sold: "Solgt",
+							forSale: "Til salg",
 						}}
 					/>
 				)}

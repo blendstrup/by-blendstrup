@@ -4,7 +4,6 @@ import { createReader } from "@keystatic/core/reader"
 import type { Metadata } from "next"
 import Image from "next/image"
 import keystaticConfig from "../../../../../keystatic.config"
-import da from "../../../../../messages/da.json"
 
 export const metadata: Metadata = {
 	...baseMetadata,
@@ -27,6 +26,9 @@ export default async function PurchaseInquiryPage({ searchParams }: Props) {
 	// CRITICAL: await searchParams — Next.js 15 makes searchParams a Promise (Pitfall 1)
 	const { piece: slug } = await searchParams
 
+	const reader = createReader(process.cwd(), keystaticConfig)
+	const contactContent = await reader.singletons.contact.read()
+
 	let pieceTitle: string | undefined
 	let pieceEntry: {
 		title: string
@@ -36,7 +38,6 @@ export default async function PurchaseInquiryPage({ searchParams }: Props) {
 	} | null = null
 
 	if (slug) {
-		const reader = createReader(process.cwd(), keystaticConfig)
 		const entry = await reader.collections.works.read(slug)
 		if (entry) {
 			// Image path comes from Keystatic (server-side trusted source) — T-un8-03-02
@@ -58,7 +59,7 @@ export default async function PurchaseInquiryPage({ searchParams }: Props) {
 		<main className="py-16 lg:py-24">
 			<div className="mx-auto max-w-screen-xl px-12 lg:px-16">
 				<h1 className="mb-12 font-normal font-serif text-5xl text-ink tracking-tight">
-					{da.contact.purchase.form.heading}
+					{contactContent?.purchaseFormHeading ?? "Forespørgsel"}
 				</h1>
 				{slug && pieceEntry ? (
 					// Two-column layout when item is known

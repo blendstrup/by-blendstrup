@@ -5,7 +5,6 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import keystaticConfig from "../../../../keystatic.config"
-import da from "../../../../messages/da.json"
 
 export const metadata: Metadata = {
 	...baseMetadata,
@@ -46,9 +45,10 @@ function InstagramIcon() {
 
 export default async function ContactPage() {
 	const reader = createReader(process.cwd(), keystaticConfig)
-	const [settings, aboutData] = await Promise.all([
+	const [settings, aboutData, contactContent] = await Promise.all([
 		reader.singletons.settings.read(),
 		reader.singletons.about.read(),
+		reader.singletons.contact.read(),
 	])
 
 	const contactEmail = settings?.contactEmail ?? ""
@@ -77,14 +77,14 @@ export default async function ContactPage() {
 				) : null}
 
 				<h1 className="mb-12 font-normal font-serif text-5xl text-ink tracking-tight">
-					{da.contact.heading}
+					{contactContent?.heading ?? "Kontakt"}
 				</h1>
 
 				<div className="space-y-12">
 					{/* Block 1: Contact information */}
 					<section>
 						<h2 className="mb-4 font-normal font-serif text-[28px] text-ink tracking-tight">
-							{da.contact.info.heading}
+							{contactContent?.infoHeading ?? "Kontaktoplysninger"}
 						</h2>
 						<div className="space-y-4">
 							{contactEmail ? (
@@ -120,35 +120,35 @@ export default async function ContactPage() {
 						</div>
 					</section>
 
-					{/* Block 2: Purchase inquiry stub */}
+					{/* Block 2: Purchase inquiry */}
 					<section>
 						<h2 className="mb-4 font-normal font-serif text-[28px] text-ink tracking-tight">
-							{da.contact.purchase.heading}
+							{contactContent?.purchaseHeading ?? "Køb et stykke"}
 						</h2>
 						<p className="mb-8 font-normal font-sans text-base text-stone">
-							{da.contact.purchase.body}
+							{contactContent?.purchaseBody ?? ""}
 						</p>
 						<Link
 							href="/contact/purchase"
 							className="inline-block cursor-pointer rounded-sm bg-terracotta px-6 py-3 font-medium font-sans text-linen text-sm transition-colors duration-150 hover:bg-stone focus-visible:outline-2 focus-visible:outline-terracotta focus-visible:outline-offset-2 active:bg-ink"
 						>
-							{da.contact.purchase.cta}
+							{contactContent?.purchaseCta ?? "Send en forespørgsel"}
 						</Link>
 					</section>
 
-					{/* Block 3: Custom order stub */}
+					{/* Block 3: Custom order */}
 					<section>
 						<h2 className="mb-4 font-normal font-serif text-[28px] text-ink tracking-tight">
-							{da.contact.customOrders.heading}
+							{contactContent?.customOrdersHeading ?? "Specialbestilling"}
 						</h2>
 						<p className="mb-8 font-normal font-sans text-base text-stone">
-							{da.contact.customOrders.body}
+							{contactContent?.customOrdersBody ?? ""}
 						</p>
 						<Link
 							href="/custom-orders"
 							className="inline-block cursor-pointer rounded-sm bg-terracotta px-6 py-3 font-medium font-sans text-linen text-sm transition-colors duration-150 hover:bg-stone focus-visible:outline-2 focus-visible:outline-terracotta focus-visible:outline-offset-2 active:bg-ink"
 						>
-							{da.contact.customOrders.cta}
+							{contactContent?.customOrdersCta ?? "Start en specialbestilling"}
 						</Link>
 					</section>
 				</div>

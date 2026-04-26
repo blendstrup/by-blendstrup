@@ -1,7 +1,8 @@
 import { CustomOrderForm } from "@/components/CustomOrderForm"
 import { baseMetadata } from "@/lib/metadata"
+import { createReader } from "@keystatic/core/reader"
 import type { Metadata } from "next"
-import da from "../../../../messages/da.json"
+import keystaticConfig from "../../../../keystatic.config"
 
 export const metadata: Metadata = {
 	...baseMetadata,
@@ -16,15 +17,18 @@ export const metadata: Metadata = {
 	},
 }
 
-export default function CustomOrdersPage() {
+export default async function CustomOrdersPage() {
+	const reader = createReader(process.cwd(), keystaticConfig)
+	const contactContent = await reader.singletons.contact.read()
+
 	return (
 		<main className="py-24 pb-16">
 			<div className="mx-auto max-w-screen-xl px-12 lg:px-16">
 				<h1 className="mb-4 font-normal font-serif text-5xl text-ink tracking-tight">
-					{da.contact.customOrders.form.heading}
+					{contactContent?.customOrdersFormHeading ?? "Specialbestilling"}
 				</h1>
 				<p className="mb-12 font-normal font-sans text-base text-stone">
-					{da.contact.customOrders.form.subCopy}
+					{contactContent?.customOrdersFormSubCopy ?? ""}
 				</p>
 				<CustomOrderForm />
 			</div>
