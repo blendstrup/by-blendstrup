@@ -374,6 +374,16 @@ const gallery = singleton({
       defaultValue: "Kontakt for køb",
       validation: { length: { max: 60 } },
     }),
+    soldBadge: fields.text({
+      label: "Solgt-badge — tekst",
+      defaultValue: "Solgt",
+      validation: { length: { max: 40 } },
+    }),
+    forSaleBadge: fields.text({
+      label: "Til salg-badge — tekst",
+      defaultValue: "Til salg",
+      validation: { length: { max: 40 } },
+    }),
   },
 });
 
@@ -439,6 +449,127 @@ const contact = singleton({
       label: "Forespørgsels-formular — overskrift",
       defaultValue: "Forespørgsel",
       validation: { length: { max: 80 } },
+    }),
+
+    // Purchase inquiry form strings
+    purchaseFormRegarding: fields.text({
+      label: "Forespørgsel om — etiket",
+      defaultValue: "Forespørgsel om",
+      validation: { length: { max: 60 } },
+    }),
+    purchaseFormNameLabel: fields.text({
+      label: "Navn-felt — etiket",
+      defaultValue: "Navn",
+      validation: { length: { max: 40 } },
+    }),
+    purchaseFormEmailLabel: fields.text({
+      label: "E-mail-felt — etiket",
+      defaultValue: "E-mail",
+      validation: { length: { max: 40 } },
+    }),
+    purchaseFormMessageLabel: fields.text({
+      label: "Besked-felt — etiket",
+      defaultValue: "Besked",
+      validation: { length: { max: 40 } },
+    }),
+    purchaseFormMessagePlaceholder: fields.text({
+      label: "Besked-felt — pladsholder",
+      defaultValue: "Fortæl mig, hvad du tænker...",
+      validation: { length: { max: 120 } },
+    }),
+    purchaseFormSubmit: fields.text({
+      label: "Send-knap",
+      defaultValue: "Send forespørgsel",
+      validation: { length: { max: 60 } },
+    }),
+    purchaseFormPending: fields.text({
+      label: "Send-knap — sender",
+      defaultValue: "Sender...",
+      validation: { length: { max: 40 } },
+    }),
+    purchaseFormSuccessHeading: fields.text({
+      label: "Tak-overskrift",
+      defaultValue: "Tak for din henvendelse",
+      validation: { length: { max: 80 } },
+    }),
+    purchaseFormSuccessBody: fields.text({
+      label: "Tak-brødtekst",
+      defaultValue: "Jeg vender tilbage til dig hurtigst muligt.",
+      multiline: true,
+      validation: { length: { max: 200 } },
+    }),
+
+    // Custom order form strings
+    customOrderFormNameLabel: fields.text({
+      label: "Navn-felt — etiket",
+      defaultValue: "Navn",
+      validation: { length: { max: 40 } },
+    }),
+    customOrderFormEmailLabel: fields.text({
+      label: "E-mail-felt — etiket",
+      defaultValue: "E-mail",
+      validation: { length: { max: 40 } },
+    }),
+    customOrderFormDescriptionLabel: fields.text({
+      label: "'Hvad ønsker du?'-felt — etiket",
+      defaultValue: "Hvad ønsker du?",
+      validation: { length: { max: 60 } },
+    }),
+    customOrderFormDescriptionPlaceholder: fields.text({
+      label: "'Hvad ønsker du?'-felt — pladsholder",
+      defaultValue: "Størrelse, farve, tekstur, brug — jo mere, jo bedre.",
+      validation: { length: { max: 120 } },
+    }),
+    customOrderFormQuantityLabel: fields.text({
+      label: "Antal-felt — etiket",
+      defaultValue: "Antal",
+      validation: { length: { max: 40 } },
+    }),
+    customOrderFormQuantityPlaceholder: fields.text({
+      label: "Antal-felt — pladsholder",
+      defaultValue: "F.eks. 2",
+      validation: { length: { max: 60 } },
+    }),
+    customOrderFormBudgetLabel: fields.text({
+      label: "Budgetramme-felt — etiket",
+      defaultValue: "Budgetramme",
+      validation: { length: { max: 60 } },
+    }),
+    customOrderFormBudgetPlaceholder: fields.text({
+      label: "Budgetramme-felt — pladsholder",
+      defaultValue: "F.eks. 500–1000 kr.",
+      validation: { length: { max: 80 } },
+    }),
+    customOrderFormTimelineLabel: fields.text({
+      label: "Tidslinje-felt — etiket",
+      defaultValue: "Ønsket tidslinje",
+      validation: { length: { max: 60 } },
+    }),
+    customOrderFormTimelinePlaceholder: fields.text({
+      label: "Tidslinje-felt — pladsholder",
+      defaultValue: "F.eks. inden jul",
+      validation: { length: { max: 80 } },
+    }),
+    customOrderFormSubmit: fields.text({
+      label: "Send-knap",
+      defaultValue: "Send bestilling",
+      validation: { length: { max: 60 } },
+    }),
+    customOrderFormPending: fields.text({
+      label: "Send-knap — sender",
+      defaultValue: "Sender...",
+      validation: { length: { max: 40 } },
+    }),
+    customOrderFormSuccessHeading: fields.text({
+      label: "Tak-overskrift",
+      defaultValue: "Tak for din bestilling",
+      validation: { length: { max: 80 } },
+    }),
+    customOrderFormSuccessBody: fields.text({
+      label: "Tak-brødtekst",
+      defaultValue: "Jeg gennemgår dit ønske og kontakter dig inden for få dage.",
+      multiline: true,
+      validation: { length: { max: 200 } },
     }),
   },
 });

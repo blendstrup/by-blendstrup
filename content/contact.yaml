@@ -9,3 +9,26 @@ customOrdersCta: Start en specialbestilling
 customOrdersFormHeading: Specialbestilling
 customOrdersFormSubCopy: Fortæl mig, hvad du forestiller dig — jeg vender tilbage med et tilbud.
 purchaseFormHeading: Forespørgsel
+purchaseFormRegarding: Forespørgsel om
+purchaseFormNameLabel: Navn
+purchaseFormEmailLabel: E-mail
+purchaseFormMessageLabel: Besked
+purchaseFormMessagePlaceholder: Fortæl mig, hvad du tænker...
+purchaseFormSubmit: Send forespørgsel
+purchaseFormPending: Sender...
+purchaseFormSuccessHeading: Tak for din henvendelse
+purchaseFormSuccessBody: Jeg vender tilbage til dig hurtigst muligt.
+customOrderFormNameLabel: Navn
+customOrderFormEmailLabel: E-mail
+customOrderFormDescriptionLabel: Hvad ønsker du?
+customOrderFormDescriptionPlaceholder: "Størrelse, farve, tekstur, brug — jo mere, jo bedre."
+customOrderFormQuantityLabel: Antal
+customOrderFormQuantityPlaceholder: F.eks. 2
+customOrderFormBudgetLabel: Budgetramme
+customOrderFormBudgetPlaceholder: F.eks. 500–1000 kr.
+customOrderFormTimelineLabel: Ønsket tidslinje
+customOrderFormTimelinePlaceholder: F.eks. inden jul
+customOrderFormSubmit: Send bestilling
+customOrderFormPending: Sender...
+customOrderFormSuccessHeading: Tak for din bestilling
+customOrderFormSuccessBody: Jeg gennemgår dit ønske og kontakter dig inden for få dage.
