@@ -19,7 +19,7 @@ progress:
 
 **Project started:** 2026-04-18
 **Last updated:** 2026-04-20
-**Last activity:** 2026-04-26 - Completed quick task 260426-vs8: Clean up deprecated i18n setup and move text to Keystatic
+**Last activity:** 2026-04-26 - Completed quick task 260426-w7m: Extend Keystatic singletons with form strings and badge labels
 
 ## Project Reference
 
@@ -90,6 +90,7 @@ None.
 | 260426-uqd | Add media gallery (photos + videos with optional title/tags) to works detail pages and homepage via Keystatic mediaGallery array field and reusable MediaGallery server component | 2026-04-26 | c14c9cb | [260426-uqd-add-gallery-for-videos-and-photos-on-hom](./quick/260426-uqd-add-gallery-for-videos-and-photos-on-hom/) |
 | 260426-vg3 | Unify card aesthetics — rounded gallery items matching works cards, consistent surfaces, shop cards link to detail page | 2026-04-26 | c22186e | [260426-vg3-unify-card-aesthetics-rounded-edges-on-g](./quick/260426-vg3-unify-card-aesthetics-rounded-edges-on-g/) |
 | 260426-vs8 | Clean up deprecated i18n setup and move text to Keystatic | 2026-04-26 | 26f1ba9 | [260426-vs8-clean-up-deprecated-i18n-setup-and-move-](./quick/260426-vs8-clean-up-deprecated-i18n-setup-and-move-/) |
+| 260426-w7m | Extend Keystatic singletons with form strings and badge labels — all form labels, placeholders, submit buttons, and success messages now CMS-editable | 2026-04-26 | da12a9c | [260426-w7m-extend-keystatic-singletons-with-form-st](./quick/260426-w7m-extend-keystatic-singletons-with-form-st/) |
 
 ## Session Continuity
 
