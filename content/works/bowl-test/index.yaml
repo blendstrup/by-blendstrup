@@ -10,3 +10,10 @@ categories:
 images:
   - image: /images/works/bowl-test/images/0/image.png
     alt: Handmade clay bowl
+mediaGallery:
+  - type: video
+    video: /videos/gallery/bowl-test/mediaGallery/0/video.mp4
+    tags: []
+  - type: video
+    video: /videos/gallery/bowl-test/mediaGallery/1/video.mp4
+    tags: []

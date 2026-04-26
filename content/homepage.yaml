@@ -2,3 +2,19 @@ heroWorks:
   - bowl-test
 shopPreviewWorks:
   - bowl-test
+mediaGallery:
+  - type: video
+    video: /videos/gallery/mediaGallery/0/video.mp4
+    tags:
+      - stentøj
+      - proces
+  - type: video
+    video: /videos/gallery/mediaGallery/1/video.mp4
+    title: Billedtekst
+    tags:
+      - stentøj
+      - proces
+  - type: video
+    video: /videos/gallery/mediaGallery/2/video.mp4
+    title: Tallerkner
+    tags: []
