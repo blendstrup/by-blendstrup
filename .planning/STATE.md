@@ -19,7 +19,7 @@ progress:
 
 **Project started:** 2026-04-18
 **Last updated:** 2026-04-20
-**Last activity:** 2026-04-26 - Completed quick task 260426-uqd: Add media gallery for videos and photos on works detail pages and homepage
+**Last activity:** 2026-04-26 - Completed quick task 260426-vg3: Unified card aesthetics — rounded gallery items, consistent surfaces, shop cards link to detail page
 
 ## Project Reference
 
@@ -88,6 +88,7 @@ None.
 | 260422-wd4 | Add login page/blocker for Keystatic admin to prevent public access | 2026-04-22 | 2331bd0 | [260422-wd4-add-login-page-blocker-for-keystatic-adm](./quick/260422-wd4-add-login-page-blocker-for-keystatic-adm/) |
 | 260423-0ar | Use Next.js route groups to isolate site layout — SiteHeader/SiteFooter moved to (site)/ group so Keystatic admin occupies full viewport | 2026-04-22 | 80b0443 | [260423-0ar-use-next-js-route-groups-to-isolate-site](./quick/260423-0ar-use-next-js-route-groups-to-isolate-site/) |
 | 260426-uqd | Add media gallery (photos + videos with optional title/tags) to works detail pages and homepage via Keystatic mediaGallery array field and reusable MediaGallery server component | 2026-04-26 | c14c9cb | [260426-uqd-add-gallery-for-videos-and-photos-on-hom](./quick/260426-uqd-add-gallery-for-videos-and-photos-on-hom/) |
+| 260426-vg3 | Unify card aesthetics — rounded gallery items matching works cards, consistent surfaces, shop cards link to detail page | 2026-04-26 | c22186e | [260426-vg3-unify-card-aesthetics-rounded-edges-on-g](./quick/260426-vg3-unify-card-aesthetics-rounded-edges-on-g/) |
 
 ## Session Continuity
 
