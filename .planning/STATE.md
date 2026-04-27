@@ -19,7 +19,7 @@ progress:
 
 **Project started:** 2026-04-18
 **Last updated:** 2026-04-20
-**Last activity:** 2026-04-26 - Completed quick task 260426-w7m: Extend Keystatic singletons with form strings and badge labels
+**Last activity:** 2026-04-27 - Completed quick task 260427-u06: Migrate video implementation to external embeds (YouTube/Vimeo) and audit Keystatic GitHub mode readiness
 
 ## Project Reference
 
@@ -91,6 +91,7 @@ None.
 | 260426-vg3 | Unify card aesthetics — rounded gallery items matching works cards, consistent surfaces, shop cards link to detail page | 2026-04-26 | c22186e | [260426-vg3-unify-card-aesthetics-rounded-edges-on-g](./quick/260426-vg3-unify-card-aesthetics-rounded-edges-on-g/) |
 | 260426-vs8 | Clean up deprecated i18n setup and move text to Keystatic | 2026-04-26 | 26f1ba9 | [260426-vs8-clean-up-deprecated-i18n-setup-and-move-](./quick/260426-vs8-clean-up-deprecated-i18n-setup-and-move-/) |
 | 260426-w7m | Extend Keystatic singletons with form strings and badge labels — all form labels, placeholders, submit buttons, and success messages now CMS-editable | 2026-04-26 | da12a9c | [260426-w7m-extend-keystatic-singletons-with-form-st](./quick/260426-w7m-extend-keystatic-singletons-with-form-st/) |
+| 260427-u06 | Migrate video implementation to external YouTube/Vimeo embeds — replace fields.file() with fields.url(), add toEmbedUrl utility, update all components to iframe; audit Keystatic GitHub mode readiness | 2026-04-27 | 64a853c | [260427-u06-migrate-video-implementation-to-external](./quick/260427-u06-migrate-video-implementation-to-external/) |
 
 ## Session Continuity
 
