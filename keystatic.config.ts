@@ -105,13 +105,10 @@ const works = collection({
         itemLabel: (props) => props.fields.alt.value || "Image",
       },
     ),
-    video: fields.file({
-      label: "Video",
+    video: fields.url({
+      label: "Video (YouTube / Vimeo)",
       description:
-        "Optional looping video (MP4 or WebM, max ~20 MB). Shown on the detail page and in gallery cards. Muted autoplay — no controls.",
-      directory: "public/videos/works",
-      publicPath: "/videos/works/",
-      validation: { isRequired: false },
+        "Valgfrit YouTube- eller Vimeo-link til dette stykke. Vis i galleriet og på detaljesiden. Muted autoplay — ingen kontroller.",
     }),
     mediaGallery: fields.array(
       fields.object({
@@ -133,11 +130,9 @@ const works = collection({
           description: "Beskriv billedet for skærmlæsere.",
           validation: { length: { max: 120 } },
         }),
-        video: fields.file({
-          label: "Video",
-          directory: "public/videos/gallery",
-          publicPath: "/videos/gallery/",
-          validation: { isRequired: false },
+        video: fields.url({
+          label: "Video (YouTube / Vimeo)",
+          description: "YouTube- eller Vimeo-link til dette mediaelement.",
         }),
         title: fields.text({
           label: "Titel",
@@ -207,13 +202,10 @@ const homepage = singleton({
       collection: "works",
       validation: { length: { max: 6 } },
     }),
-    heroVideo: fields.file({
-      label: "Hero Video",
+    heroVideo: fields.url({
+      label: "Hero Video (YouTube / Vimeo)",
       description:
-        "Optional looping background video for the homepage hero (MP4 recommended, max ~30 MB). Plays muted and autoplays — no controls shown. When set, replaces or overlays the hero image.",
-      directory: "public/videos/hero",
-      publicPath: "/videos/hero/",
-      validation: { isRequired: false },
+        "Valgfrit YouTube- eller Vimeo-link som baggrundsloop i heroen. Muted autoplay. Når sat, erstatter herobilledet.",
     }),
     heroHeadline: fields.text({
       label: "Hero — overskrift",
@@ -292,11 +284,9 @@ const homepage = singleton({
           description: "Beskriv billedet for skærmlæsere.",
           validation: { length: { max: 120 } },
         }),
-        video: fields.file({
-          label: "Video",
-          directory: "public/videos/gallery",
-          publicPath: "/videos/gallery/",
-          validation: { isRequired: false },
+        video: fields.url({
+          label: "Video (YouTube / Vimeo)",
+          description: "YouTube- eller Vimeo-link til dette mediaelement.",
         }),
         title: fields.text({
           label: "Titel",
