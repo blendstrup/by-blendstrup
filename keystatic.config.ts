@@ -1,9 +1,10 @@
 import { collection, config, fields, singleton } from "@keystatic/core";
 
 // Storage mode: 'local' for dev, 'github' for production
-// Driven by KEYSTATIC_STORAGE_KIND env var (defaults to 'local')
+// Must use NEXT_PUBLIC_ prefix so the client-side Keystatic UI (a "use client"
+// component) can read it — non-public env vars are stripped from browser bundles.
 const storage =
-  process.env.KEYSTATIC_STORAGE_KIND === "github"
+  process.env.NEXT_PUBLIC_KEYSTATIC_STORAGE_KIND === "github"
     ? ({
         kind: "github",
         repo: {
