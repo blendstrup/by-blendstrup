@@ -1,5 +1,6 @@
 import { MediaGallery, type MediaGalleryItem } from "@/components/MediaGallery"
 import { getBlurDataUrl } from "@/lib/blur-placeholder"
+import { toEmbedUrl } from "@/lib/video-embed"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -33,6 +34,8 @@ export async function WorkDetail({
 		images.map((img) => getBlurDataUrl(img.image || null)),
 	)
 
+	const embedSrc = toEmbedUrl(video)
+
 	const saleStatusLabel =
 		saleStatus === "available"
 			? "Til salg"
@@ -46,15 +49,14 @@ export async function WorkDetail({
 			<div className="grid grid-cols-1 gap-24 lg:grid-cols-[55fr_45fr]">
 				{/* Left column: primary media (video or image) */}
 				<div className="relative w-full">
-					{video ? (
+					{embedSrc ? (
 						<div className="relative aspect-4/5 w-full overflow-hidden rounded-2xl bg-oat">
-							<video
-								src={video}
-								autoPlay
-								muted
-								loop
-								playsInline
-								className="absolute inset-0 h-full w-full object-cover"
+							<iframe
+								src={embedSrc}
+								allow="autoplay; fullscreen; picture-in-picture"
+								allowFullScreen
+								title={title}
+								className="absolute inset-0 h-full w-full border-0 object-cover"
 							/>
 						</div>
 					) : images.length > 0 ? (

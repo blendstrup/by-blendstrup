@@ -1,4 +1,5 @@
 import { getBlurDataUrl } from "@/lib/blur-placeholder"
+import { toEmbedUrl } from "@/lib/video-embed"
 import Image from "next/image"
 
 export interface MediaGalleryItem {
@@ -36,49 +37,55 @@ export async function MediaGallery({
 				</h2>
 			)}
 			<div className="grid grid-cols-2 gap-4 lg:grid-cols-3 lg:gap-6">
-				{items.map((item, i) => (
-					<div key={`${item.image ?? item.video ?? i}`}>
-						<div className="relative aspect-4/5 overflow-hidden rounded-2xl bg-oat">
-							{item.type === "video" && item.video ? (
-								<video
-									src={item.video}
-									autoPlay
-									muted
-									loop
-									playsInline
-									className="absolute inset-0 h-full w-full object-cover"
-								/>
-							) : item.image ? (
-								<Image
-									src={item.image}
-									alt={item.imageAlt}
-									fill
-									className="object-cover"
-									sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-									placeholder={blurUrls[i] ? "blur" : "empty"}
-									blurDataURL={blurUrls[i]}
-								/>
-							) : (
-								<div className="absolute inset-0 bg-oat" />
+				{items.map((item, i) => {
+					const embedSrc = item.type === "video" ? toEmbedUrl(item.video) : null
+					return (
+						<div key={`${item.image ?? item.video ?? i}`}>
+							<div className="relative aspect-4/5 overflow-hidden rounded-2xl bg-oat">
+								{item.type === "video" ? (
+									embedSrc ? (
+										<iframe
+											src={embedSrc}
+											allow="autoplay; fullscreen; picture-in-picture"
+											allowFullScreen
+											title={item.imageAlt || item.title || "Video"}
+											className="absolute inset-0 h-full w-full border-0 object-cover"
+										/>
+									) : (
+										<div className="absolute inset-0 bg-oat" />
+									)
+								) : item.image ? (
+									<Image
+										src={item.image}
+										alt={item.imageAlt}
+										fill
+										className="object-cover"
+										sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+										placeholder={blurUrls[i] ? "blur" : "empty"}
+										blurDataURL={blurUrls[i]}
+									/>
+								) : (
+									<div className="absolute inset-0 bg-oat" />
+								)}
+							</div>
+							{item.title && (
+								<p className="mt-3 font-sans text-ink text-sm">{item.title}</p>
+							)}
+							{item.tags.length > 0 && (
+								<div className="mt-2 flex flex-wrap gap-1">
+									{item.tags.map((tag) => (
+										<span
+											key={tag}
+											className="rounded-full border border-clay px-2 py-0.5 font-sans text-stone text-xs"
+										>
+											{tag}
+										</span>
+									))}
+								</div>
 							)}
 						</div>
-						{item.title && (
-							<p className="mt-3 font-sans text-sm text-ink">{item.title}</p>
-						)}
-						{item.tags.length > 0 && (
-							<div className="mt-2 flex flex-wrap gap-1">
-								{item.tags.map((tag) => (
-									<span
-										key={tag}
-										className="rounded-full border border-clay px-2 py-0.5 font-sans text-xs text-stone"
-									>
-										{tag}
-									</span>
-								))}
-							</div>
-						)}
-					</div>
-				))}
+					)
+				})}
 			</div>
 		</div>
 	)

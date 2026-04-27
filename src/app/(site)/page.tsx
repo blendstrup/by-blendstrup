@@ -2,6 +2,7 @@ import { MediaGallery } from "@/components/MediaGallery"
 import { ShopCard } from "@/components/ShopCard"
 import { getBlurDataUrl } from "@/lib/blur-placeholder"
 import { baseMetadata } from "@/lib/metadata"
+import { toEmbedUrl } from "@/lib/video-embed"
 import { createReader } from "@keystatic/core/reader"
 import { ChevronDown } from "lucide-react"
 import type { Metadata } from "next"
@@ -64,7 +65,9 @@ export default async function HomePage() {
 		})),
 	)
 
-	const heroImage = homepageData?.heroVideo
+	const heroEmbedSrc = toEmbedUrl(homepageData?.heroVideo as string | null)
+
+	const heroImage = heroEmbedSrc
 		? null
 		: (heroWork?.images?.[0] ?? null)
 
@@ -73,16 +76,15 @@ export default async function HomePage() {
 			{/* ─── Hero Section (HOME-01, D-01, D-02, D-03) ─── */}
 			{/* Height subtracts sticky header (h-16 = 4rem) so hero fills visible viewport */}
 			<section className="relative h-[calc(100svh-4rem)] w-full bg-linen">
-				{/* Hero media: video takes priority over image */}
-				{homepageData?.heroVideo ? (
-					<video
-						src={homepageData.heroVideo as string}
-						autoPlay
-						muted
-						loop
-						playsInline
+				{/* Hero media: video embed takes priority over image */}
+				{heroEmbedSrc ? (
+					<iframe
+						src={heroEmbedSrc}
+						allow="autoplay; fullscreen; picture-in-picture"
+						allowFullScreen
+						title="Hero video"
 						tabIndex={-1}
-						className="absolute inset-0 h-full w-full object-cover"
+						className="absolute inset-0 h-full w-full border-0 object-cover"
 					/>
 				) : heroImage?.image ? (
 					<Image
@@ -165,7 +167,6 @@ export default async function HomePage() {
 												| "sold"
 												| "notListed",
 											images: entry.images,
-											video: (entry.video as string | null) ?? null,
 										}}
 										labels={{
 											sold: "Solgt",
