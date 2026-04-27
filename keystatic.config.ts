@@ -8,8 +8,8 @@ const storage =
     ? ({
         kind: "github",
         repo: {
-          owner: process.env.GITHUB_REPO_OWNER!,
-          name: process.env.GITHUB_REPO_NAME!,
+          owner: process.env.NEXT_PUBLIC_GITHUB_REPO_OWNER!,
+          name: process.env.NEXT_PUBLIC_GITHUB_REPO_NAME!,
         },
       } as const)
     : ({ kind: "local" } as const);
