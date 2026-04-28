@@ -1,6 +1,7 @@
 heroWorks:
   - bowl-test
-shopPreviewWorks: []
+shopPreviewWorks:
+  - bowl-test
 heroHeadline: Håndlavet keramik
 heroCta: Se samlingen
 heroScrollIndicator: Rul ned
