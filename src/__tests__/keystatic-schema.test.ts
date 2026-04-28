@@ -64,4 +64,52 @@ describe("Keystatic schema", () => {
 			expect(settings?.schema).toHaveProperty("instagramHandle")
 		})
 	})
+
+	describe("Phase quick-260428-vrt — file-based video fields", () => {
+		it("works.video field exists", () => {
+			const works = cfg.collections?.works as
+				| { schema?: Record<string, unknown> }
+				| undefined
+			expect(works?.schema).toHaveProperty("video")
+		})
+
+		it("works.videoPoster field exists", () => {
+			const works = cfg.collections?.works as
+				| { schema?: Record<string, unknown> }
+				| undefined
+			expect(works?.schema).toHaveProperty("videoPoster")
+		})
+
+		it("homepage.heroVideo field exists", () => {
+			const homepage = cfg.singletons?.homepage as
+				| { schema?: Record<string, unknown> }
+				| undefined
+			expect(homepage?.schema).toHaveProperty("heroVideo")
+		})
+
+		it("homepage.heroVideoPoster field exists", () => {
+			const homepage = cfg.singletons?.homepage as
+				| { schema?: Record<string, unknown> }
+				| undefined
+			expect(homepage?.schema).toHaveProperty("heroVideoPoster")
+		})
+
+		it("works.video is no longer a url-shaped field", () => {
+			const works = cfg.collections?.works as
+				| { schema?: Record<string, unknown> }
+				| undefined
+			const videoField = works?.schema?.video
+			// fields.file serializes without "url" anywhere; fields.url contains
+			// "url" as a discriminator. This catches a regression to fields.url.
+			expect(JSON.stringify(videoField)).not.toContain("url")
+		})
+
+		it("homepage.heroVideo is no longer a url-shaped field", () => {
+			const homepage = cfg.singletons?.homepage as
+				| { schema?: Record<string, unknown> }
+				| undefined
+			const heroVideoField = homepage?.schema?.heroVideo
+			expect(JSON.stringify(heroVideoField)).not.toContain("url")
+		})
+	})
 })

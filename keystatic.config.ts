@@ -106,10 +106,20 @@ const works = collection({
         itemLabel: (props) => props.fields.alt.value || "Image",
       },
     ),
-    video: fields.url({
-      label: "Video (YouTube / Vimeo)",
+    video: fields.file({
+      label: "Video",
       description:
-        "Valgfrit YouTube- eller Vimeo-link til dette stykke. Vis i galleriet og på detaljesiden. Muted autoplay — ingen kontroller.",
+        "Valgfri MP4-video til dette stykke. Vises i galleriet og på detaljesiden som baggrundsloop (muted autoplay, ingen kontroller). Kun .mp4.",
+      directory: "public/videos/works",
+      publicPath: "/videos/works/",
+      validation: { isRequired: false },
+    }),
+    videoPoster: fields.image({
+      label: "Video poster (valgfri)",
+      description:
+        "Valgfrit posterbillede vist før videoen indlæses. Hvis tomt, vises en oat-baggrund.",
+      directory: "public/images/works/posters",
+      publicPath: "/images/works/posters/",
     }),
     mediaGallery: fields.array(
       fields.object({
@@ -131,9 +141,20 @@ const works = collection({
           description: "Beskriv billedet for skærmlæsere.",
           validation: { length: { max: 120 } },
         }),
-        video: fields.url({
-          label: "Video (YouTube / Vimeo)",
-          description: "YouTube- eller Vimeo-link til dette mediaelement.",
+        video: fields.file({
+          label: "Video (MP4)",
+          description:
+            "Valgfri MP4-video til dette mediaelement. Kun .mp4.",
+          directory: "public/videos/gallery",
+          publicPath: "/videos/gallery/",
+          validation: { isRequired: false },
+        }),
+        poster: fields.image({
+          label: "Video poster (valgfri)",
+          description:
+            "Valgfrit posterbillede vist før videoen indlæses.",
+          directory: "public/images/gallery/posters",
+          publicPath: "/images/gallery/posters/",
         }),
         title: fields.text({
           label: "Titel",
@@ -203,10 +224,20 @@ const homepage = singleton({
       collection: "works",
       validation: { length: { max: 6 } },
     }),
-    heroVideo: fields.url({
-      label: "Hero Video (YouTube / Vimeo)",
+    heroVideo: fields.file({
+      label: "Hero-video (MP4)",
       description:
-        "Valgfrit YouTube- eller Vimeo-link som baggrundsloop i heroen. Muted autoplay. Når sat, erstatter herobilledet.",
+        "Valgfri MP4-video som baggrundsloop i heroen. Muted autoplay. Når sat, erstatter herobilledet. Kun .mp4.",
+      directory: "public/videos/hero",
+      publicPath: "/videos/hero/",
+      validation: { isRequired: false },
+    }),
+    heroVideoPoster: fields.image({
+      label: "Hero-video poster (valgfri)",
+      description:
+        "Valgfrit posterbillede vist før hero-videoen indlæses.",
+      directory: "public/images/hero",
+      publicPath: "/images/hero/",
     }),
     heroHeadline: fields.text({
       label: "Hero — overskrift",
@@ -285,9 +316,20 @@ const homepage = singleton({
           description: "Beskriv billedet for skærmlæsere.",
           validation: { length: { max: 120 } },
         }),
-        video: fields.url({
-          label: "Video (YouTube / Vimeo)",
-          description: "YouTube- eller Vimeo-link til dette mediaelement.",
+        video: fields.file({
+          label: "Video (MP4)",
+          description:
+            "Valgfri MP4-video til dette mediaelement. Kun .mp4.",
+          directory: "public/videos/gallery",
+          publicPath: "/videos/gallery/",
+          validation: { isRequired: false },
+        }),
+        poster: fields.image({
+          label: "Video poster (valgfri)",
+          description:
+            "Valgfrit posterbillede vist før videoen indlæses.",
+          directory: "public/images/gallery/posters",
+          publicPath: "/images/gallery/posters/",
         }),
         title: fields.text({
           label: "Titel",
