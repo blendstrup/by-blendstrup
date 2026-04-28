@@ -55,22 +55,30 @@ export default async function PurchaseInquiryPage({ searchParams }: Props) {
 		}
 	}
 
-	const purchaseFormStrings = contactContent ? {
-		regarding: contactContent.purchaseFormRegarding ?? "Forespørgsel om",
-		nameLabel: contactContent.purchaseFormNameLabel ?? "Navn",
-		emailLabel: contactContent.purchaseFormEmailLabel ?? "E-mail",
-		messageLabel: contactContent.purchaseFormMessageLabel ?? "Besked",
-		messagePlaceholder: contactContent.purchaseFormMessagePlaceholder ?? "Fortæl mig, hvad du tænker...",
-		submit: contactContent.purchaseFormSubmit ?? "Send forespørgsel",
-		pending: contactContent.purchaseFormPending ?? "Sender...",
-		successHeading: contactContent.purchaseFormSuccessHeading ?? "Tak for din henvendelse",
-		successBody: contactContent.purchaseFormSuccessBody ?? "Jeg vender tilbage til dig hurtigst muligt.",
-	} : undefined
+	const purchaseFormStrings = contactContent
+		? {
+				regarding: contactContent.purchaseFormRegarding ?? "Forespørgsel om",
+				nameLabel: contactContent.purchaseFormNameLabel ?? "Navn",
+				emailLabel: contactContent.purchaseFormEmailLabel ?? "E-mail",
+				messageLabel: contactContent.purchaseFormMessageLabel ?? "Besked",
+				messagePlaceholder:
+					contactContent.purchaseFormMessagePlaceholder ??
+					"Fortæl mig, hvad du tænker...",
+				submit: contactContent.purchaseFormSubmit ?? "Send forespørgsel",
+				pending: contactContent.purchaseFormPending ?? "Sender...",
+				successHeading:
+					contactContent.purchaseFormSuccessHeading ??
+					"Tak for din henvendelse",
+				successBody:
+					contactContent.purchaseFormSuccessBody ??
+					"Jeg vender tilbage til dig hurtigst muligt.",
+			}
+		: undefined
 
 	return (
 		<main className="py-16 lg:py-24">
-			<div className="mx-auto max-w-screen-xl px-12 lg:px-16">
-				<h1 className="mb-12 font-normal font-serif text-5xl text-ink tracking-tight">
+			<div className="mx-auto max-w-screen-xl px-6 sm:px-8 lg:px-16">
+				<h1 className="mb-12 font-normal font-serif text-3xl text-ink tracking-tight sm:text-4xl lg:text-5xl">
 					{contactContent?.purchaseFormHeading ?? "Forespørgsel"}
 				</h1>
 				{slug && pieceEntry ? (
@@ -110,7 +118,11 @@ export default async function PurchaseInquiryPage({ searchParams }: Props) {
 				) : (
 					// Full-width form when no item context (direct URL or invalid slug)
 					<div className="max-w-screen-md">
-						<PurchaseInquiryForm pieceSlug={slug} pieceTitle={pieceTitle} strings={purchaseFormStrings} />
+						<PurchaseInquiryForm
+							pieceSlug={slug}
+							pieceTitle={pieceTitle}
+							strings={purchaseFormStrings}
+						/>
 					</div>
 				)}
 			</div>

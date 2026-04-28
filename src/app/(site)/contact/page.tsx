@@ -57,7 +57,7 @@ export default async function ContactPage() {
 
 	return (
 		<main className="py-16 lg:py-24">
-			<div className="mx-auto max-w-screen-xl px-12 lg:px-16">
+			<div className="mx-auto max-w-screen-xl px-6 sm:px-8 lg:px-16">
 				{/* Profile photo */}
 				{aboutData?.photo ? (
 					<div className="mb-12 max-h-96 overflow-hidden rounded-2xl">
@@ -76,7 +76,7 @@ export default async function ContactPage() {
 					</div>
 				) : null}
 
-				<h1 className="mb-12 font-normal font-serif text-5xl text-ink tracking-tight">
+				<h1 className="mb-12 font-normal font-serif text-3xl text-ink tracking-tight sm:text-4xl lg:text-5xl">
 					{contactContent?.heading ?? "Kontakt"}
 				</h1>
 

@@ -67,9 +67,7 @@ export default async function HomePage() {
 
 	const heroEmbedSrc = toEmbedUrl(homepageData?.heroVideo as string | null)
 
-	const heroImage = heroEmbedSrc
-		? null
-		: (heroWork?.images?.[0] ?? null)
+	const heroImage = heroEmbedSrc ? null : (heroWork?.images?.[0] ?? null)
 
 	return (
 		<main>
@@ -133,9 +131,9 @@ export default async function HomePage() {
 
 			{/* ─── Shop Preview Section (HOME-02, D-01 shopPreviewWorks) ─── */}
 			<section className="border-clay border-t py-24">
-				<div className="mx-auto max-w-screen-xl px-12 lg:px-16">
+				<div className="mx-auto max-w-screen-xl px-6 sm:px-8 lg:px-16">
 					<div className="mb-8 flex items-baseline justify-between">
-						<h2 className="font-normal font-serif text-5xl text-ink tracking-tight">
+						<h2 className="font-normal font-serif text-[28px] text-ink tracking-tight">
 							{homepageData?.shopPreviewHeading ?? "Til salg"}
 						</h2>
 						<Link
@@ -183,7 +181,7 @@ export default async function HomePage() {
 
 			{/* ─── About Section (HOME-04) ─── */}
 			<section className="border-clay border-t bg-oat py-24">
-				<div className="mx-auto max-w-screen-xl px-12 lg:px-16">
+				<div className="mx-auto max-w-screen-xl px-6 sm:px-8 lg:px-16">
 					<div className="grid grid-cols-1 gap-8 lg:grid-cols-[2fr_3fr] lg:gap-16">
 						{/* Photo — left column on desktop, top on mobile */}
 						<div className="relative aspect-square overflow-hidden rounded-2xl border border-clay lg:aspect-4/5">
@@ -226,7 +224,7 @@ export default async function HomePage() {
 
 			{/* ─── Custom Order CTA Section (HOME-03, D-13) ─── */}
 			<section className="border-clay border-t bg-oat py-24">
-				<div className="mx-auto max-w-screen-xl px-12 text-center lg:px-16">
+				<div className="mx-auto max-w-screen-xl px-6 text-center sm:px-8 lg:px-16">
 					<h2 className="font-normal font-serif text-[28px] text-ink tracking-tight">
 						{homepageData?.customOrdersHeading ?? "Noget særligt i tankerne?"}
 					</h2>
@@ -247,7 +245,7 @@ export default async function HomePage() {
 			{/* ─── Homepage Media Gallery Section ─── */}
 			{homepageData?.mediaGallery && homepageData.mediaGallery.length > 0 && (
 				<section className="border-clay border-t py-24">
-					<div className="mx-auto max-w-screen-xl px-12 lg:px-16">
+					<div className="mx-auto max-w-screen-xl px-6 sm:px-8 lg:px-16">
 						<MediaGallery
 							items={(
 								homepageData.mediaGallery as Array<{

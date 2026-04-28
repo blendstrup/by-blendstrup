@@ -54,8 +54,8 @@ export default async function GalleryPage({ searchParams }: GalleryPageProps) {
 	)
 
 	return (
-		<section className="mx-auto max-w-screen-xl px-12 py-16 lg:px-16 lg:py-24">
-			<h1 className="mb-12 font-normal font-serif text-5xl text-ink tracking-tight">
+		<section className="mx-auto max-w-screen-xl px-6 py-16 sm:px-8 lg:px-16 lg:py-24">
+			<h1 className="mb-12 font-normal font-serif text-3xl text-ink tracking-tight sm:text-4xl lg:text-5xl">
 				{galleryContent?.title ?? "Keramik"}
 			</h1>
 			<GalleryFilterToggle />
