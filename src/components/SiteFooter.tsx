@@ -11,7 +11,7 @@ export default async function SiteFooter() {
 	const instagramHandle = settings?.instagramHandle ?? ""
 
 	return (
-		<footer className="bg-ink-surface px-12 py-12 lg:px-16 lg:py-16">
+		<footer className="bg-ink-surface px-6 py-12 sm:px-8 lg:px-16 lg:py-16">
 			<div className="mx-auto flex max-w-screen-xl flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
 				{/* Brand block */}
 				<div className="flex flex-col gap-3">
