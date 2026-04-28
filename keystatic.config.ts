@@ -310,6 +310,30 @@ const homepage = singleton({
           "Mediaelement",
       },
     ),
+    faqHeading: fields.text({
+      label: "FAQ-sektion — overskrift",
+      defaultValue: "Ofte stillede spørgsmål",
+      validation: { length: { min: 1, max: 80 } },
+    }),
+    faqItems: fields.array(
+      fields.object({
+        question: fields.text({
+          label: "Spørgsmål",
+          validation: { length: { min: 1, max: 200 } },
+        }),
+        answer: fields.text({
+          label: "Svar",
+          multiline: true,
+          validation: { length: { min: 1, max: 1000 } },
+        }),
+      }),
+      {
+        label: "FAQ-elementer",
+        description:
+          "Ofte stillede spørgsmål med svar. Det første element vises åbent når siden indlæses.",
+        itemLabel: (props) => props.fields.question.value || "Spørgsmål",
+      },
+    ),
   },
 });
 
