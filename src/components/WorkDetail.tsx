@@ -1,6 +1,5 @@
 import { MediaGallery, type MediaGalleryItem } from "@/components/MediaGallery"
 import { getBlurDataUrl } from "@/lib/blur-placeholder"
-import { toEmbedUrl } from "@/lib/video-embed"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -11,6 +10,7 @@ interface WorkDetailProps {
 	saleStatus: "available" | "sold" | "notListed"
 	images: Array<{ image: string; alt: string }>
 	video?: string | null
+	videoPoster?: string | null
 	mediaGallery?: MediaGalleryItem[]
 	ctaLabels: {
 		contactToBuy: string
@@ -26,6 +26,7 @@ export async function WorkDetail({
 	saleStatus,
 	images,
 	video,
+	videoPoster,
 	mediaGallery,
 	ctaLabels,
 }: WorkDetailProps): Promise<React.JSX.Element> {
@@ -34,7 +35,8 @@ export async function WorkDetail({
 		images.map((img) => getBlurDataUrl(img.image || null)),
 	)
 
-	const embedSrc = toEmbedUrl(video)
+	// .mp4-only runtime guard (Keystatic 0.5.50 lacks an extension validator on fields.file)
+	const videoSrc = video?.endsWith(".mp4") ? video : null
 
 	const saleStatusLabel =
 		saleStatus === "available"
@@ -49,14 +51,19 @@ export async function WorkDetail({
 			<div className="grid grid-cols-1 gap-24 lg:grid-cols-[55fr_45fr]">
 				{/* Left column: primary media (video or image) */}
 				<div className="relative w-full">
-					{embedSrc ? (
+					{videoSrc ? (
 						<div className="relative aspect-4/5 w-full overflow-hidden rounded-2xl bg-oat">
-							<iframe
-								src={embedSrc}
-								allow="autoplay; fullscreen; picture-in-picture"
-								allowFullScreen
-								title={title}
-								className="absolute inset-0 h-full w-full border-0 object-cover"
+							<video
+								src={videoSrc}
+								poster={videoPoster ?? undefined}
+								autoPlay
+								muted
+								loop
+								playsInline
+								preload="metadata"
+								controls={false}
+								aria-label={title}
+								className="absolute inset-0 h-full w-full object-cover"
 							/>
 						</div>
 					) : images.length > 0 ? (

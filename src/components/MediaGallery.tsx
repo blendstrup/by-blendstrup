@@ -1,5 +1,4 @@
 import { getBlurDataUrl } from "@/lib/blur-placeholder"
-import { toEmbedUrl } from "@/lib/video-embed"
 import Image from "next/image"
 
 export interface MediaGalleryItem {
@@ -7,6 +6,7 @@ export interface MediaGalleryItem {
 	image: string | null
 	imageAlt: string
 	video: string | null
+	poster: string | null
 	title: string
 	tags: string[]
 }
@@ -38,18 +38,22 @@ export async function MediaGallery({
 			)}
 			<div className="grid grid-cols-2 gap-4 lg:grid-cols-3 lg:gap-6">
 				{items.map((item, i) => {
-					const embedSrc = item.type === "video" ? toEmbedUrl(item.video) : null
 					return (
 						<div key={`${item.image ?? item.video ?? i}`}>
 							<div className="relative aspect-4/5 overflow-hidden rounded-2xl bg-oat">
 								{item.type === "video" ? (
-									embedSrc ? (
-										<iframe
-											src={embedSrc}
-											allow="autoplay; fullscreen; picture-in-picture"
-											allowFullScreen
-											title={item.imageAlt || item.title || "Video"}
-											className="absolute inset-0 h-full w-full border-0 object-cover"
+									item.video?.endsWith(".mp4") ? (
+										<video
+											src={item.video}
+											poster={item.poster ?? undefined}
+											autoPlay
+											muted
+											loop
+											playsInline
+											preload="metadata"
+											controls={false}
+											aria-label={item.imageAlt || item.title || "Video"}
+											className="absolute inset-0 h-full w-full object-cover"
 										/>
 									) : (
 										<div className="absolute inset-0 bg-oat" />

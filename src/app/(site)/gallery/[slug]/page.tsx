@@ -86,21 +86,23 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
 	const description = work.description
 
 	const mediaGallery = (
-		work.mediaGallery as Array<{
-			type: string
+		work.mediaGallery as ReadonlyArray<{
+			type: "image" | "video"
 			image: string | null
 			imageAlt: string
 			video: string | null
+			poster: string | null
 			title: string
-			tags: string[]
+			tags: ReadonlyArray<string>
 		}>
 	)?.map((item) => ({
 		type: item.type as "image" | "video",
-		image: (item.image as string | null) ?? null,
+		image: item.image ?? null,
 		imageAlt: item.imageAlt ?? "",
-		video: (item.video as string | null) ?? null,
+		video: item.video ?? null,
+		poster: item.poster ?? null,
 		title: item.title ?? "",
-		tags: (item.tags as string[]) ?? [],
+		tags: [...(item.tags ?? [])],
 	}))
 
 	return (
@@ -116,6 +118,7 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
 				}),
 			)}
 			video={(work.video as string | null) ?? null}
+			videoPoster={(work.videoPoster as string | null) ?? null}
 			mediaGallery={mediaGallery ?? []}
 			ctaLabels={{
 				contactToBuy: galleryContent?.contactToBuy ?? "Kontakt for køb",

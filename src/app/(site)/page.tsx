@@ -3,7 +3,6 @@ import { MediaGallery } from "@/components/MediaGallery"
 import { ShopCard } from "@/components/ShopCard"
 import { getBlurDataUrl } from "@/lib/blur-placeholder"
 import { baseMetadata } from "@/lib/metadata"
-import { toEmbedUrl } from "@/lib/video-embed"
 import { createReader } from "@keystatic/core/reader"
 import { ChevronDown } from "lucide-react"
 import type { Metadata } from "next"
@@ -66,9 +65,18 @@ export default async function HomePage() {
 		})),
 	)
 
-	const heroEmbedSrc = toEmbedUrl(homepageData?.heroVideo as string | null)
+	// .mp4-only runtime guard (Keystatic 0.5.50 lacks an extension validator on fields.file)
+	const heroVideoSrc =
+		typeof homepageData?.heroVideo === "string" &&
+		homepageData.heroVideo.endsWith(".mp4")
+			? homepageData.heroVideo
+			: null
+	const heroVideoPoster =
+		typeof homepageData?.heroVideoPoster === "string"
+			? homepageData.heroVideoPoster
+			: null
 
-	const heroImage = heroEmbedSrc ? null : (heroWork?.images?.[0] ?? null)
+	const heroImage = heroVideoSrc ? null : (heroWork?.images?.[0] ?? null)
 
 	// FAQ items — filter empties so an in-progress entry doesn't render a blank row
 	const faqItems = (homepageData?.faqItems ?? [])
@@ -83,15 +91,20 @@ export default async function HomePage() {
 			{/* ─── Hero Section (HOME-01, D-01, D-02, D-03) ─── */}
 			{/* Height subtracts sticky header (h-16 = 4rem) so hero fills visible viewport */}
 			<section className="relative h-[calc(100svh-4rem)] w-full bg-linen">
-				{/* Hero media: video embed takes priority over image */}
-				{heroEmbedSrc ? (
-					<iframe
-						src={heroEmbedSrc}
-						allow="autoplay; fullscreen; picture-in-picture"
-						allowFullScreen
-						title="Hero video"
+				{/* Hero media: video takes priority over image */}
+				{heroVideoSrc ? (
+					<video
+						src={heroVideoSrc}
+						poster={heroVideoPoster ?? undefined}
+						autoPlay
+						muted
+						loop
+						playsInline
+						preload="metadata"
+						controls={false}
+						aria-hidden="true"
 						tabIndex={-1}
-						className="absolute inset-0 h-full w-full border-0 object-cover"
+						className="absolute inset-0 h-full w-full object-cover"
 					/>
 				) : heroImage?.image ? (
 					<Image
@@ -266,21 +279,23 @@ export default async function HomePage() {
 					<div className="mx-auto max-w-screen-xl px-6 sm:px-8 lg:px-16">
 						<MediaGallery
 							items={(
-								homepageData.mediaGallery as Array<{
-									type: string
+								homepageData.mediaGallery as ReadonlyArray<{
+									type: "image" | "video"
 									image: string | null
 									imageAlt: string
 									video: string | null
+									poster: string | null
 									title: string
-									tags: string[]
+									tags: ReadonlyArray<string>
 								}>
 							).map((item) => ({
 								type: item.type as "image" | "video",
-								image: (item.image as string | null) ?? null,
+								image: item.image ?? null,
 								imageAlt: item.imageAlt ?? "",
-								video: (item.video as string | null) ?? null,
+								video: item.video ?? null,
+								poster: item.poster ?? null,
 								title: item.title ?? "",
-								tags: (item.tags as string[]) ?? [],
+								tags: [...(item.tags ?? [])],
 							}))}
 							heading={homepageData?.galleryHeading ?? "Galleri"}
 						/>
