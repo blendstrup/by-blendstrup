@@ -12,7 +12,7 @@ export const baseMetadata: Metadata = {
 		template: "%s — By Blendstrup",
 	},
 	description:
-		"Håndlavede keramikker fra By Blendstrup. Unikke stykker til salg og mulighed for at bestille specialfremstillede keramikker.",
+		"Håndlavet keramik fra By Blendstrup. Unikke stykker til salg og mulighed for at bestille specialfremstillet keramik.",
 	openGraph: {
 		siteName: "By Blendstrup",
 		locale: "da_DK",
@@ -28,4 +28,13 @@ export const baseMetadata: Metadata = {
 	},
 	robots: { index: true, follow: true },
 	twitter: { card: "summary_large_image" },
+	icons: {
+		icon: [
+			{ url: "/favicon.ico", sizes: "any" },
+			{ url: "/favicon.svg", type: "image/svg+xml" },
+			{ url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+		],
+		apple: "/apple-touch-icon.png",
+	},
+	manifest: "/site.webmanifest",
 }
