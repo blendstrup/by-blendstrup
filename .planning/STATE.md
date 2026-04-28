@@ -5,8 +5,8 @@ milestone_name: milestone
 current_phase: 06
 current_plan: Not started
 status: completed
-last_updated: "2026-04-22T06:35:54.316Z"
-last_activity: 2026-04-22
+last_updated: "2026-04-28T20:52:35.376Z"
+last_activity: 2026-04-28
 progress:
   total_phases: 6
   completed_phases: 5
@@ -19,7 +19,7 @@ progress:
 
 **Project started:** 2026-04-18
 **Last updated:** 2026-04-20
-**Last activity:** 2026-04-28 - Completed quick task 260428-v07: Wire up favicon and SEO icons in /public/ via metadata + fix manifest
+**Last activity:** 2026-04-28 - Completed quick task 260428-vrt: Switch keystatic from YouTube/Vimeo URL embeds to self-hosted video uploads
 
 ## Project Reference
 
@@ -95,6 +95,7 @@ None.
 | 260428-bo5 | Responsive design audit and typography fixes across all screen sizes | 2026-04-28 | c6f5376 | [260428-bo5-responsive-design-audit-and-typography-f](./quick/260428-bo5-responsive-design-audit-and-typography-f/) |
 | 260428-uah | Add FAQ section to homepage with Keystatic-configurable accordions | 2026-04-28 | cd156f6 | [260428-uah-add-faq-section-to-homepage-with-keystat](./quick/260428-uah-add-faq-section-to-homepage-with-keystat/) |
 | 260428-v07 | Wire up favicon and SEO icons in /public/ via metadata + fix manifest | 2026-04-28 | fdf970f | [260428-v07-wire-up-favicon-and-seo-icons-in-public-](./quick/260428-v07-wire-up-favicon-and-seo-icons-in-public-/) |
+| 260428-vrt | Switch keystatic from YouTube/Vimeo URL embeds to self-hosted video uploads | 2026-04-28 | 1531e68 | [260428-vrt-switch-keystatic-from-youtube-vimeo-url-](./quick/260428-vrt-switch-keystatic-from-youtube-vimeo-url-/) |
 
 ## Session Continuity
 
