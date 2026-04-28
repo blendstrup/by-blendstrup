@@ -12,3 +12,9 @@ customOrdersBody: Jeg laver specialbestillinger — fortæl mig, hvad du foresti
 customOrdersCta: Start en specialbestilling
 galleryHeading: Galleri
 mediaGallery: []
+faqHeading: Ofte stillede spørgsmål
+faqItems:
+  - question: Hvor lang tid tager det at lave en specialbestilling?
+    answer: Typisk 4–8 uger afhængigt af størrelse og glasering.
+  - question: Sender I til hele Danmark?
+    answer: Ja — og til EU efter aftale. Forsendelse aftales individuelt.

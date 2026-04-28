@@ -1,3 +1,4 @@
+import { FaqAccordion } from "@/components/FaqAccordion"
 import { MediaGallery } from "@/components/MediaGallery"
 import { ShopCard } from "@/components/ShopCard"
 import { getBlurDataUrl } from "@/lib/blur-placeholder"
@@ -68,6 +69,14 @@ export default async function HomePage() {
 	const heroEmbedSrc = toEmbedUrl(homepageData?.heroVideo as string | null)
 
 	const heroImage = heroEmbedSrc ? null : (heroWork?.images?.[0] ?? null)
+
+	// FAQ items — filter empties so an in-progress entry doesn't render a blank row
+	const faqItems = (homepageData?.faqItems ?? [])
+		.map((item) => ({
+			question: (item?.question ?? "").trim(),
+			answer: (item?.answer ?? "").trim(),
+		}))
+		.filter((item) => item.question.length > 0 && item.answer.length > 0)
 
 	return (
 		<main>
@@ -221,6 +230,15 @@ export default async function HomePage() {
 					</div>
 				</div>
 			</section>
+
+			{/* ─── FAQ Section ─── */}
+			{faqItems.length > 0 && (
+				<FaqAccordion
+					heading={homepageData?.faqHeading ?? "Ofte stillede spørgsmål"}
+					items={faqItems}
+					defaultOpenIndex={0}
+				/>
+			)}
 
 			{/* ─── Custom Order CTA Section (HOME-03, D-13) ─── */}
 			<section className="border-clay border-t bg-oat py-24">
